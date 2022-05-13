@@ -6,7 +6,7 @@ ID: 20220317160650
 
 ## 3.1 Pendekatan Penelitian
 
-## 3.2 
+## 3.2 Tahapan Penelitian
 
 
 pendekatan penelitian: penelitian operasional
