@@ -30,6 +30,17 @@ Dalam penelitian ini, pendekatan yang sesuai untuk karakteristik permasalahan ya
 6. jika terdapat beberapa pemangku kebijakan, maka pengambilan keputusan dapat diambil sesuai kesepakatan bersama
 7. pembuat keputusan memiliki kekuasaan untuk menerapkan dan mengimplementasikan solusi
 
+Metodologi penelitian operasional sendiri secara umum memiliki beberapa tahapan yang terdefinisi dengan baik, namun urutannya secara spesifik bersifat nonlinear, saling tumpang tindih, dan mengikuti konteks permasalahan masing-masing peneliti. [@hillier2015] merangkum tahapan tersebut menjadi beberapa bagian, yaitu:
+
+1. Pemahaman masalah
+2. Formulasi model
+3. Pengembangan prosedur pencarian solusi
+4. Pengujian, analisis, dan perbaikan model
+5. Implementasi keputusan
+
+di sini masuk ke [@daellenbach2005] yg S-M-O itu kali ya, intinya tahapan yg di atas itu antar tahapannya bisa saling maju mundur, tapi intinya banget strukturnya seperti ini **BAM**
+
+
 ## 3.2 Tahapan Penelitian
 
 
