@@ -44,8 +44,17 @@ Pembagian ini disajikan karena memberikan poin tersendiri pada pengembangan pros
 Pada bagian ini akan dijelaskan bagaimana tahapan-tahapan metodologi penelitian operasional diterapkan pada penelitian ini. Secara umum, setiap tahapan dilaksanakan, namun, secara khusus, implementasi keputusan dikerjakan secara parsial.
 
 ### 3.2.1 Pemahaman Masalah
+Pada tahap ini, terdapat beberapa kegiatan, yaitu:
+1. Analisis Pemangku Kepentingan
+2. Identifikasi Elemen Permasalahan
+3. Pengembangan Diagram Sistem Relevan
 
 ### 3.2.2 Formulasi Model
+Terlepas nama tahapan yang cukup jelas, pada tahap ini, terdapat beberapa kegiatan, yaitu:
+1. Identifikasi Model Matematis (?) --> ditentukan model matematis seperti apa yang akan dikembangkan berdasarkan pemahaman akan masalah. Pada tahap ini, dikembangkan beberapa prototipe model dan dilakukan beberapa pengujian.
+2. Penyusunan Persamaan Matematis --> dibangun model matematis lengkap dari pemahaman masalah dengan bantuan diagram berdasarkan model matematis yang sudah dinilai cocok.
+
+Model yang dihasilkan nantinya akan disesuaikan untuk tahap pengujian, analisis, dan perbaikan model. Penyesuaian-penyesuaian tersebut akan dijelaskan pada tahap terkait.
 
 ### 3.2.3 Pengembangan Prosedur Pencarian Solusi
 
@@ -54,8 +63,6 @@ Pada bagian ini akan dijelaskan bagaimana tahapan-tahapan metodologi penelitian 
 ### 3.2.5 Implementasi Keputusan
 
 ## 3.3 Pengumpulan Data
-
-
 
 pendekatan penelitian: penelitian operasional
 langkah-langkah
