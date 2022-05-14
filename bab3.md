@@ -14,7 +14,7 @@ notes: heavy di penelitian operasional dan tahapan2nya, asumsi di bab 2 udah dij
 - Similarity Measures
 
 ## 3.1 Pendekatan Penelitian
-Dalam penelitian ini, pendekatan yang sesuai untuk karakteristik permasalahan yang dihadapi adalah penelitian operasional. Penelitian operasional merupakan penerapan metode ilmiah dalam pengambilan keputusan terkait desain dan operasi sebuah sistem [@ravindran2009]. Secara khusus, pendekatan yang dilakukan termasuk dalam kelompok metodologi *Hard Operations Research* yang mengasumsikan beberapa hal, yaitu:
+Dalam penelitian ini, pendekatan yang sesuai untuk karakteristik permasalahan yang dihadapi adalah penelitian operasional. Penelitian operasional merupakan penerapan metode ilmiah dalam pengambilan keputusan terkait desain dan operasi sebuah sistem [@ravindran2009]. Secara spesifik, pendekatan operasional yang dilakukan ini biasa disebut metodologi *Hard Operations Research* dan metodologi ini mengasumsikan beberapa hal, yaitu:
 1. permasalahan sudah didefinisikan dengan jelas, yang berarti:
    1. objektif dari pengambil keputusan diketahui dan terdapat kriteria untuk memastikan kapan objektif tersebut tercapai
    2. jika terdapat konflik dalam objektif, pertukaran nilai dapat didefinisikan
@@ -38,7 +38,7 @@ Metodologi penelitian operasional sendiri secara umum memiliki beberapa tahapan 
 4. Pengujian, analisis, dan perbaikan model
 5. Implementasi keputusan
 
-di sini masuk ke [@daellenbach2005] yg S-M-O itu kali ya, intinya tahapan yg di atas itu antar tahapannya bisa saling maju mundur, tapi intinya banget strukturnya seperti ini **BAM**
+Pembagian ini disajikan karena memberikan poin tersendiri pada pengembangan prosedur pencarian solusi atau algoritma. Hal ini menjadi penting karena tahap ini sangat memengaruhi dan dipengaruhi tahap-tahap lainnya.
 
 
 ## 3.2 Tahapan Penelitian
