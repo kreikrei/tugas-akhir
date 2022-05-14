@@ -40,8 +40,21 @@ Metodologi penelitian operasional sendiri secara umum memiliki beberapa tahapan 
 
 Pembagian ini disajikan karena memberikan poin tersendiri pada pengembangan prosedur pencarian solusi atau algoritma. Hal ini menjadi penting karena tahap ini sangat memengaruhi dan dipengaruhi tahap-tahap lainnya.
 
-
 ## 3.2 Tahapan Penelitian
+Pada bagian ini akan dijelaskan bagaimana tahapan-tahapan metodologi penelitian operasional diterapkan pada penelitian ini. Secara umum, setiap tahapan dilaksanakan, namun, secara khusus, implementasi keputusan dikerjakan secara parsial.
+
+### 3.2.1 Pemahaman Masalah
+
+### 3.2.2 Formulasi Model
+
+### 3.2.3 Pengembangan Prosedur Pencarian Solusi
+
+### 3.2.4 Pengujian, Analisis, dan Perbaikan Model
+
+### 3.2.5 Implementasi Keputusan
+
+## 3.3 Pengumpulan Data
+
 
 
 pendekatan penelitian: penelitian operasional
