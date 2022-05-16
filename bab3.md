@@ -48,14 +48,7 @@ Berbekalkan pemahaman yang terstruktur akan permasalahan, dalam tahap ini, dikem
 - Penyusunan Model
 - Verifikasi Model
 
-Formulasi model merupakan kombinasi dari penggunaan konsep-konsep yang sudah ada dengan kreativitas analis untuk merunut sendiri permasalahan yang diteliti. Penelitian operasional sebagai sebuah disiplin memiliki arsenal yang besar untuk pengembangan model, seperti: pemrograman linear, pemrograman integer, pemrograman dinamis, dan simulasi. Proses identifikasi.
-
-Setiap model yang disusun nantinya harus terverifikasi -- memiliki logika yang koheren, dan setelah dikembangkan prosedur pencarian solusinya, memiliki perilaku yang sesuai dengan intensi pembuatan model. Verifikasi yang dilakukan dalam tahap ini, 
-
-Tahapan formulasi model adalah sebuah tahap yang divergen di mana akan dihasilkan beberapa model yang terseleksi dalam tahapan-tahapan berikutnya.
-
-
-Model yang dihasilkan nantinya akan disesuaikan untuk tahap pengujian, analisis, dan perbaikan model. Penyesuaian-penyesuaian tersebut akan dijelaskan pada tahap terkait.
+Penyusunan model merupakan kombinasi dari penggunaan konsep-konsep yang sudah ada (pendekatan struktural) dengan kreativitas analis untuk merunut sendiri permasalahan yang diteliti (pendekatan proses). Penelitian operasional sebagai sebuah disiplin memiliki arsenal yang besar untuk pengembangan model, seperti: pemrograman linear, pemrograman integer, pemrograman dinamis, dan simulasi. Dalam penelitian ini, setiap model yang dicoba akan melalui langkah verifikasi. Model dipastikan memiliki logika yang koheren serta memiliki perilaku yang sesuai dengan intensi pembuatan model. Verifikasi yang dilakukan dalam tahap ini adalah merunut kembali transformasi satuan-satuan yang ada dalam model. Karena sifatnya yang iteratif, model yang digunakan dalam penelitian dan dijabarkan pada [[bab 4]] (4.2) hanya versi termutakhir.
 
 ### 3.2.3 Pengembangan Prosedur Pencarian Solusi
 
