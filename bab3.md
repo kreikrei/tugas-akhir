@@ -44,13 +44,23 @@ Sudah diketahui bahwa permasalahan yang dihadapi merupakan permasalahan logistik
 Analisis pemangku kepentingan dilakukan dengan melakukan tabulasi *problem owner*, *problem user*, *problem customer*, dan *problem analys* berdasarkan definisi yang diberikan pada [[bab 2]] (2.x). Selain itu, diidentifikasi elemen-elemen permasalahannya berdasarkan pada enam (6) elemen permasalahan yang dijabarkan pada [[bab 2]] (2.x). Terakhir, dikembangkan diagram standar sebagai objek representasi permasalahan untuk memandu formulasi model. Hasil dan pembahasan tiap langkah pada tahap ini dijabarkan pada [[bab 4]] (4.1).
 
 ### 3.2.2 Formulasi Model
-Berbekalkan pemahaman yang terstruktur akan permasalahan, dalam tahap ini, dikembangkan perangkat matematis yang dapat dimanipulasi untuk mendapatkan solusi yang optimal. Langkah-langkah tersebut adalah:
+Berbekalkan pemahaman yang terstruktur akan permasalahan, dalam tahap ini, dikembangkan perangkat matematis yang dapat dimanipulasi untuk mendapatkan solusi yang optimal. Langkah-langkah yang dilakukan dalam penelitian ini adalah:
 - Penyusunan Model
 - Verifikasi Model
 
-Penyusunan model merupakan kombinasi dari penggunaan konsep-konsep yang sudah ada (pendekatan struktural) dengan kreativitas analis untuk merunut sendiri permasalahan yang diteliti (pendekatan proses). Penelitian operasional sebagai sebuah disiplin memiliki arsenal yang besar untuk pengembangan model, seperti: pemrograman linear, pemrograman integer, pemrograman dinamis, dan simulasi. Dalam penelitian ini, setiap model yang dicoba akan melalui langkah verifikasi. Model dipastikan memiliki logika yang koheren serta memiliki perilaku yang sesuai dengan intensi pembuatan model. Verifikasi yang dilakukan dalam tahap ini adalah merunut kembali transformasi satuan-satuan yang ada dalam model. Karena sifatnya yang iteratif, model yang digunakan dalam penelitian dan dijabarkan pada [[bab 4]] (4.2) hanya versi termutakhir.
+Penyusunan model merupakan kombinasi dari penggunaan konsep-konsep yang sudah ada (pendekatan struktural) dengan kreativitas analis untuk merunut sendiri permasalahan yang diteliti (pendekatan proses). Penelitian operasional sebagai sebuah disiplin memiliki arsenal yang besar untuk pengembangan model, seperti: pemrograman linear, pemrograman integer, pemrograman dinamis, dan simulasi. Dalam penelitian ini, setiap model yang dicoba akan melalui langkah verifikasi. Model dipastikan memiliki logika yang koheren yang sesuai dengan intensi pembuatan model. Verifikasi yang dilakukan di penelitian pada tahap ini adalah merunut kembali transformasi satuan-satuan yang ada dalam model. Karena sifatnya yang iteratif, model yang digunakan dalam penelitian dan dijabarkan pada [[bab 4]] (4.2) hanya versi termutakhir.
 
 ### 3.2.3 Pengembangan Prosedur Pencarian Solusi
+Sebuah model datang satu paket dengan pencari solusinya. Prosedur sistematis manipulasi model untuk mencari solusi ini biasa disebut dengan algoritma. Tahapan ini berfokus pada desain algoritma tersebut dan seluruh hasil termutakhir, yang akhirnya digunakan dalam penelitian, disajikan pada [[bab 4]] (4.3). Langkah-langkah penting [@levitin2012] yang dilakukan dalam penelitian ini adalah:
+- Penentuan Perangkat Komputasi
+- Penentuan Pola Dasar Algoritma
+- Implementasi dan Verifikasi Algoritma
+
+Meskipun dalam pengembangannya akan terjadi perubahan-perubahan, seleksi perangkat komputasi dapat dilakukan sedini mungkin. Terdapat beberapa opsi seperti komputasi dengan tangan, lembar kerja (*spreadsheet*), atau penggunaan perangkat lunak komersial. 
+
+Pilihan perangkat komputasi sangat bergantung pada jenis model, ukuran masukan, serta kriteria performa wajar yang diinginkan. Selain itu, perlu ditentukan pola dasar algoritma yang akan dibangun, yaitu: penerapan pencarian solusi eksak atau aproksimasi, teknik dasar pencarian solusi, serta struktur data esensial untuk algoritma. Sama seperti perangkat komputasi, penentuan pola dasar sangat bergantung pada jenis model, ukuran masukan, serta kriteria performa wajar yang diinginkan.
+
+Setelah hal-hal di atas ditentukan, algoritma diimplementasi dan diverifikasi hasilnya. Pada penelitian ini, verifikasi yang dilakukan dengan menggunakan kasus-kasus dasar yang solusinya diketahui oleh peneliti serta mengindikasikan perilaku yang tepat dari algoritma yang dikembangkan.
 
 ### 3.2.4 Pengujian, Analisis, dan Perbaikan Model
 
