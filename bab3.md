@@ -61,10 +61,7 @@ Sebuah model datang satu paket dengan pencari solusinya. Prosedur sistematis man
 Meskipun dalam pengembangannya akan terjadi perubahan-perubahan, seleksi perangkat komputasi dapat dilakukan sedini mungkin. Pilihan perangkat komputasi sangat bergantung pada jenis model, ukuran masukan, serta kriteria performa wajar yang diinginkan. Selain itu, perlu ditentukan pola dasar algoritma yang akan dibangun, yaitu: penerapan pencarian solusi eksak atau aproksimasi, teknik dasar pencarian solusi, serta struktur data esensial untuk algoritma. Sama seperti perangkat komputasi, penentuan pola dasar sangat bergantung pada jenis model, ukuran masukan, serta kriteria performa wajar yang diinginkan. Kemudian, algoritma diimplementasi dan diverifikasi hasilnya. Pada penelitian ini, verifikasi dilakukan dengan menggunakan kasus-kasus dasar yang solusinya diketahui oleh peneliti serta mengindikasikan perilaku yang tepat dari model serta algoritma yang dikembangkan.
 
 ### 3.2.4 Pengujian, Analisis, dan Perbaikan Model
-pengujian dan analisis yang harus dilakukan
-
-validasi model
-
+Setelah model serta algoritmanya dikembangkan terdapat beberapa pengujian yang penting dilakukan sebelum solusi diimplementasikan ke sistem nyata.
 
 ### 3.2.5 Implementasi Keputusan
 
