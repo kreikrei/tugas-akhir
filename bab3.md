@@ -43,7 +43,7 @@ Sudah diketahui bahwa permasalahan yang dihadapi merupakan permasalahan logistik
 - Identifikasi Elemen Permasalahan
 - Pengembangan Diagram Sistem Relevan
 
-Analisis pemangku kepentingan dilakukan dengan melakukan tabulasi *problem owner*, *problem user*, *problem customer*, dan *problem analys* berdasarkan definisi yang diberikan pada [[bab 2]] (2.x). Selain itu, diidentifikasi elemen-elemen permasalahannya berdasarkan pada enam (6) elemen permasalahan yang dijabarkan pada [[bab 2]] (2.x). Terakhir, dikembangkan diagram standar sebagai objek representasi permasalahan untuk memandu formulasi model. Hasil dan pembahasan tiap langkah pada tahap ini dijabarkan pada [[bab 4]] (4.1).
+Analisis pemangku kepentingan dilakukan dengan melakukan tabulasi *problem owner*, *problem user*, *problem customer*, dan *problem analyst* berdasarkan definisi yang diberikan pada [[bab 2]] (2.x). Selain itu, diidentifikasi elemen-elemen permasalahannya berdasarkan pada enam (6) elemen permasalahan yang dijabarkan pada [[bab 2]] (2.x). Terakhir, dikembangkan diagram standar sebagai objek representasi permasalahan untuk memandu formulasi model. Hasil dan pembahasan tiap langkah pada tahap ini dijabarkan pada [[bab 4]] (4.1).
 
 ### 3.2.2 Formulasi Model
 Berbekalkan pemahaman yang terstruktur akan permasalahan, dalam tahap ini, dikembangkan perangkat matematis yang dapat dimanipulasi untuk mendapatkan solusi yang optimal. Langkah-langkah yang dilakukan dalam penelitian ini adalah:
