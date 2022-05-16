@@ -33,7 +33,9 @@ Metodologi penelitian operasional sendiri secara umum memiliki beberapa tahapan 
 Pembagian ini disajikan karena memberikan poin tersendiri pada pengembangan prosedur pencarian solusi atau algoritma. Hal ini menjadi penting karena tahap ini sangat memengaruhi dan dipengaruhi tahap-tahap lainnya. Meskipun sifatnya yang tidak saklek, inti dari pendekatan ini adalah mengekstrak permasalahan di dunia nyata menjadi sebuah model yang dapat dimanipulasi dan diuji kemudian mengembangkan kebijakan serta mengimplementasikan keputusan berdasarkan hasil.
 
 ## 3.2 Tahapan Penelitian
-Pada bagian ini akan dijelaskan bagaimana tahapan-tahapan metodologi penelitian operasional diterapkan pada penelitian ini. Secara umum, setiap tahapan dilaksanakan, namun, secara khusus, implementasi keputusan dikerjakan secara parsial.
+Pada bagian ini akan dijelaskan bagaimana tahapan-tahapan metodologi penelitian operasional diterapkan pada penelitian ini. Secara umum, setiap tahapan dilaksanakan, namun, secara khusus, implementasi keputusan dikerjakan secara parsial. Secara umum, tahapan penelitian ini dirangkum dalam **Gambar xx**.
+
+`Gambar xx`
 
 ### 3.2.1 Pemahaman Masalah
 Sudah diketahui bahwa permasalahan yang dihadapi merupakan permasalahan logistik. Namun, pengetahuan tersebut tidaklah cukup untuk dapat mengembangkan sebuah solusi. Seluruh langkah dalam tahap ini bertujuan untuk memberikan uraian yang terstruktur terkait permasalahan yang dihadapi. Langkah-langkah tersebut adalah:
@@ -56,13 +58,13 @@ Sebuah model datang satu paket dengan pencari solusinya. Prosedur sistematis man
 - Penentuan Pola Dasar Algoritma
 - Implementasi dan Verifikasi Algoritma
 
-Meskipun dalam pengembangannya akan terjadi perubahan-perubahan, seleksi perangkat komputasi dapat dilakukan sedini mungkin. Terdapat beberapa opsi seperti komputasi dengan tangan, lembar kerja (*spreadsheet*), atau penggunaan perangkat lunak komersial. 
-
-Pilihan perangkat komputasi sangat bergantung pada jenis model, ukuran masukan, serta kriteria performa wajar yang diinginkan. Selain itu, perlu ditentukan pola dasar algoritma yang akan dibangun, yaitu: penerapan pencarian solusi eksak atau aproksimasi, teknik dasar pencarian solusi, serta struktur data esensial untuk algoritma. Sama seperti perangkat komputasi, penentuan pola dasar sangat bergantung pada jenis model, ukuran masukan, serta kriteria performa wajar yang diinginkan.
-
-Setelah hal-hal di atas ditentukan, algoritma diimplementasi dan diverifikasi hasilnya. Pada penelitian ini, verifikasi yang dilakukan dengan menggunakan kasus-kasus dasar yang solusinya diketahui oleh peneliti serta mengindikasikan perilaku yang tepat dari algoritma yang dikembangkan.
+Meskipun dalam pengembangannya akan terjadi perubahan-perubahan, seleksi perangkat komputasi dapat dilakukan sedini mungkin. Pilihan perangkat komputasi sangat bergantung pada jenis model, ukuran masukan, serta kriteria performa wajar yang diinginkan. Selain itu, perlu ditentukan pola dasar algoritma yang akan dibangun, yaitu: penerapan pencarian solusi eksak atau aproksimasi, teknik dasar pencarian solusi, serta struktur data esensial untuk algoritma. Sama seperti perangkat komputasi, penentuan pola dasar sangat bergantung pada jenis model, ukuran masukan, serta kriteria performa wajar yang diinginkan. Kemudian, algoritma diimplementasi dan diverifikasi hasilnya. Pada penelitian ini, verifikasi dilakukan dengan menggunakan kasus-kasus dasar yang solusinya diketahui oleh peneliti serta mengindikasikan perilaku yang tepat dari model serta algoritma yang dikembangkan.
 
 ### 3.2.4 Pengujian, Analisis, dan Perbaikan Model
+pengujian dan analisis yang harus dilakukan
+
+validasi model
+
 
 ### 3.2.5 Implementasi Keputusan
 
