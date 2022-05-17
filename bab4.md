@@ -1,18 +1,34 @@
 ---
 title: "BAB 4 HASIL DAN PEMBAHASAN"
 ...
-# BAB 4 HASIL DAN PEMBAHASAN
+# HASIL DAN PEMBAHASAN
 ID:20220317161039
 
-## 4.1 Pemahaman Masalah
+## Pemahaman Masalah
 
-## 4.2 Formulasi Model
+### Analisis Pemangku Kepentingan
 
-## 4.3 Pengembangan Prosedur Pencarian Solusi
+### Identifikasi Elemen Permasalahan
 
-## 4.4 Pengujian, Analisis, dan Perbaikan Model
+### Pengembangan Diagram Sistem Relevan
 
-## 4.6 Pengumpulan Data
+## Formulasi Model
+
+### Penyusunan Model
+
+### Verifikasi Model
+
+## Pengembangan Prosedur Pencarian Solusi
+
+### Implementasi Algoritma
+
+### Verifikasi Algortima
+
+## Pengujian, Analisis, dan Perbaikan Model
+
+### Analisis Implikasi Manajerial
+
+## Pengumpulan Data
 
 so far rencananya adalah menggabung hasil dari semua langkah jadi satu bab.
 
