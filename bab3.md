@@ -64,9 +64,10 @@ Meskipun dalam pengembangannya akan terjadi perubahan-perubahan, seleksi perangk
 Solusi dari permasalahan operasionalisasi distribusi ini merupakan bagian dari sebuah rangkaian aktivitas yang lebih besar seperti yang diimplikasikan pada [[bab 1]] (1.2) dalam Gambar xx. Karena komponennya yang banyak dan saling memengaruhi secara nonlinear serta keberadaan ketidakpastian dalam sistem, metode terbaik untuk menguji performa model yang sudah dikembangkan adalah simulasi [@ravindran2009]. Melalui metode ini, dapat dilakukan eksperimen terhadap input sistem dan parameter model perencanaan. Pada tahap ini juga dilakukan validasi terhadap model di mana diperiksa kedekatan model dengan sistem nyata. Beberapa penyesuaian terhadap model nantinya akan perlu dilakukan untuk menyelesaikan keseluruhan pengujian dan analisis. Struktur tahap ini beserta hasil dan pembahasannya dijabarkan pada [[bab 4]] (4.4).
 
 ### 3.2.5 Implementasi Keputusan
-Ketika sebuah model dinyatakan valid dan sudah diuji sedemikian rupa terhadap perubahan-perubahan, solusi dapat diajukan untuk diimplementasikan kembali ke sistem nyata. Untuk dapat diimplementasi dengan baik, perlu dilakukan analisis implikasi manajerial untuk memeriksa perubahan-perubahan yang diperlukan seiring dengan implementasi penggunaan model dalam rangkaian aktivitas sistem. Selain itu, akan diperlukan perencanaan *budget* dan *timeline* implementasi sebagai sebuah proyek, namun hal tersebut tidak masuk dalam lingkup penelitian.
+Ketika sebuah model dinyatakan valid dan sudah diuji sedemikian rupa terhadap perubahan-perubahan, solusi dapat diajukan untuk diimplementasikan kembali ke sistem nyata. Untuk dapat diimplementasi dengan baik, perlu dilakukan analisis implikasi manajerial untuk memeriksa perubahan-perubahan yang diperlukan seiring dengan implementasi penggunaan model dalam rangkaian aktivitas sistem. Hasil dan pembahasan analisis ini akan dijabarkan pada [[bab 4]] (4.5). Selain itu, akan diperlukan perencanaan *budget* dan *timeline* implementasi sebagai sebuah proyek, namun hal tersebut tidak masuk dalam lingkup penelitian.
 
-## 3.3 Pengumpulan Data
+## 3.2.6 Pengumpulan Data
+Pengumpulan data dan pengolahan -- data merupakan sebuah komponen dalam pendekatan penelitian operasional yang sifatnya paralel dengan seluruh tahap. Setiap tahapan bisa jadi membutuhkan data yang berbeda dan proses pengolahan yang berbeda. Seluruh kegiatan pengumpulan data akan dirangkum pada [[bab 4]] (4.6).
 
 pendekatan penelitian: penelitian operasional
 langkah-langkah
