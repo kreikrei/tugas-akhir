@@ -54,8 +54,7 @@ Penyusunan model merupakan kombinasi dari penggunaan konsep-konsep yang sudah ad
 
 ### Pengembangan Prosedur Pencarian Solusi
 Sebuah model datang satu paket dengan pencari solusinya. Prosedur sistematis manipulasi model untuk mencari solusi ini biasa disebut dengan algoritma. Tahapan ini berfokus pada desain algoritma tersebut dan seluruh hasil termutakhir, yang akhirnya digunakan dalam penelitian, disajikan pada [[bab 4]] (4.3). Langkah-langkah penting [@levitin2012] yang dilakukan dalam penelitian ini adalah:
-- Penentuan Perangkat Komputasi
-- Penentuan Pola Dasar Algoritma
+- Penentuan Perangkat Komputasi dan Pola Dasar Algoritma
 - Implementasi dan Verifikasi Algoritma
 
 Pilihan perangkat komputasi dan pola dasar algortima sangat bergantung pada jenis model, ukuran masukan, serta kriteria performa wajar yang diinginkan. Beberapa perangkat komputasi adalah komputasi tangan atau digital. Keputusan-keputusan penting pola dasar berupa sifat optimasinya, teknik pencarian, dan struktur datanya. Pada tahap ini, algoritma diimplementasi dan diverifikasi hasilnya. Verifikasi dilakukan dengan menggunakan kasus-kasus dasar yang solusinya diketahui oleh peneliti serta mengindikasikan perilaku yang tepat dari model serta algoritma yang dikembangkan.
@@ -65,16 +64,3 @@ Solusi dari permasalahan operasionalisasi distribusi ini merupakan bagian dari s
 
 ### Pengumpulan Data
 Pengumpulan data dan pengolahan -- data merupakan sebuah komponen dalam pendekatan penelitian operasional yang sifatnya paralel dengan seluruh tahap. Setiap tahapan bisa jadi membutuhkan data yang berbeda dan proses pengolahan yang berbeda. Seluruh kegiatan pengumpulan data akan dirangkum pada [[bab 4]] (4.6).
-
-pendekatan penelitian: penelitian operasional
-langkah-langkah
-pengumpulan [[20220317220644]] data
-analisis hasil
-
-notes: heavy di penelitian operasional dan tahapan2nya, asumsi di bab 2 udah dijelasin tentang: 
-- sistem rantai suplai
-- teori sistem & pemodelan
-- manajemen ilmiah (?): strategic, tactical, operational pengennya masuk si
-- pemrograman matematis
-- simulasi
-- Similarity Measures
