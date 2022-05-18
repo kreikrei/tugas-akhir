@@ -1,7 +1,5 @@
----
-title: "BAB 4 HASIL DAN PEMBAHASAN"
-...
 # HASIL DAN PEMBAHASAN
+
 ID:20220317161039
 
 ## Pemahaman Masalah
@@ -11,13 +9,16 @@ ID:20220317161039
 ### Identifikasi Elemen Permasalahan
 
 ### Pengembangan Diagram Sistem Relevan
+
 diagram jaringan (time-expanded)
 influence diagram
 
 ## Formulasi Model
 
 ### Penyusunan Model
+
 konsep dasar model:
+
 - model deterministik + why
 - direct shipping strategy + why [@custodio2006] pg 10/21
 - penggunaan forecast + why
@@ -27,12 +28,15 @@ eksposisi model:
 - list persamaan2nya
 
 ### Verifikasi Model
+
 tabel konversi satuan
 
 ## Pengembangan Prosedur Pencarian Solusi
 
 ### Implementasi Algoritma
+
 pola dasar algoritma:
+
 - dari jenis model: pemrograman integer => relaksasi (simpleks) + branch and cut → teknik dasar algoritma
 - dari ukuran permasalahan: sifat optimasinya aproksimasi (kasih _rule_ aproksimasi) → sifat optimasi
 perangkat komputasi:
@@ -45,7 +49,9 @@ eksposisi algoritma:
 - pseudocode algoritma
 
 ### Verifikasi Algortima
+
 test cases:
+
 - zero demand => zero transport
 - single stock supplier, multiple demand location, same cost, same distance => break bulk
 - multiple stock supplier, single demand location, same cost, same distance => consolidate
@@ -63,4 +69,3 @@ test cases:
 ## Pengumpulan Data
 
 so far rencananya adalah menggabung hasil dari semua langkah jadi satu bab.
-
