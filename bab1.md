@@ -22,11 +22,7 @@ bank indonesia:
 - overview proses (ini set up buat kasih tau klo operasionalisasi distribusi is embedded)
 - butuh secara konsisten menyelesaikan masalah operasionalisasi distribusi - koordinasi inventori dan transportasi untuk menentukan pengiriman pengisian ulang tiap periode
 
-Perencanaan sentral seperti ini membutuhkan integrasi kelompok aktivitas logistik yang umumnya dikerjakan terpisah, namun saling terkait, yaitu manajemen inventori dan transportasi.
-
-Secara tradisional kedua
-
-Untuk … , Bank Indonesia harus menentukan …
+Perencanaan sentral seperti ini membutuhkan integrasi kelompok aktivitas logistik yang umumnya dikerjakan terpisah, namun saling terkait, yaitu manajemen inventori dan transportasi. Bank Indonesia secara kontinu menentukan titik-titik mana saja yang memerlukan pengisian ulang dan dari mana pengisian ulang dilakukan serta moda transportasi yang digunakan untuk melakukan pengiriman.
 
 ## Rumusan Masalah
 
