@@ -14,6 +14,7 @@ in a nutshell:
 - keputusan taktis -> kontinu + bersangkut paut -> optimasi lokal vs global
 - menentukan persediaan (inventori)
 - menentukan pengisian ulang (transportasi)
+
 bank indonesia:
 
 - sebuah rantai suplai -> melaksanakan fungsi logistik
