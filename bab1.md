@@ -26,6 +26,8 @@ Pengiriman berarti … , kapasitas jaringan mencakup … , permintaan diestimasi
 
 ## Tujuan dan Manfaat
 
+Tujuan dari penelitian ini adalah ... , manfaat dari penelitian ini adalah ...
+
 ## Batasan dan Asumsi
 
 ## Sistematika Penelitian
