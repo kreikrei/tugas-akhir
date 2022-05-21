@@ -116,5 +116,16 @@ Kebutuhan Data:
     - Rekapitulasi Biaya Remise KDK (2017)
     - Rekapitulasi Biaya Remise DPU (2017)
   - proses transformasi: regresi linear dari data pengiriman tiap moda, didapatkan hasil sebagai berikut: _penyajian hasil_
+
+Regresi dilakukan dengan melakukan minimasi terhadap kuadrat selisih tiap observasi pengiriman dengan prediktor biaya – yang merupakan hasil kali biaya variabel tiap moda dengan peti yang diangkut dijumlahkan dengan biaya tetap dikalikan jarak serta jumlah kontainer yang digunakan – sebagai berikut:
+$$
+\text{min} \sum_{r \in rekap} \Bigg( cost_r - \sum_{m \in moda} \bigg( moda_{rm} * \Big( var_m * peti_r + fix_m * distance_r * container_r \Big) \bigg) \Bigg) ^2
+$$
+dengan tetap memastikan nilai biaya variabel serta biaya tetap selalu merupakan bilangan non-negatif:
+$$
+var_m \geq 0, \forall m \in moda \newline
+fix_m \geq 0, \forall m \in moda
+$$
+
 - khazanah -> agregasi set data: menggabungkan data terkait tiap khazanah, yaitu: lokasi berupa koordinat lintang bujur dan kapasitas penyimpanan.
 - tingkat aktivitas distribusi uang tahun 2019: dari laporan ini hanya dapat diekstrak realisasi agregat kebutuhan uang di Indonesia tiap pecahan, serta jumlah pengiriman tercatat serta jumlah uang yang terpindahkan.
