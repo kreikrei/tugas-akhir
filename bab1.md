@@ -20,11 +20,13 @@ Satu cara mengatasi kelemahan kontrol saat ini adalah adopsi konsep _vendor mana
 
 Perencanaan distribusi uang rupiah yang mengacu pada manajemen inventori konvensional tidak memberikan cukup ruang untuk optimasi sehingga dibutuhkan kerangka yang lebih baik. Dalam penelitian ini, dipelajari:
 
-> Bagaimana konsep _vendor managed inventory_ – melalui pengendalian terintegrasi inventori dan transportasi – dapat mengoperasionalisasikan distribusi uang rupiah Bank Indonesia secara optimal.
+> Bagaimana konsep _vendor-managed inventory_ – melalui pengendalian terintegrasi inventori dan transportasi – dapat mengoperasionalisasikan distribusi uang rupiah Bank Indonesia secara optimal.
 
-Operasionalisasi distribusi uang rupiah Bank Indonesia diajukan sebagai:
+Operasionalisasi distribusi uang rupiah Bank Indonesia merupakan aktivitas yang menghasilkan Rencana Distribusi Uang (RDU) dan didefinisikan sebagai:
 
 > Pencarian susunan pengiriman yang harus dilakukan secara konsisten dan kontinu tiap unit periode untuk memastikan persediaan pelanggan (khazanah) cukup untuk memenuhi permintaan uang rupiah serta meminimalkan biaya total layanan.
+
+Sebagaimana didefinisikan pada bagian sebelumnya, pengiriman terdiri dari pasangan khazanah asal-tujuan, moda transportasi yang digunakan, serta besar muatan yang dikirimkan.
 
 ## Tujuan dan Manfaat
 
