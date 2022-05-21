@@ -26,7 +26,12 @@ Pengiriman berarti … , kapasitas jaringan mencakup … , permintaan diestimasi
 
 ## Tujuan dan Manfaat
 
-Tujuan dari penelitian ini adalah ... , manfaat dari penelitian ini adalah ...
+Tujuan dari penelitian ini adalah menghasilkan, menguji, dan menganalisis model serta algoritma pengendalian inventori dan transportasi terintegrasi, sebagai penerapan konsep _vendor-managed inventory_, untuk operasionalisasi distribusi uang rupiah Bank Indonesia.
+
+Beberapa manfaat yang diharapkan adalah bahwa:
+
+- Skema yang dihasilkan dapat menjadi enjin pendukung keputusan pemangku kepentingan untuk menjalankan pengedara uang rupiah secara efektif dan efisien
+- Pendekatan serta hasil yang digunakan dalam penelitian ini menjadi kontribusi yang berkenan untuk badan pengetahuan rantai suplai, penelitian operasional, serta badan pengetahuan terkait lainnya.
 
 ## Batasan dan Asumsi
 
