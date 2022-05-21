@@ -118,14 +118,28 @@ Kebutuhan Data:
   - proses transformasi: regresi linear dari data pengiriman tiap moda, didapatkan hasil sebagai berikut: _penyajian hasil_
 
 Regresi dilakukan dengan melakukan minimasi terhadap kuadrat selisih tiap observasi pengiriman dengan prediktor biaya – yang merupakan hasil kali biaya variabel tiap moda dengan peti yang diangkut dijumlahkan dengan biaya tetap dikalikan jarak serta jumlah kontainer yang digunakan – sebagai berikut:
+
 $$
-\text{min} \sum_{r \in rekap} \Bigg( cost_r - \sum_{m \in moda} \bigg( moda_{rm} * \Big( var_m * peti_r + fix_m * distance_r * container_r \Big) \bigg) \Bigg) ^2
+\text{min} \sum_{r \in rekap} \bigg[ cost_r - \sum_{m \in moda} moda_{rm} \big( var_m \cdot peti_r + fix_m \cdot distance_r \cdot container_r \big) \bigg] ^2
 $$
-dengan tetap memastikan nilai biaya variabel serta biaya tetap selalu merupakan bilangan non-negatif:
+
+Di sini $moda_{rm}$ merupakan variabel penanda apakah baris $r$ menggunakan moda $m$. Selain itu, dipastikan nilai biaya variabel serta biaya tetap selalu merupakan bilangan non-negatif:
+
 $$
 var_m \geq 0, \forall m \in moda \newline
 fix_m \geq 0, \forall m \in moda
 $$
+
+Didapatkan nilai $R^2$ sebesar 96.48% dengan hasil regresi untuk tiap moda sebagai berikut:
+
+| Moda            | Biaya variabel / _var_  | Biaya tetap / _fix_ |
+|-----------------|-------------------------|---------------------|
+| Truk            | Rp2.100                 | Rp33.254            |
+| Kapal Penumpang | Rp81.914                | Rp32.781            |
+| Kapal Barang    | Rp48.272                | Rp43.293            |
+| Kereta Api      | Rp49.189                | Rp127.974           |
+|                 |                         |                     |
+Satuan biaya variabel berlaku untuk tiap peti dan biaya tetap berlaku untuk tiap kilometer tiap kontainer.
 
 - khazanah -> agregasi set data: menggabungkan data terkait tiap khazanah, yaitu: lokasi berupa koordinat lintang bujur dan kapasitas penyimpanan.
 - tingkat aktivitas distribusi uang tahun 2019: dari laporan ini hanya dapat diekstrak realisasi agregat kebutuhan uang di Indonesia tiap pecahan, serta jumlah pengiriman tercatat serta jumlah uang yang terpindahkan.
