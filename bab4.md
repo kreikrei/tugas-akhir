@@ -132,13 +132,13 @@ $$
 
 Didapatkan nilai $R^2$ sebesar 96.48% dengan hasil regresi untuk tiap moda sebagai berikut:
 
-| Moda            | Biaya variabel / _var_  | Biaya tetap / _fix_ |
+| Moda            | Biaya Variabel / _var_  | Biaya Tetap / _fix_ |
 |-----------------|-------------------------|---------------------|
 | Truk            | Rp2.100                 | Rp33.254            |
 | Kapal Penumpang | Rp81.914                | Rp32.781            |
 | Kapal Barang    | Rp48.272                | Rp43.293            |
 | Kereta Api      | Rp49.189                | Rp127.974           |
-|                 |                         |                     |
+
 Satuan biaya variabel berlaku untuk tiap peti dan biaya tetap berlaku untuk tiap kilometer tiap kontainer.
 
 - khazanah -> agregasi set data: menggabungkan data terkait tiap khazanah, yaitu: lokasi berupa koordinat lintang bujur dan kapasitas penyimpanan.
