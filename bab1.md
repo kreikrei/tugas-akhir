@@ -18,11 +18,13 @@ Satu cara mengatasi kelemahan kontrol saat ini adalah adopsi konsep _vendor mana
 
 ## Rumusan Masalah
 
-Dibutuhkan skema untuk menyelesaikan permasalahan operasionalisasi distribusi:
+Perencanaan distribusi uang rupiah yang mengacu pada manajemen inventori konvensional tidak memberikan cukup ruang untuk optimasi sehingga dibutuhkan kerangka yang lebih baik. Dalam penelitian ini, dipelajari:
 
-> "Dengan kapasitas jaringan dan tingkat persediaan tiap lokasi diketahui, temukan susunan pengiriman yang harus dilakukan untuk memastikan persediaan pelanggan (khazanah) cukup untuk memenuhi permintaan serta meminimalkan biaya total layanan."
+> Bagaimana konsep _vendor managed inventory_ – melalui pengendalian terintegrasi inventori dan transportasi – dapat mengoperasionalisasikan distribusi uang rupiah Bank Indonesia secara optimal.
 
-Pengiriman berarti … , kapasitas jaringan mencakup … , permintaan diestimasi lewat EKU yang adalah … .
+Operasionalisasi distribusi uang rupiah Bank Indonesia diajukan sebagai:
+
+> Pencarian susunan pengiriman yang harus dilakukan secara konsisten dan kontinu tiap unit periode untuk memastikan persediaan pelanggan (khazanah) cukup untuk memenuhi permintaan uang rupiah serta meminimalkan biaya total layanan.
 
 ## Tujuan dan Manfaat
 
