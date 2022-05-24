@@ -38,5 +38,13 @@ Beberapa manfaat yang diharapkan adalah bahwa:
 - Pendekatan serta hasil yang digunakan dalam penelitian ini menjadi kontribusi yang berkenan untuk badan pengetahuan rantai suplai, penelitian operasional, serta badan pengetahuan terkait lainnya.
 
 ## Batasan dan Asumsi
+Beberapa asumsi dalam penelitian ini adalah:
+- tingkat persediaan di seluruh khazanah Bank Indonesia dapat diakses oleh pengambil keputusan
+- tingkat persediaan dihitung di akhir periode setelah pengantaran dilakukan dan kebutuhan uang rupiah periode tersebut dipenuhi
+
+Batasan dalam penelitian ini adalah:
+- penelitian terbatas pada sistem distribusi – namun dapat diekstensi ke sistem produksi
+- unit komoditas berupa peti yang merupakan hasil agregasi dari nilai rupiah tiap pecahan
+- implementasi tidak menjadi bagian dari penelitian
 
 ## Sistematika Penelitian
