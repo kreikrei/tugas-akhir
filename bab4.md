@@ -4,9 +4,33 @@ ID:20220317161039
 
 ## Pemahaman Masalah
 
+Pada bagian ini, dikupas lebih dalam proses perencanaan distribusi uang rupiah serta dipetakan bagaimana inventori dan transportasi diintegrasikan dalam pengambilan keputusan. Pertama, diidentifikasi pemangku kepentingan dalam sistem. Kemudian, permasalahan distrukturkan menjadi elemen-elemennya. Terakhir, permasalahan dipertajam dengan bantuan diagram jaringan serta _influence diagram_
+
 ### Analisis Pemangku Kepentingan
+Pemangku kepentingan dalam sistem distribusi disajikan dalam `Tabel xx`.
+
+| Peran            | Entitas                                             |
+| ---------------- | --------------------------------------------------- |
+| Problem Owner    | DPU                                                 |
+| Problem User     | DPU, penyedia moda transportasi, pengelola khazanah |
+| Problem Customer | Bank komersial, masyarakat umum                     |
+| Problem Analyst  | Peneliti                                            |
+
+Sesuai dengan kemunculannya, pemilik masalah operasionalisasi distribusi merupakan DPU di mana harus dapat dihasilkan rencana distribusi yang menjamin terpenuhinya kebutuhan masyarakat akan uang rupiah serta meminimalkan biaya total layanan. Selain itu, DPU juga merupakan petugas pelaksana rencana yang sudah dibuat dengan dibantu oleh penyedia moda transportasi serta pengelola khazanah di tempat masing-masing. Ketiga entitas ini masuk sebagai pengguna permasalahan atau *problem customer* yang mengikuti arahan dari pemilik permasalahan. Terdapat empat penyedia moda transportasi rekanan Bank Indonesia, yaitu PT Selog (truk), PT Pelni (kapal penumpang), PT Silkargo (kapal barang), dan PT KAI (kereta api). Dampak dari kegagalan atau keberhasilan permasalahan ini adalah terjadinya kekurangan atau kelebihan uang rupiah yang beredar di bank-bank komersial dan masyarakat umum. Terakhir, terdapat peneliti sebagai *problem analyst* yang dengan tekun dan sabar membedah dan mengembangkan solusi untuk sistem. 
 
 ### Identifikasi Elemen Permasalahan
+
+Dari rumusan masalah, pengintegrasian inventori dan transportasi untuk optimalisasi operasionalisasi distribusi dapat dipecah menjadi elemen-elemennya. Keenam elemen ini disajikan pada `Tabel xx`
+
+| Elemen              | Entitas                                                                                                                                                                                                                  |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Pengambil Keputusan | DPU                                                                                                                                                                                                                      |
+| Objektif            | Pengedaran uang optimal                                                                                                                                                                                                  |
+| Ukuran Performa     | Biaya total layanan, pemenuhan kebutuhan uang rupiah, utilisasi jaringan transportasi                                                                                                                                    |
+| Kriteria Keputusan  | Minimal, fisibel (semua kebutuhan terpenuhi), fisibel (mengikuti kapasitas gudang dan kapasitas transportasi)                                                                                                            |
+| Alternatif Tindakan | Pasangan khazanah asal-tujuan, moda transportasi, dan besar muatan  yang dapat dieksekusi                                                                                                                                |
+| Konteks             | *Narrow System of Interest*: sistem distribusi uang rupiah Bank Indonesia, *Wider System of Interest*: rantai suplai Bank Indonesia dengan produksi di PERURI, peramalan di DKM, beserta fungsi-fungsi lain yang terkait |
+
 
 ### Pengembangan Diagram Sistem Relevan
 
@@ -132,12 +156,12 @@ $$
 
 Didapatkan nilai $R^2$ sebesar 96.48% dengan hasil regresi untuk tiap moda sebagai berikut:
 
-| Moda            | Biaya Variabel / _var_  | Biaya Tetap / _fix_ |
-|-----------------|-------------------------|---------------------|
-| Truk            | Rp2.100                 | Rp33.254            |
-| Kapal Penumpang | Rp81.914                | Rp32.781            |
-| Kapal Barang    | Rp48.272                | Rp43.293            |
-| Kereta Api      | Rp49.189                | Rp127.974           |
+| Moda            | Biaya Variabel / _var_ | Biaya Tetap / _fix_ |
+| --------------- | ---------------------- | ------------------- |
+| Truk            | Rp2.100                | Rp33.254            |
+| Kapal Penumpang | Rp81.914               | Rp32.781            |
+| Kapal Barang    | Rp48.272               | Rp43.293            |
+| Kereta Api      | Rp49.189               | Rp127.974           |
 
 Satuan biaya variabel berlaku untuk tiap peti dan biaya tetap berlaku untuk tiap kilometer tiap kontainer.
 
