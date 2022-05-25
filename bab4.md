@@ -7,6 +7,7 @@ ID:20220317161039
 Pada bagian ini, dikupas lebih dalam proses perencanaan distribusi uang rupiah serta dipetakan bagaimana inventori dan transportasi diintegrasikan dalam pengambilan keputusan. Pertama, diidentifikasi pemangku kepentingan dalam sistem. Kemudian, permasalahan distrukturkan menjadi elemen-elemennya. Terakhir, permasalahan dipertajam dengan bantuan diagram jaringan serta _influence diagram_.
 
 ### Analisis Pemangku Kepentingan
+
 Pemangku kepentingan dalam sistem distribusi disajikan dalam `Tabel xx`.
 
 
