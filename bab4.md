@@ -4,7 +4,7 @@ ID:20220317161039
 
 ## Pemahaman Masalah
 
-Pada bagian ini, dikupas lebih dalam proses perencanaan distribusi uang rupiah serta dipetakan bagaimana inventori dan transportasi diintegrasikan dalam pengambilan keputusan. Pertama, diidentifikasi pemangku kepentingan dalam sistem. Kemudian, permasalahan distrukturkan menjadi elemen-elemennya. Terakhir, permasalahan dipertajam dengan bantuan diagram jaringan serta _influence diagram_
+Pada bagian ini, dikupas lebih dalam proses perencanaan distribusi uang rupiah serta dipetakan bagaimana inventori dan transportasi diintegrasikan dalam pengambilan keputusan. Pertama, diidentifikasi pemangku kepentingan dalam sistem. Kemudian, permasalahan distrukturkan menjadi elemen-elemennya. Terakhir, permasalahan dipertajam dengan bantuan diagram jaringan serta _influence diagram_.
 
 ### Analisis Pemangku Kepentingan
 Pemangku kepentingan dalam sistem distribusi disajikan dalam `Tabel xx`.
@@ -24,20 +24,20 @@ Sesuai dengan kemunculannya, pemilik masalah operasionalisasi distribusi merupak
 Dari rumusan masalah, pengintegrasian inventori dan transportasi untuk optimalisasi operasionalisasi distribusi dapat dipecah menjadi elemen-elemennya. Keenam elemen ini disajikan pada `Tabel xx`.
 
 
-| Elemen              | Entitas                                                                                                                                                                                                                  |
-|---------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Pengambil Keputusan | DPU                                                                                                                                                                                                                      |
-| Objektif            | Pengedaran uang optimal                                                                                                                                                                                                  |
-| Ukuran Performa     | Biaya total layanan, pemenuhan kebutuhan uang rupiah, utilisasi jaringan transportasi                                                                                                                                    |
-| Kriteria Keputusan  | Minimal, fisibel (semua kebutuhan terpenuhi), fisibel (mengikuti kapasitas gudang dan kapasitas transportasi)                                                                                                            |
-| Alternatif Tindakan | Semua kemungkinan pasangan khazanah asal-tujuan, moda transportasi, dan besar muatan  yang dapat dieksekusi                                                                                                              |
-| Konteks             | *Narrow System of Interest*: sistem distribusi uang rupiah Bank Indonesia, *Wider System of Interest*: rantai suplai Bank Indonesia dengan produksi di PERURI, peramalan di DKM, beserta fungsi-fungsi lain yang terkait |
+| Elemen              | Entitas                                                                                                                                                                                                                          |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Pengambil Keputusan | DPU                                                                                                                                                                                                                              |
+| Objektif            | Pengedaran uang optimal                                                                                                                                                                                                          |
+| Ukuran Performa     | Biaya total layanan, pemenuhan kebutuhan uang rupiah, utilisasi jaringan transportasi                                                                                                                                            |
+| Kriteria Keputusan  | Minimal, fisibel (semua kebutuhan terpenuhi), fisibel (mengikuti kapasitas gudang dan kapasitas transportasi)                                                                                                                    |
+| Alternatif Tindakan | Semua kemungkinan pasangan khazanah asal-tujuan, moda transportasi yang digunakan, besar muatan uang yang dikirimkan, serta kontainer – atau satuan pengepakan lain – yang dibutuhkan untuk mengenkapsulasi uang yang dikirimkan |
+| Konteks             | *Narrow System of Interest*: sistem distribusi uang rupiah Bank Indonesia, *Wider System of Interest*: rantai suplai Bank Indonesia dengan produksi di PERURI, peramalan di DKM, beserta fungsi-fungsi lain yang terkait         |
 
 Seperti dijelaskan pada bagian sebelumnya, pengambil keputusan dalam tiap permasalahan perencanaan distribusi adalah DPU. Objektif dari DPU adalah pengedaran uang yang optimal di mana hal ini diukur dari biaya total layanan, pemenuhan kebutuhan uang rupiah, dan utilisasi jaringan logistik. Keoptimalan tercapai ketika ukuran-ukuran performa mencapai kriteria keputusan masing-masing. Alternatif DPU adalah semua kemungkinan pengantaran yang dapat dilakukan dalam sebuah periode. Pembuatan rencana distribusi ini merupakan bagian dari sistem distribusi uang rupiah – yang merupakan bagian dari rantai suplai secara keseluruhan.
 
 
 | Deskriptor              | Deskripsi                                                                                                                                                                                                               |
-|-------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Komponen Sistem         | Subsistem inventori dan transportasi                                                                                                                                                                                    |
 | Aktivitas Sistem        | Perencanaan distribusi, koordinasi dengan penyedia moda transportasi, eksekusi pengiriman pengisian ulang uang, penerimaan pengisian ulang uang, pengedaran uang ke masyarakat, penerimaan uang kembali dari masyarakat |
 | Hubungan Antarkomponen  | Subsistem inventori menentukan pengisian ulang, subsistem transportasi melaksakan pengisian ulang, inventori menarik data tingkat persediaan untuk kemudian mengulang penentuan pengisian ulang                         |
@@ -71,12 +71,12 @@ Beberapa hal yang penting untuk dicatat namun tidak dapat terlihat dalam diagram
 
 Untuk menggambarkan hubungan antarelemen permasalahan di setiap titik pada setiap periode, dibangun _influence diagram_. Untuk konstruksinya, elemen-elemen permasalahan yang sudah ada dikelompokkan sesuai dengan komponen-komponen dari _influence diagram_ itu sendiri. Pengelompokan ini terdapat pada `Tabel xx`.
 
-| Kelompok               | Anggota                                                                                                                                  |
-|------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| Masukan Terkontrol     | Pasangan khazanah asal-tujuan, moda transportasi, dan besar muatan pengiriman                                                            |
-| Masukan Tak Terkontrol | Kapasitas moda pengiriman, kapasitas khazanah penyimpanan, komponen biaya tetap, komponen biaya variabel, estimasi kebutuhan uang rupiah |
-| Keluaran               |                                                                                                                                          |
-| Variabel Sistem        |                                                                                                                                          |
+| Kelompok               | Anggota                                                                                                                                                                                                        |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Masukan Terkontrol     | Pasangan khazanah asal-tujuan, moda transportasi yang digunakan, besar muatan uang yang dikirimkan, serta kontainer – atau satuan pengepakan lain – yang dibutuhkan untuk mengenkapsulasi uang yang dikirimkan |
+| Masukan Tak Terkontrol | Kapasitas moda pengiriman, kapasitas khazanah penyimpanan, komponen biaya tetap, komponen biaya variabel, estimasi kebutuhan uang rupiah                                                                       |
+| Keluaran               |                                                                                                                                                                                                                |
+| Variabel Sistem        |                                                                                                                                                                                                                |
 
 
 
@@ -209,7 +209,7 @@ $$
 Didapatkan nilai $R^2$ sebesar 96.48% dengan hasil regresi untuk tiap moda sebagai berikut:
 
 | Moda / _m_      | Biaya Variabel / _var_ | Biaya Tetap / _fix_ |
-|-----------------|------------------------|---------------------|
+| --------------- | ---------------------- | ------------------- |
 | Truk            | Rp2.100                | Rp33.254            |
 | Kapal Penumpang | Rp81.914               | Rp32.781            |
 | Kapal Barang    | Rp48.272               | Rp43.293            |
