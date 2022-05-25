@@ -53,6 +53,7 @@ Berbekalkan pemahaman yang terstruktur akan permasalahan, dalam tahap ini, dikem
 
 - Penyusunan Model
 - Verifikasi Model
+
 Penyusunan model merupakan kombinasi dari penggunaan konsep-konsep yang sudah ada (pendekatan struktural) dengan kreativitas analis untuk merunut sendiri permasalahan yang diteliti (pendekatan proses). Penelitian operasional sebagai sebuah disiplin memiliki arsenal yang besar untuk pengembangan model, seperti: pemrograman linear, pemrograman integer, pemrograman dinamis, dan simulasi. Pada langkah ini, konsep-konsep tersebut dipilih dan model disusun sesuai dengan struktur masalah serta struktur model terpilih.
 Dalam penelitian ini, setiap model yang dicoba akan melalui langkah verifikasi. Model dipastikan memiliki logika yang koheren yang sesuai dengan intensi pembuatan model. Verifikasi yang dilakukan di penelitian pada tahap ini adalah merunut kembali transformasi satuan-satuan yang ada dalam model. Karena sifatnya yang iteratif, model yang digunakan dalam penelitian dan dijabarkan pada [[bab 4]] (4.2) hanya versi termutakhir.
 
@@ -62,6 +63,7 @@ Sebuah model datang satu paket dengan pencari solusinya. Prosedur sistematis man
 
 - Implementasi Algoritma
 - Verifikasi Algoritma
+
 Implementasi algoritma diawali dengan pemilihan perangkat komputasi dan pola dasar algortima sangat bergantung pada jenis model, ukuran masukan, serta kriteria performa wajar yang diinginkan. Beberapa perangkat komputasi adalah komputasi tangan atau digital -- di mana komputasi digital memiliki beberapa pilihan alat. Keputusan-keputusan penting pola dasar berupa sifat optimasinya, teknik pencarian, dan struktur datanya.
 Setelah diimplementasi, algoritma diverifikasi hasilnya. Verifikasi dilakukan dengan menggunakan kasus-kasus dasar yang solusinya diketahui oleh peneliti serta mengindikasikan perilaku yang tepat dari model serta algoritma yang dikembangkan.
 
