@@ -57,11 +57,11 @@ Sistem dan permasalahannya merupakan sebuah jaringan. Trayek-trayek dari penyedi
 
 Namun, jaringan seperti ini tidaklah cukup untuk merepresentasikan masalah yang ingin diselesaikan karena tidak menangkap aspek waktu yang krusial dalam pengendalian inventori. Untuk dapat menangkap aspek waktu, jaringan di atas diekspansi seturut dengan periode waktu yang ingin ditelisik. Trayek yang menghubungkan antarkhazanah diduplikasi di setiap periode dan khazanah di setiap periode dihubungkan oleh busur di mana inventori mengalir – yang kita sebut busur inventori. Jaringan terekspansi ini dapat dilihat pada `Gambar xx`.
 
-![Jaringan-Expanded - 0.drawio.png](./Jaringan-Expanded - 0.drawio.png)
+![Jaringan-Expanded-0.drawio.png](./Jaringan-Expanded-0.drawio.png "Jaringan-Expanded-0.drawio.png")
 
 Meskipun sudah menginkorporasikan aspek temporal ke dalam representasi permasalahan, diagram jaringan ini mengasumsikan transportasi terjadi secara instan. Hal ini sulit dieksekusi dalam sistem distribusi bervolume besar seperti yang dilakukan oleh DPU sehingga dibentuk jaringan terekspansi dengan asumsi transportasi yang dimulai pada sebuah periode selesai tepat sebelum periode berikutnya dimulai. Konsep durasi pengiriman dapat diatur sedemikian rupa untuk mengakomodasi waktu pengiriman yang beragam, namun untuk masalah ini digunakan durasi pengiriman sebesar satu unit periode. Jaringan terekspansi ini dapat dilihat pada `Gambar xx`.
 
-![Jaringan-Expanded - 1.drawio.png](./Jaringan-Expanded - 1.drawio.png)
+![Jaringan-Expanded-1.drawio.png](./Jaringan-Expanded-1.drawio.png "Jaringan-Expanded-1.drawio.png")
 
 Di setiap khazanah pada setiap periode, terdapat Estimasi Kebutuhan Uang (EKU) yang harus dipenuhi oleh DPU. Estimasi ini terbagi-bagi untuk tiap pecahan uang kartal di mana terdapat tujuh (7) pecahan uang kertas dan lima (5) pecahan uang logam. Estimasi ini merupakan kombinasi _outflow_ dan _inflow_ dengan nilai positif melambangkan uang rupiah keluar ke masyarakat. Mungkin terdapat aliran bernilai negatif di saat aliran masuk dari masyarakat lebih besar daripada uang rupiah yang dialirkan keluar. Selain itu, di awal periode, DPU memiliki data terkait tingkat persediaan tiap pecahan di setiap lokasi. Rencana distribusi yang dibuat dalam permasalahan ini nantinya harus bisa memenuhi baik aliran keluar atau aliran masuk kembali ke khazanah. Jaringan dengan data persediaan dan estimasi kebutuhan uang yang harus dipenuhi dapat dilihat pada `Gambar xx`.
 
@@ -73,15 +73,11 @@ Beberapa hal yang penting untuk dicatat namun tidak dapat terlihat dalam diagram
 
 Untuk menggambarkan hubungan antarelemen permasalahan yang diselesaikan di setiap titik pada setiap periode, dibangun _influence diagram_. Untuk konstruksinya, elemen-elemen permasalahan yang sudah ada dikelompokkan sesuai dengan komponen-komponen dari _influence diagram_ itu sendiri. Pengelompokan ini terdapat pada `Tabel xx`.
 
+
 | Kelompok               | Anggota                                                                                                                                                                                                                   |
-| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Masukan Terkontrol     | Pasangan khazanah asal-tujuan, moda transportasi yang digunakan, besar muatan uang yang dikirimkan, serta kontainer – atau satuan pengepakan lain – yang dibutuhkan untuk mengenkapsulasi uang yang dikirimkan            |
 | Masukan Tak Terkontrol | Kapasitas kontainer moda pengiriman, kapasitas khazanah penyimpanan, komponen biaya tetap dan komponen biaya variabel moda transportasi, estimasi kebutuhan uang rupiah, persediaan di khazanah (dari periode sebelumnya) |
-| Keluaran               |                                                                                                                                                                                                                           |
-| Variabel Sistem        |                                                                                                                                                                                                                           |
-
-
-
 
 influence diagram
 
