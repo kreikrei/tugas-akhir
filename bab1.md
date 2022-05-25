@@ -8,9 +8,11 @@ ID: 20220317160430
 
 Pengelolaan uang rupiah yang dilakukan Bank Indonesia merupakan sebuah rantai suplai di mana berlangsung enam (6) tahap daur hidup uang rupiah – perencanaan, pencetakan, pengeluaran, pengedaran, pencabutan/penarikan, serta pemusnahan – untuk menyediakan uang rupiah dengan jumlah nominal cukup, jenis pecahan sesuai, tepat waktu, dan kondisi layak edar. Aktivitas pengedaran terjadi lewat jaringan logistik berupa kumpulan trayek transportasi multimoda yang memungkinkan dan bersamaan membatasi pergerakan uang rupiah antara titik-titik penyimpanan kas Bank Indonesia – atau biasa disebut khazanah – yang persebarannya dapat dilihat pada [Gambar xx](.). Jaringan logistik ini dioperasionalisasikan oleh Departemen Pengedaran Uang (DPU) yang mengoordinasikan pengiriman (remis) uang dari pusat ke seluruh lokasi dan pengembalian (retur) uang dari seluruh lokasi ke pusat.
 
+![khazanah bank indonesia.png](./khazanah bank indonesia.png)
+
 <!-- Proses Perencanaan -->
 
-Di setiap unit periode yang ditetapkan, DPU membuat Rencana Distribusi Uang (RDU) untuk menjamin ketersediaan inventori di tiap khazanah di daerah operasi. Rencana distribusi ini merupakan susunan pengiriman untuk unit periode tersebut di mana tiap pengiriman terdiri dari pasangan khazanah asal-tujuan, moda transportasi yang digunakan, serta besar muatan yang dikirimkan. Perencanaan yang dilakukan DPU saat ini menyerupai manajemen inventori konvensional, di mana para pelanggan – yang dalam kasus ini adalah khazanah-khazanah di daerah – memonitor sendiri tingkat persediaan mereka, menentukan sendiri kapan pengisian ulang harus dilakukan, dan menempatkan order pengisian ulang ke pemasok – yg dalam kasus ini adalah DPU. Pemasok menerima order tersebut, merencanakan transpor untuk mencapai biaya layanan terendah, dan melakukan pengantaran sesuai rencana. Namun, karena hubungan erat pengisian ulang dengan transportasi, dalam perencanaan macam ini, kontrol DPU terhadap utilisasi sumber daya jaringan logistik mendekati nihil.
+Di setiap unit periode yang ditetapkan, DPU membuat Rencana Distribusi Uang (RDU) untuk menjamin ketersediaan inventori di tiap khazanah di daerah operasi. Rencana distribusi ini merupakan susunan #pengiriman untuk unit periode tersebut di mana tiap pengiriman terdiri dari pasangan khazanah asal-tujuan, moda transportasi yang digunakan, besar muatan uang yang dikirimkan, serta kontainer – atau satuan pengepakan lain – yang dibutuhkan untuk mengenkapsulasi uang yang dikirimkan. Perencanaan yang dilakukan DPU saat ini menyerupai manajemen inventori konvensional, di mana para pelanggan – yang dalam kasus ini adalah khazanah-khazanah di daerah – memonitor sendiri tingkat persediaan mereka, menentukan sendiri kapan pengisian ulang harus dilakukan, dan menempatkan order pengisian ulang ke pemasok – yg dalam kasus ini adalah DPU. Pemasok menerima order tersebut, merencanakan transpor untuk mencapai biaya layanan terendah, dan melakukan pengantaran sesuai rencana. Namun, karena hubungan erat pengisian ulang dengan transportasi, dalam perencanaan macam ini, kontrol DPU terhadap utilisasi sumber daya jaringan logistik mendekati nihil.
 
 <!-- Antitesis -->
 
@@ -26,7 +28,7 @@ Operasionalisasi distribusi uang rupiah Bank Indonesia merupakan aktivitas yang 
 
 > Pencarian susunan pengiriman yang harus dilakukan secara konsisten dan kontinu tiap unit periode untuk memastikan persediaan pelanggan (khazanah) cukup untuk memenuhi permintaan uang rupiah serta meminimalkan biaya total layanan.
 
-Sebagaimana didefinisikan pada bagian sebelumnya, pengiriman terdiri dari pasangan khazanah asal-tujuan, moda transportasi yang digunakan, serta besar muatan yang dikirimkan.
+Sebagaimana didefinisikan pada bagian sebelumnya, #pengiriman terdiri dari pasangan khazanah asal-tujuan, moda transportasi yang digunakan, besar muatan uang yang dikirimkan, serta kontainer – atau satuan pengepakan lain – yang dibutuhkan untuk mengenkapsulasi uang yang dikirimkan.
 
 ## Tujuan dan Manfaat
 
@@ -39,12 +41,12 @@ Beberapa manfaat yang diharapkan adalah bahwa:
 
 ## Batasan dan Asumsi
 Beberapa asumsi dalam penelitian ini adalah:
-- tingkat persediaan di seluruh khazanah Bank Indonesia dapat diakses oleh pengambil keputusan
-- tingkat persediaan dihitung di akhir periode setelah pengantaran dilakukan dan kebutuhan uang rupiah periode tersebut dipenuhi
+- Tingkat persediaan di seluruh khazanah Bank Indonesia dapat diakses oleh pengambil keputusan
+- Tingkat persediaan dihitung di akhir periode setelah pengantaran dilakukan dan kebutuhan uang rupiah periode tersebut dipenuhi
 
 Batasan dalam penelitian ini adalah:
-- penelitian terbatas pada sistem distribusi – namun dapat diekstensi ke sistem produksi
-- unit komoditas berupa peti yang merupakan hasil agregasi dari nilai rupiah tiap pecahan
-- implementasi tidak menjadi bagian dari penelitian
+- Penelitian terbatas pada sistem distribusi – namun dapat diekstensi ke sistem produksi
+- Unit komoditas berupa peti yang merupakan hasil agregasi dari nilai rupiah tiap pecahan
+- Implementasi tidak menjadi bagian dari penelitian
 
 ## Sistematika Penelitian
