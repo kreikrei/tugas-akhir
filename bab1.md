@@ -8,7 +8,7 @@ ID: 20220317160430
 
 Pengelolaan uang rupiah yang dilakukan Bank Indonesia merupakan sebuah rantai suplai di mana berlangsung enam (6) tahap daur hidup uang rupiah – perencanaan, pencetakan, pengeluaran, pengedaran, pencabutan/penarikan, serta pemusnahan – untuk menyediakan uang rupiah dengan jumlah nominal cukup, jenis pecahan sesuai, tepat waktu, dan kondisi layak edar. Aktivitas pengedaran terjadi lewat jaringan logistik berupa kumpulan trayek transportasi multimoda yang memungkinkan dan bersamaan membatasi pergerakan uang rupiah antara titik-titik penyimpanan kas Bank Indonesia – atau biasa disebut khazanah – yang persebarannya dapat dilihat pada [Gambar xx](.). Jaringan logistik ini dioperasionalisasikan oleh Departemen Pengedaran Uang (DPU) yang mengoordinasikan pengiriman (remis) uang dari pusat ke seluruh lokasi dan pengembalian (retur) uang dari seluruh lokasi ke pusat.
 
-![khazanah bank indonesia.png](./khazanah bank indonesia.png)
+![khazanah bank indonesia.png](./khazanah_bank_indonesia.png)
 
 <!-- Proses Perencanaan -->
 
