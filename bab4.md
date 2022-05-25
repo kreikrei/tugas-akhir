@@ -192,8 +192,10 @@ $$
 Di sini $moda_{rm}$ merupakan variabel penanda apakah baris $r$ dari hasil rekap pengedaran menggunakan moda $m$. Selain itu, dipastikan nilai biaya variabel serta biaya tetap selalu merupakan bilangan non-negatif:
 
 $$
-var_m \geq 0, \forall m \in moda \newline
+\begin{aligned}
+var_m \geq 0, \forall m \in moda \\
 fix_m \geq 0, \forall m \in moda
+\begin{aligned}
 $$
 
 Didapatkan nilai $R^2$ sebesar 96.48% dengan hasil regresi untuk tiap moda sebagai berikut:
