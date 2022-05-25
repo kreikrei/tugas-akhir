@@ -195,7 +195,7 @@ $$
 \begin{aligned}
 var_m \geq 0, \forall m \in moda \\
 fix_m \geq 0, \forall m \in moda
-\begin{aligned}
+\end{aligned}
 $$
 
 Didapatkan nilai $R^2$ sebesar 96.48% dengan hasil regresi untuk tiap moda sebagai berikut:
