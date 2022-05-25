@@ -8,8 +8,8 @@ Pada bagian ini, dikupas lebih dalam proses perencanaan distribusi uang rupiah s
 
 ### Analisis Pemangku Kepentingan
 
-Pemangku kepentingan dalam sistem distribusi disajikan dalam `Tabel xx`.
-
+Pemangku kepentingan dalam sistem distribusi disajikan dalam `Tabel xx`. Peran dibagi menjadi empat, yaitu _problem owner_, _problem user_, _problem customer_
+, dan _problem analyst_.
 
 | Peran            | Entitas                                             |
 | ---------------- | --------------------------------------------------- |
