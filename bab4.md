@@ -105,6 +105,8 @@ eksposisi model:
 $$
 \text{min} \displaystyle \sum_{a \in A} \bigg[ v_{a} \cdot \sum_{p \in P} x_{a}^{p} + f_a \cdot dist_a \cdot y_{a} \bigg]
 $$
+
+
 $$
 \begin{array}{rrcll}
 \text{s.t.} & \displaystyle \sum_{a \in \text{IN}(n)} x_{a}^{p} - \sum_{a \in \text{OUT}(n)} x_{a}^{p} & = & d_{n}^{p} 
