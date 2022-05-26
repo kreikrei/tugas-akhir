@@ -104,7 +104,7 @@ eksposisi model:
 
 $$
 \begin{array}{rll}
-\text{min}  & \begin{equation} \sum_{a \in A} \sum_{p \in P} f(x_{a}^{p}) + g(y_{a}) \notag \end{equation} \\
+\text{min}  & \begin{equation} \sum_{a \in A} \sum_{p \in P} f(x_{a}^{p}) + g(y_{a}) \notag \end{equation} & \\
 \text{s.t.} & \begin{equation} \sum_{a \in \text{IN}(n)}^{} x_{a}^{p} - \sum_{a \in \text{OUT}(n)} x_{a}^{p} = d_{n}^{p} 
                                                                         \notag \end{equation} & \forall n \in N, p \in P \\
             & \begin{equation} \sum_{p \in P}x_{a}^{p} \leq Q_a y_a     \notag \end{equation} & \forall a \in A \\
