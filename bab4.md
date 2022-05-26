@@ -103,13 +103,10 @@ eksposisi model:
 
 
 $$
-\text{min}  \sum_{a \in A} \sum_{p \in P} f(x_{a}^{p}) + g(y_{a})
+\text{min} \displaystyle \sum_{a \in A} \bigg[ v_{a} \cdot \sum_{p \in P} x_{a}^{p} + f_a \cdot dist_a \cdot y_{a} \bigg]
 $$
-
-
 $$
 \begin{array}{rrcll}
-\text{min}  & \displaystyle \sum_{a \in A} \bigg[ v_{a} \cdot \sum_{p \in P} x_{a}^{p} + f_a \cdot dist_a \cdot y_{a} \bigg] \\
 \text{s.t.} & \displaystyle \sum_{a \in \text{IN}(n)} x_{a}^{p} - \sum_{a \in \text{OUT}(n)} x_{a}^{p} & = & d_{n}^{p} 
                                                                        & \forall n \in N, p \in P \\
      & \displaystyle \sum_{p \in P}x_{a}^{p} & \leq & Q_a \cdot y_a    & \forall a \in A \\
@@ -118,18 +115,6 @@ $$
      & \displaystyle y_{a} & \in & \mathbb{N}^0                        & \forall a \in A_{trans}
 \end{array}
 $$
-
-
-Dalam persamaan ini, $f$ merupakan fungsi biaya variabel terkait jumlah muatan peti dan $g$ fungsi biaya tetap terkait jumlah kontainer moda transportasi. Fungsi biaya variabel merupakan hasil kali muatan peti sebuah pengiriman dengan parameter biaya per peti trayek tersebut seperti dinyatakan dalam `persamaan xx`. Fungsi biaya tetap merupakan hasil kali jumlah kontainer yang digunakan oleh sebuah trayek dikalikan dengan jarak trayek dan dengan parameter biaya per kontainer trayek tersebut seperti dinyatakan dalam `persamaan xx`.
-
-
-$$
-\begin{array}{rcll}
-f(x_{a}^{p}) & = & var_{a}x_{a}^{p}         & \forall a \in A, p \in P \\
-g(y_{a}) & = & fix_{a} dist_{a} y_{a}       & \forall a \in A
-\end{array}
-$$
-
 
 
 
