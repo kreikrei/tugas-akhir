@@ -103,12 +103,8 @@ eksposisi model:
 
 
 $$
-\text{min} \displaystyle \sum_{a \in A} \bigg[ v_{a} \cdot \sum_{p \in P} x_{a}^{p} + f_a \cdot dist_a \cdot y_{a} \bigg]
-$$
-
-
-$$
 \begin{array}{rrcll}
+\text{min}  & \displaystyle \sum_{a \in A} \bigg[ v_{a} \cdot \sum_{p \in P} x_{a}^{p} + f_a \cdot dist_a \cdot y_{a} \bigg] \\
 \text{s.t.} & \displaystyle \sum_{a \in \text{IN}(n)} x_{a}^{p} - \sum_{a \in \text{OUT}(n)} x_{a}^{p} & = & d_{n}^{p} 
                                                                        & \forall n \in N, p \in P \\
      & \displaystyle \sum_{p \in P}x_{a}^{p} & \leq & Q_a \cdot y_a    & \forall a \in A \\
