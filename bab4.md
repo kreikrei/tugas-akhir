@@ -108,9 +108,9 @@ $$
 
 
 $$
-\begin{array}{rll}
+\begin{align}{rll}
 \text{s.t.} & \begin{equation} \sum_{a \in \text{IN}(n)} x_{a}^{p} - \sum_{a \in \text{OUT}(n)} x_{a}^{p} = d_{n}^{p} \notag \end{equation} & \forall n \in N, p \in P \\
-\end{array}
+\end{align}
 $$
 
 
