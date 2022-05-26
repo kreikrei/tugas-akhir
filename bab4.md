@@ -108,13 +108,12 @@ $$
 
 
 $$
-\begin{aligned}
-\text{s.t.} \sum_{a \in \text{IN}(n)}^{} x_{a}^{p} - \sum_{a \in \text{OUT}(n)} x_{a}^{p} = d_{n}^{p} \forall n \in N, p \in P \\
-\end{aligned}
+\begin{array}{rcl}
+\text{s.t.} & \begin{equation} \sum_{a \in \text{IN}(n)}^{} x_{a}^{p} - \sum_{a \in \text{OUT}(n)} x_{a}^{p} = d_{n}^{p} \notag \end{equation} & \forall n \in N, p \in P \\
+\end{array}
 $$
 
-$$
- \\begin{aligned} \\text{s.t.} \\sum_{a \\in \\text{IN}(n)}^{} x_{a}^{p} - \\sum_{a \\in \\text{OUT}(n)} x_{a}^{p} = d_{n}^{p} \\forall n \\in N, p \\in P \\\ \\sum_{p \\in P}x_{a}^{p} \\leq Q\_a y\_a \\forall a \\in A \\\ f(x_{a}^{p}) = var_{a}x_{a}^{p} \\forall a \\in A, p \\in P \\\ g(y_{a}) = fix_{a} dist_{a} y_{a} \\forall a \\in A \\\ x_{a}^{p} \\in \\mathbb{R}^{+} \\forall a \\in A, p \\in P \\\ y_{a} \\in \\left{ 0,1 \\right} \\forall a \\in A_{inv} \\\ y_{a} \\in \\mathbb{N}^{0} \\forall a \\in A_{trans} \\end{aligned}
+
 
 
 ### Verifikasi Model
