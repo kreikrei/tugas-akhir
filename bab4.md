@@ -94,48 +94,38 @@ Graf terarah jaringan dasar $D = (V,E)$ terdiri dari kumpulan khazanah $V$ dihub
 
 Permasalahan didefinisikan di atas sebuah multigraf terarah $G(T) = (N,A)$ yang merupakan hasil ekspansi jaringan dasar sepanjang $T$ periode perencanaan. Dalam multigraf ini, $N$ merepresentasikan seluruh khazanah di tiap periode perencanaan yang terbagi menjadi tiga kelompok $N = N_{init} \cup N_{plan} \cup N_{sink}$ di mana $N_{init}$ merepresentasikan khazanah di saat ini atau saat perencanaan sedang dilakukan, $N_{init} = \{(i,0):i\in V\}$ merepresentasikan khazanah di setiap periode perencanaan $N_{plan} = \{(i,t) : i \in V, t\in [1, \dots ,T]\}$, dan $N_{sink} = \{(i,T+1): i \in V\}$ untuk merepresentasikan simpul _dummy_ tempat aliran komoditas berakhir.
 
-Busur-busur yang menghubungkan elemen-elemen dalam $N$ direpresentasikan oleh $A = A_{inv} \cup A_{trans}$ yang terdiri dari busur inventori $A_{inv}$ dan busur transportasi $A_{trans}$. Busur-busur inventori menghubungkan seluruh khazanah di setiap periode dari awal periode hingga periode _dummy_ $A_{inv} = \{((i,t),(i,t+1)) : i \in V, \, t \in [0, \dots, T]\}$ dan busur-busur transportasi menghubungkan khazanah berdasarkan trayek jaringan dasar $E$ dengan waktu transit sebesar satu (1) periode $A_{trans} = \{((i,t),(j,t+1)) : i,j \in E, \, t \in [0,\dots,T-1] \}$. Tiap-tiap busur (_arc_) $a \in A$ baik inventori atau transportasi memiliki sebuah nilai kapasitas $Q_a$, komponen biaya tetap $fix_a$, komponen biaya variabel $var_a$, serta jarak lintasan trayek $dist_a$. 
+Busur-busur yang menghubungkan elemen-elemen dalam $N$ direpresentasikan oleh $A = A_{inv} \cup A_{trans}$ yang terdiri dari busur inventori $A_{inv}$ dan busur transportasi $A_{trans}$. Busur-busur inventori menghubungkan seluruh khazanah di setiap periode dari awal periode hingga periode _dummy_ $A_{inv} = \{((i,t),(i,t+1)) : i \in V, \, t \in [0, \dots, T]\}$ dan busur-busur transportasi menghubungkan khazanah berdasarkan trayek jaringan dasar $E$ dengan waktu transit sebesar satu (1) periode $A_{trans} = \{((i,t),(j,t+1)) : i,j \in E, \, t \in [0,\dots,T-1] \}$. Tiap-tiap busur (_arc_) $a \in A$ baik inventori atau transportasi memiliki sebuah nilai kapasitas $Q_a$, komponen biaya tetap $fix_a$, komponen biaya variabel $var_a$, serta jarak lintasan trayek $dist_a$. Terdapat fungsi $\text{IN}(n)$ dan $\text{OUT}(n)$ untuk menentukan busur mana saja yang masuk dan keluar tiap khazanah tiap periode $n \in N$.
 
 Untuk busur transportasi $a \in A_{trans}$, nilai kapasitas, komponen biaya, serta jarak didapatkan dengan mengambil bagian dari busur yang merupakan trayek dasar $e(a) = (s,t,m)$ dan dapat digunakan untuk menentukan kapasitas dan biaya dari moda terkait serta menentukan jarak dari khazanah terkait. Untuk busur inventori $a \in A_{inv}$, nilai kapasitas didapat dari nilai kapasitas khazanah busur terkait, komponen biaya tetap dan biaya variabel dapat ditentukan untuk tiap khazanah, tapi pada permasalahan kali ini ditetapkan sebesar nol baik tetap, maupun variabel, terakhir jarak lintasan trayek bernilai nol karena trayek hanya berpindah periode waktu dan bukan lokasi.
 
 Jaringan ini akan memenuhi kebutuhan pecahan uang rupiah $P$ di mana untuk kasus ini $|P| = 12$. Kebutuhan ini terdefinisi di setiap simpul perencanaan $n \in N_{plan}$ untuk setiap pecahan $p \in P$ dan direpresentasikan oleh $d_{n}^{p}$. Nilai estimasi kebutuhan uang tiap khazanah tiap periode tiap pecahan $d_{n}^{p}$ bernilai positif melambangkan _outflow_ yang harus dipenuhi khazanah bersangkutan kepada masyarakat, sedangkan nilai $d_{n}^{p}$ negatif menyatakan _inflow_ di mana terjadi pengembalian uang ke khazanah bersangkutan. Pada tiap khazanah di periode saat ini, terdapat stok persediaan uang rupiah untuk tiap pecahan $stok_{n}^{p}$ yang selalu bernilai nonnegatif.
 
+Terdapat tiga variabel, yaitu $x_{a}^{p}$ yang menandakan aliran uang rupiah pecahan $p$ pada busur $a$, $y_a$ yang menandakan jumlah kontainer yang mengenkapsulasi aliran uang rupiah pada busur $a$, dan terakhir terdapat variabel $sink_a$ yang merupakan variabel penampung aliran terakhir setelah keluar dari periode perencanaan. Dengan definisi-definisi di atas, diturunkan model pemrograman integer campuran untuk mendekati permasalahan integrasi inventori dan transportasi sebagai inti dari operasionalisasi distribusi uang rupiah sebagai berikut:
 
 
-
-
-sedangkan $A$ merepresentasikan kumpulan busur (_arc_) yang menghubungkan simpul-simpul tersebut – yang terdiri dari dua jenis busur, yaitu busur inventori dan busur transportasi $A = A_{inv} \cup A_{trans}$. Kumpulan busur transportasi dibangun dari trayek-trayek $E$ yang terdapat pada jaringan dasar dengan periode mulai $t \in [1 \dots T]$ dan waktu transit sebesar satu (1) unit periode $A_{trans} = \{( \, (i,t), \, (j,t+1) \, ) : i,j \in E, \, t \in [1,\dots,T] , \, t + 1 \leq T\}$. Kumpulan busur transportasi dibangun dari hubungan antar periode tiap khazanah $A_{inv} = \{(\,(i,t),\,(i,t+1)\,) : i \in V, \, t \in [1, \dots, T], \, t+1 \leq T\}$ di mana di dalamnya mengalir inventori yang tersimpan dari periode sebelumnya.
-
-
-
-dengan kumpulan simpul $N$ merepresentasikan pasangan 
-
-
-
-pemrograman integer campuran (_mixed integer programming_) berbasis busur diturunkan
-
-berkorespondensi langsung dengan bagian2 sebelumnya: (refleksinya nnti di akhir aja)
-- ukuran performa → objektif + pembatas
-- influence diagram (masukan terkontrol) = all arcs in the multigraph jaringan expanded
-
-
-eksposisi model:
-- list persamaan2nya
+$$
+\text{min} \displaystyle \sum_{a \in A} \bigg[ var_{a} \cdot \sum_{p \in P} x_{a}^{p} + fix_a \cdot dist_a \cdot y_{a} \bigg]
+$$
 
 
 $$
 \begin{array}{rrcll}
-\text{min}  & \displaystyle \sum_{a \in A} \bigg[ var_{a} \cdot \sum_{p \in P} x_{a}^{p} + fix_a \cdot dist_a \cdot y_{a} \bigg] \\
 \text{s.t.} & \displaystyle \sum_{a \in \text{IN}(n)} x_{a}^{p} - \sum_{a \in \text{OUT}(n)} x_{a}^{p} & = & d_{n}^{p} 
-                                                                       & \forall n \in N, p \in P \\
+                                                                       & \forall n \in N_{plan}, p \in P \\
+     & \displaystyle \sum_{a \in \text{OUT}(n)} x_{a}^{p} & = & stock_{n}^{p} 
+                                                                       & \forall n \in N_{init}, p \in P \\
+     & \displaystyle \sum_{a \in \text{IN}(n)} x_{a}^{p} & = & sink_{n}^{p} 
+                                                                       & \forall n \in N_{sink}, p \in P \\
      & \displaystyle \sum_{p \in P}x_{a}^{p} & \leq & Q_a \cdot y_a    & \forall a \in A \\
-     & \displaystyle x_{a}^{p} & \in & \mathbb{R}^{+}                  & \forall a \in A, p \in P \\
+     & \displaystyle sink_{n}^{p} & \in & \mathbb{R}_{\geq0} & \forall n \in N_{sink}, p \in P\\
+     & \displaystyle x_{a}^{p} & \in & \mathbb{R}_{\geq0}                  & \forall a \in A, p \in P \\
      & \displaystyle y_{a} & \in & \big[ 0,1 \big]                & \forall a \in A_{inv} \\
-     & \displaystyle y_{a} & \in & \mathbb{N}^0                        & \forall a \in A_{trans}
+     & \displaystyle y_{a} & \in & \mathbb{N}_0                        & \forall a \in A_{trans}
 \end{array}
 $$
 
 
+`Persamaan xx` merupakan fungsi objektif utama model permasalahan yang meminimalkan biaya total layanan yang terdiri dari jumlah aliran peti dikalikan dengan komponen biaya variabel busur tersebut dijumlahkan dengan biaya tetap yang terdiri dari komponen biaya tetap dikalikan dengan jarak trayek dan jumlah kontainer yang digunakan. 
 
 ### Verifikasi Model
 
