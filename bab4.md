@@ -101,6 +101,23 @@ konsep dasar model:
 eksposisi model:
 - list persamaan2nya
 
+
+$$
+\begin{array}{rll}
+\text{min}  & \begin{equation} \sum_{a \in A} \sum_{p \in P} f(x_{a}^{p}) + g(y_{a}) \notag \end{equation} \\
+\text{s.t.} & \begin{equation} \sum_{a \in \text{IN}(n)}^{} x_{a}^{p} - \sum_{a \in \text{OUT}(n)} x_{a}^{p} = d_{n}^{p} 
+                                                                        \notag \end{equation} & \forall n \in N, p \in P \\
+            & \begin{equation} \sum_{p \in P}x_{a}^{p} \leq Q_a y_a     \notag \end{equation} & \forall a \in A \\
+            & \begin{equation} f(x_{a}^{p}) = var_{a}x_{a}^{p}          \notag \end{equation} & \forall a \in A, p  \in P \\
+            & \begin{equation} g(y_{a}) = fix_{a} dist_{a} y_{a}        \notag \end{equation} & \forall a \in A \\
+            & \begin{equation} x_{a}^{p} \in \mathbb{R}^{+}             \notag \end{equation} & \forall a \in A, p  \in P \\
+            & \begin{equation} y_{a} \in \left\{ 0,1 \right\}           \notag \end{equation} & \forall a \in A_{inv} \\
+            & \begin{equation} y_{a} \in \mathbb{N}^{0}                 \notag \end{equation} & \forall a \in A_{trans} 
+\end{array}
+$$
+
+
+
 ### Verifikasi Model
 
 tabel konversi satuan
