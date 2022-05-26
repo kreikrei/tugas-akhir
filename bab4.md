@@ -109,7 +109,8 @@ $$
 
 $$
 \begin{array}{rll}
-\text{s.t.} & \displaystyle \sum_{a \in \text{IN}(n)} x_{a}^{p} - \sum_{a \in \text{OUT}(n)} x_{a}^{p} = d_{n}^{p} & \forall n \in N, p \in P \\
+\text{s.t.} & \displaystyle \sum_{a \in \text{IN}(n)} x_{a}^{p} - \sum_{a \in \text{OUT}(n)} x_{a}^{p} = d_{n}^{p} 
+                                                                & \forall n \in N, p \in P \\
 \end{array}
 $$
 
