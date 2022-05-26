@@ -103,7 +103,7 @@ eksposisi model:
 
 
 $$
-\begin{array}{rll}
+\begin{align}
 \text{min}  & \begin{equation} \sum_{a \in A} \sum_{p \in P} f(x_{a}^{p}) + g(y_{a}) \notag \end{equation} & \\
 \text{s.t.} & \begin{equation} \sum_{a \in \text{IN}(n)}^{} x_{a}^{p} - \sum_{a \in \text{OUT}(n)} x_{a}^{p} = d_{n}^{p} 
                                                                         \notag \end{equation} & \forall n \in N, p \in P \\
@@ -113,7 +113,7 @@ $$
             & \begin{equation} x_{a}^{p} \in \mathbb{R}^{+}             \notag \end{equation} & \forall a \in A, p  \in P \\
             & \begin{equation} y_{a} \in \left\{ 0,1 \right\}           \notag \end{equation} & \forall a \in A_{inv} \\
             & \begin{equation} y_{a} \in \mathbb{N}^{0}                 \notag \end{equation} & \forall a \in A_{trans} 
-\end{array}
+\end{align}
 $$
 
 
