@@ -111,7 +111,7 @@ $$
 \begin{array}{rll}
 \text{s.t.} & \displaystyle \sum_{a \in \text{IN}(n)} x_{a}^{p} - \sum_{a \in \text{OUT}(n)} x_{a}^{p} = d_{n}^{p} 
                                                                     & \forall n \in N, p \in P \\
-            & \displaystyle \sum_{p \in P}x_{a}^{p} \leq Q_a y_a    & \forall a \in A \\
+\text{}     & \displaystyle \sum_{p \in P}x_{a}^{p} \leq Q_a y_a    & \forall a \in A \\
             
 \end{array}
 $$
