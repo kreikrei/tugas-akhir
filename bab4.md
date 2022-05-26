@@ -109,7 +109,7 @@ $$
                                                                        & \forall n \in N, p \in P \\
      & \displaystyle \sum_{p \in P}x_{a}^{p} & \leq & Q_a \cdot y_a    & \forall a \in A \\
      & \displaystyle x_{a}^{p} & \in & \mathbb{R}^{+}                  & \forall a \in A, p \in P \\
-     & \displaystyle y_{a} & \in & \{ 0,1 \}                           & \forall a \in A_{inv} \\
+     & \displaystyle y_{a} & \in & \left{ 0,1 \right}                           & \forall a \in A_{inv} \\
      & \displaystyle y_{a} & \in & \mathbb{N}^0                        & \forall a \in A_{trans}
 \end{array}
 $$
