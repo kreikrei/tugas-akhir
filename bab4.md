@@ -105,7 +105,7 @@ Dalam permasalahan ini terdapat tiga variabel, yaitu $x_{a}^{p}$ yang menandakan
 
 
 $$
-\text{min} \displaystyle \sum_{a \in A} \bigg[ var_{a} \cdot \sum_{p \in P} x_{a}^{p} + fix_a \cdot dist_a \cdot y_{a} \bigg]
+\text{min. } \displaystyle \text{obj}(\textbf{x},\textbf{y}) = \sum_{a \in A} \bigg[ var_{a} \cdot \sum_{p \in P} x_{a}^{p} + fix_a \cdot dist_a \cdot y_{a} \bigg]
 $$
 
 
@@ -128,11 +128,20 @@ $$
 
 Persamaan `4.1` merupakan fungsi objektif model permasalahan yang meminimalkan biaya total layanan yang terdiri dari jumlah aliran peti dikalikan dengan komponen biaya variabel busur tersebut kemudian dijumlahkan dengan biaya tetap yang terdiri dari komponen biaya tetap dikalikan dengan jarak trayek dan jumlah kontainer yang digunakan. Persamaan `4.2` - `4.4` merupakan pembatas konservasi aliran. Persamaan `4.2` memastikan bahwa selisih aliran masuk dan keluar peti uang tiap titik tiap periode untuk tiap pecahan di sepanjang periode perencanaan adalah sama dengan estimasi kebutuhan uang yang harus dipenuhi khazanah pada periode tersebut untuk pecahan tertentu. Persamaan `4.3` memastikan bahwa aliran yang keluar dari tiap khazanah di awal – baik yang dipertahankan di inventori, maupun dipindahkan lewat transportasi – adalah sama dengan jumlah tingkat persediaan yang diketahui. Terakhir dalam kelompok ini adalah persamaan `4.4` yang merupakan pembatas _dummy_ di mana aliran keluar dari periode perencanaan ditentukan oleh variabel _dummy_ $sink$ yang dibatasi oleh persamaan `4.6`. Persamaan `4.5` menjaga agregat peti di sebuah trayek tidak melebihi jumlah peti yang dapat ditampung oleh keputusan jumlah kontainer $y$ yang digunakan. Sebuah khazanah antar periode merupakan sebuah kontainer dengan nilai bilangan bulat antara nol (0) dan satu (1) seperti dinyatakan pada persamaan `4.8`. Seluruh busur transportasi hanya dapat berupa bilangan bulat nonnegatif seperti dinyatakan pada persamaan `4.9`. Terakhir, jumlah peti tiap pecahan hanya dapat berupa bilangan real nonnegatif seperti pada persamaan `4.7`.
 
-Model dinilai menangkap karakteristik sistem relevan dengan baik. Dari _influence diagram_ pada `Gambar xx` masukan terkontrol yang berupa susunan pengiriman dan tingkat persediaan tiap pecahan tergabung menjadi satu variabel $x$ yang berkorespondensi dengan seluruh busur (_arc_) dalam jaringan terekspansi. Terdapat tiga ukuran performa yang didefinisikan pada `Tabel xx` yang semuanya terinkorporasi dalam persamaan `4.1`, gabungan `4.2` sampai `4.4`, dan `4.5`. Dalam _influence diagram_, terdapat empat (4) keluaran, namun utilisasi kontainer dan utilisasi penyimpanan adalah satu pembatas utilisasi jaringan logistik yang direpresentasikan oleh persamaan `4.5`.
-
 ### Verifikasi Model
 
-tabel konversi satuan
+Model dinilai menangkap karakteristik sistem relevan dengan baik. Dari _influence diagram_ pada `Gambar xx` masukan terkontrol yang berupa susunan pengiriman dan tingkat persediaan tiap pecahan tergabung menjadi satu variabel $x$ yang berkorespondensi dengan seluruh busur (_arc_) dalam jaringan terekspansi. Terdapat tiga ukuran performa yang didefinisikan pada `Tabel xx` yang semuanya terinkorporasi dalam persamaan `4.1`, gabungan `4.2` sampai `4.4`, dan `4.5`. Dalam _influence diagram_, terdapat empat (4) keluaran, namun utilisasi kontainer dan utilisasi penyimpanan adalah satu pembatas utilisasi jaringan logistik yang direpresentasikan oleh persamaan `4.5`.
+
+Selain kesesuaian dengan struktur permasalahan yang didefinisikan, model juga menunjukkan proses konversi nilai yang baik. Hal ini ditunjukan pada `Tabel xx` di mana perubahan pecahan dalam tiap-tiap persamaan, kecuali definisi domain, disajikan.
+
+| Persamaan       | Sisi Kiri          | Sisi Kanan                                                         |
+|-----------------|--------------------|--------------------------------------------------------------------|
+| Persamaan `4.1` | Rupiah             | Rupiah/peti * peti + Rupiah/kontainer/km * km * kontainer = Rupiah |
+| Persamaan `4.2` | peti - peti = peti | Peti                                                               |
+| Persamaan `4.3` | peti               | Peti                                                               |
+| Persamaan `4.4` | peti               | peti                                                               |
+| Persamaan `4.5` | peti               | Peti/kontainer * kontainer = peto                                  |
+Proses verifikasi masih harus dilengkapi dengan beberapa kasus yang membuktikan kebenaran kerja model – dan algoritma penyelesaian masalahnya.
 
 ## Pengembangan Prosedur Pencarian Solusi
 
