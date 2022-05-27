@@ -172,22 +172,6 @@ Terdapat enam entitas data, yaitu khazanah, trayek, stok, permintaan, periode, d
 
 Data ini nantinya dikonversi menjadi multigraf jaringan terekspansi. Pada tiap simpul (_node_) terdapat atribut terkait lokasi untuk menghitung jarak trayek. Tiap busur (_arc_) memiliki atribut biaya dan kapasitas sesuai dengan jenis busur masing-masing. Multigraf ini digunakan untuk mengembangkan model pemrograman integer campuran yang kemudian dimasukkan ke dalam _solver_ Gurobi untuk dicari solusi optimalnya.
 
-
-
-
-pola dasar algoritma:
-
-- [x] dari jenis model: pemrograman integer => relaksasi (simpleks) + branch and cut → teknik dasar algoritma
-- [x] dari ukuran permasalahan: sifat optimasinya aproksimasi (kasih _rule_ aproksimasi) → sifat optimasi
-perangkat komputasi:
-- [x] hardware: spek komputer → digunakan komputer karena ukuran permasalahan
-- [x] software: Julia Mathematical Programming (JuMP) + Gurobi diprogram dengan bahasa pemrograman julia → krn jenis modelnya
-struktur data:
-- tabel-tabel libs init (khazanah moda trayek demand_forecast)
-- transformasi-transformasi dr data ke model (hubungan data dengan variabel yg mau dibuat)
-eksposisi algoritma:
-- pseudocode algoritma
-
 ### Verifikasi Algortima
 
 test cases:
