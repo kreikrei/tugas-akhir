@@ -144,6 +144,7 @@ Selain kesesuaian dengan struktur permasalahan yang didefinisikan, model juga me
 Proses verifikasi masih harus dilengkapi dengan beberapa kasus yang membuktikan kebenaran kerja model – dan algoritma penyelesaian masalahnya.
 
 ## Pengembangan Prosedur Pencarian Solusi
+Untuk dapat sepenuhnya berguna, model harus dapat dimanipulasi dan dicari solusi yang meminimalkan fungsi objektifnya. Pada bagian ini disajikan implementasi algoritma yang digunakan serta dilanjutkan verifikasi model dengan algoritma yang sudah dikembangkan.
 
 ### Implementasi Algoritma
 
