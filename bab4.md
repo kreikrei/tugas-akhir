@@ -174,13 +174,11 @@ Data ini nantinya dikonversi menjadi multigraf jaringan terekspansi. Pada tiap s
 
 ### Verifikasi Algortima
 
-test cases:
+Dilanjutkan proses verifikasi model melalui verifikasi algoritma. Diberikan beberapa kasus yang sudah diketahui – atau bisa dikomputasi manual – pada model dan algoritma yang sudah dibuat. Model dan algoritma diharapkan untuk  menghasilkan solusi yang sama. Model dan algoritma diujikan pada sebuah jaringan dengan trayek lengkap menghubungkan antar titik dan jarak bersesuaian dengan `Gambar xx`.
 
-- zero demand => zero transport
-- single stock supplier, multiple demand location, same cost, same distance => break bulk
-- multiple stock supplier, single demand location, same cost, same distance => consolidate
-- not enough stock => infeasible
-- emulate frontloading
+![Verifikasi-Base.drawio.png](./Verifikasi-Base.drawio.png)
+
+Terdapat empat kasus uji untuk memverifikasi algoritma. Digunakan satu periode perencanaan dan satu moda transportasi dengan kapasitas 250 peti. Permintaan atau estimasi kebutuhan didefinisikan untuk satu jenis pecahan. Pada kasus pertama, titik pusat memiliki stok dan tidak ada titik yang membutuhkan uang. Solusi optimal adalah tidak ada pengantaran sama sekali dan terdapat inventori yang berpindah pada titik pusat seperti pada `Gambar xx - a`. Pada kasus kedua, titik pusat memiliki stok sebesar seribu (1.000) peti dan setiap titik lain membutuhkan tepat 250 peti. Solusi optimal adalah titik pusat melakukan pengiriman sebesar 250 peti ke semua titik seperti pada `Gambar xx - b`. Pada kasus ketiga, titik pusat yang membutuhkan seribu (1.000) peti dan setiap titik memiliki persediaan sebesar 250 peti. Solusi optimal adalah konsolidasi sehingga semua titik mengirimkan persediaan masing-masing ke pusat seperti pada `Gambar xx - c`. Terakhir, didemonstrasikan bahwa ketika terdapat titik yang lebih dekat (murah) untuk memenuhi kebutuhan sebuah titik, solusi optimal adalah melakukan pengiriman dari titik terdekat yang dapat melayani seperti pada `Gambar xx - c`.
 
 ## Pengujian, Analisis, dan Perbaikan Model
 
