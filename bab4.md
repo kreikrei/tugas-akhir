@@ -148,13 +148,40 @@ Untuk dapat sepenuhnya berguna, model harus dapat dimanipulasi dan dicari solusi
 
 ### Implementasi Algoritma
 
+Dari penjelasan-penjelasan sebelumnya, diketahui bahwa permasalahan yang dihadapi bersifat diskret dan kombinatorial sehingga diformulasikan sebuah pemrograman integer campuran. Teknik dasar untuk permasalahan macam ini adalah _branch-and-bound_ yang biasa dikombinasikan dengan penggunaan _cutting plane_ sehingga biasa disebut _branch-and-cut_ [@kochenderfer2019]. Secara mendasar teknik ini memecah permasalahan dengan memberikan batas-batas baru pada permasalahan yang direlaksasi untuk mencari solusi yang bernilai bulat dan optimal. Namun, karena ukuran permasalahan yang besar, digunakan aproksimasi melalui penyesuaian _optimality gap_ algoritma sehingga dapat dihasilkan solusi yang fisibel dan dapat dijamin kedekatannya dengan solusi optimal.
+
+![jump-logo.svg](./jump-logo.svg "jump-logo.svg")
+
+Algoritma diimplementasikan dalam bahasa pemrograman Julia dengan menggunakan paket JuMP (Julia Mathematical Programming) untuk abstraksi sintaks serta dengan menggunakan Gurobi sebagai _solver_. Proses pencarian solusi dilakukan di perangkat komputer dengan prosesor Intel dengan 8 inti serta RAM sebesar 16GB. Di dalam sebuah _optimizer_ Gurobi, terdapat beberapa komponen [@gurobi2021] :
+
+- _Presolve_ yang merapatkan formulasi dan mengurangi ukuran permasalahan dengan berbagai teknik.
+- _Continuous Relaxation Solve_ yang menyelesaikan subproblem-subproblem relaksasi yang dihasilkan sepanjang proses optimasi. Digunakan dua teknik, yaitu _simplex_ dan _barrier_.
+- _Cutting Planes_ menghasilkan bidang potong untuk memotong ruang solusi yang tidak diperlu didalami. Beberapa bidang potong yang secara _default_ digunakan untuk pemrograman diskret adalah potongan Gomory dan potongan _Mixed Integer Rounding_ (MIR).
+- _Branching Variable Selection_ menentukan ke variabel mana permasalahan dicabangkan. Komponen ini penting untuk membatasi ukuran _search tree_.
+- _Primal Heuristics_ merupakan kumpulan heuristik untuk mencari solusi bilangan bulat fisibel di sepanjang proses optimasi.
+
+![logo-gurobi.png](./logo-gurobi.png "logo-gurobi.png")
+
+Untuk dapat menjadi algoritma yang berfungsi, diperlukan struktur data yang efisien. Struktur data utama yang menjadi masukan ke dalam solver adalah multigraf beratribut dalam bentuk _adjacency list_ karena dinilai optimal ukurannya dalam menyimpan data dibandingkan _adjacency matrix_ atau _edge list_. Pada `Gambar xx` disajikan struktur data dalam bentuk _entity relationship diagram_.  
+
+
+![StrukturData.drawio.png](./StrukturData.drawio.png)
+
+
+Terdapat enam entitas data, yaitu khazanah, trayek, stok, permintaan, periode, dan moda. Khazanah merepresentasikan seluruh khzanah yang beroperasi dan menjadi bagian dalam perencanaan. Tiap entitas khazanah memiliki beberapa entitas permintaan – yang tiap entitasnya dimiliki sebuah periode. Tiap entitas khazanah memiliki sebuah stok yang merepresentasikan tingkat persediaan aktual. Tiap khazanah dapat menjadi asal dari beberapa trayek dan dapa menjadi tujuan beberapa trayek di mana tiap trayek dapat menggunakan sebuah moda.
+
+Data ini nantinya dikonversi menjadi multigraf jaringan terekspansi. Pada tiap simpul (_node_) terdapat atribut terkait lokasi untuk menghitung jarak trayek. Tiap busur (_arc_) memiliki atribut biaya dan kapasitas sesuai dengan jenis busur masing-masing. Multigraf ini digunakan untuk mengembangkan model pemrograman integer campuran yang kemudian dimasukkan ke dalam _solver_ Gurobi untuk dicari solusi optimalnya.
+
+
+
+
 pola dasar algoritma:
 
-- dari jenis model: pemrograman integer => relaksasi (simpleks) + branch and cut → teknik dasar algoritma
-- dari ukuran permasalahan: sifat optimasinya aproksimasi (kasih _rule_ aproksimasi) → sifat optimasi
+- [x] dari jenis model: pemrograman integer => relaksasi (simpleks) + branch and cut → teknik dasar algoritma
+- [x] dari ukuran permasalahan: sifat optimasinya aproksimasi (kasih _rule_ aproksimasi) → sifat optimasi
 perangkat komputasi:
-- hardware: spek komputer → digunakan komputer karena ukuran permasalahan
-- software: Julia Mathematical Programming (JuMP) + Gurobi diprogram dengan bahasa pemrograman julia → krn jenis modelnya
+- [x] hardware: spek komputer → digunakan komputer karena ukuran permasalahan
+- [x] software: Julia Mathematical Programming (JuMP) + Gurobi diprogram dengan bahasa pemrograman julia → krn jenis modelnya
 struktur data:
 - tabel-tabel libs init (khazanah moda trayek demand_forecast)
 - transformasi-transformasi dr data ke model (hubungan data dengan variabel yg mau dibuat)
@@ -172,6 +199,10 @@ test cases:
 - emulate frontloading
 
 ## Pengujian, Analisis, dan Perbaikan Model
+
+### Kerangka Pengujian
+desain simulasi
+kalibrasi parameter MIPGap (sajiin tabel gap vs waktu_solve)
 
 ### Validasi Model
 
