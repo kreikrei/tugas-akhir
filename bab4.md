@@ -244,14 +244,17 @@ Pada dasarnya, semua pengujian yang dilakukan pada penelitian ini merupakan pela
 
 ### Validasi Model
 
-Performa operasionalisasi distribusi yang sudah dikembangkan dibandingkan dengan performa operasionalisasi distribusi saat ini.
+Performa operasionalisasi distribusi yang sudah dikembangkan dibandingkan dengan performa operasionalisasi distribusi uang rupiah Bank Indonesia saat ini.
 
 #### Ukuran Performa
-Perbandingan dilakukan terhadap jumlah pengiriman pada tahun 2019 dengan data yang didapat dari Laporan Kerja Syalala yang berkorespondensi dengan jumlah trayek yang digunakan dalam pengiriman tereksekusi -- terlepas dari jumlah kontainer dan muatan.
+
+Perbandingan dilakukan terhadap jumlah pengiriman pada tahun 2019 yang didapat dari Laporan Kerja Syalala di mana angka berkorespondensi dengan jumlah trayek yang digunakan dalam pengiriman tereksekusi -- terlepas dari jumlah kontainer dan muatan.
 
 #### Konfigurasi
-Simulasi dilakukan dengan menggunakan:
-1. Struktur jaringan yang merupakan kumpulan trayek aktual distribusi uang rupiah Bank Indonesia serta 
+
+Validasi dilakukan dengan menggunakan:
+
+1. Struktur jaringan yang merupakan kumpulan trayek aktual distribusi uang rupiah Bank Indonesia
 2. Model perencanaan yang mengizinkan _capacity overload_ di tiap khazanah untuk mencerminkan kondisi Bank Indonesia saat ini. Digunakan variabel surplus untuk mengindikasikan utilisasi kapasitas berlebih, pembatas `4.x` didefinisikan untuk busur transportasi, dan pembatas kapasitas yang disisipkan surplus dipenalisasi bersamaan dengan variabel surplus itu sendiri. Model ini terdiri dari persamaan xx, persamaan yy, persamaan zz, dan persamaan aa-bb
 
 $$
@@ -268,10 +271,34 @@ $$
 
 3. Estimasi kebutuhan uang tahun 2019
 4. Realisasi kebutuhan uang yang sama dengan ramalan
-5. Beberapa horizon perencanaan $H$ yang mempertimbangkan 1 periode ke depan sampai mempertimbangkan 12 periode ke depan
+5. Parameter _optimality gap_ sebesar 0.2
+6. Beberapa horizon perencanaan $H$ yang mempertimbangkan 1 periode ke depan sampai mempertimbangkan 10 periode ke depan
 
 
 ### Analisis Sensitivitas
+
+Analisis sensitivitas memeriksa kestabilan solusi yang dihasilkan model terhadap perubahan. Pada bagian ini, diperiksa senstivitas model terhadap perubahan parameter biaya tetap dan biaya variabel model. Dibuat beberapa simulasi $S = \{S_{1}, S_{2}, \dots, S_{n}\}$ dari _baseline_ $S_{0}$ di mana di setiap simulasi diberikan variansi terhadap parameter biaya tetap dan parameter biaya variabel setiap moda transportasi. Analisis sensitivitas dilakukan untuk beberapa horizon perencanaan $H$.
+
+#### Ukuran Performa
+
+Setiap simulasi yang diberikan variansi dalam $S$ akan diperhitungkan kesamaan struktur solusinya dengan _baseline_ $S_{0}$. Struktur solusi di sini diartikan sebagai penggunaan busur transportasi tertentu pada waktu tertentu sehingga struktur solusi yang sama berarti dua simulasi menghasilkan penggunaan trayek yang sama pada waktu yang sama. Ukuran kesamaan yang digunakan adalah ukuran kesamaan Jaccard yang bersifat metrik dan memiliki rentang nilai dari nol (0) sampai satu (1). Untuk pengiriman tereksekusi dua simulasi $Executed(S_{1})$ dan $Executed(S_{2})$ nilai kesamaan Jaccard menghitung seberapa banyak potongan trayek dibanding gabungan keduanya dan didefinisikan sebagai berikut:
+
+
+$$
+Jaccard(S_{1}, S_{2}) = \frac{Executed(S_{1}) \cap Executed(S_{2})}{Executed(S_{1}) \cup Executed(S_{2})}
+$$
+
+
+#### Konfigurasi
+
+Terdapat 16 simulasi yang merupakan hasil penyimpangan biaya Rp1.000 dan -Rp1.000 untuk parameter biaya tetap empat (4) moda transportasi serta parameter biaya variabel empat (4) moda transportasi. Di setiap simulasi, digunakan:
+
+1. Struktur jaringan usulan yang mempertimbangkan semua trayek yang terdapat dalam kontrak-kontrak kerja Bank Indonesia
+2. Model perencanaan dengan penalisasi pemenuhan permintaan uang rupiah tanpa _capacity overload_
+3. Estimasi kebutuhan uang tahun 2019
+4. Realisasi kebutuhan uang yang sama dengan ramalan
+5. Parameter _optimality gap_ sebesar 0.2
+6. Beberapa horizon perencanaan $H$ yang mempertimbangkan 1 periode ke depan sampai mempertimbangkan 3 periode ke depan
 
 ### Analisis Struktur Jaringan
 
@@ -285,6 +312,7 @@ trayek Bank Indonesia aktual (2019) dan trayek usulan. perbandingan biaya
 
 ## Pengumpulan Data
 
+Pada bagian ini, disajikan sumber data yang dapat diakses peneliti, kebutuhan data untuk model, dan proses transformasi dari sumber-sumber yang ada.
 Sumber Data:
 
 - Rekapitulasi OIP EKU (2019)
