@@ -134,6 +134,7 @@ Model dinilai menangkap karakteristik sistem relevan dengan baik. Dari _influenc
 
 Selain kesesuaian dengan struktur permasalahan yang didefinisikan, model juga menunjukkan proses konversi nilai yang baik. Hal ini ditunjukan pada `Tabel xx` di mana perubahan pecahan dalam tiap-tiap persamaan, kecuali definisi domain, disajikan.
 
+
 | Persamaan       | Sisi Kiri          | Sisi Kanan                                                         |
 |-----------------|--------------------|--------------------------------------------------------------------|
 | Persamaan `4.1` | Rupiah             | Rupiah/peti * peti + Rupiah/kontainer/km * km * kontainer = Rupiah |
@@ -141,9 +142,11 @@ Selain kesesuaian dengan struktur permasalahan yang didefinisikan, model juga me
 | Persamaan `4.3` | peti               | Peti                                                               |
 | Persamaan `4.4` | peti               | peti                                                               |
 | Persamaan `4.5` | peti               | Peti/kontainer * kontainer = peto                                  |
+
 Proses verifikasi masih harus dilengkapi dengan beberapa kasus yang membuktikan kebenaran kerja model – dan algoritma penyelesaian masalahnya.
 
 ## Pengembangan Prosedur Pencarian Solusi
+
 Untuk dapat sepenuhnya berguna, model harus dapat dimanipulasi dan dicari solusi yang meminimalkan fungsi objektifnya. Pada bagian ini disajikan implementasi algoritma yang digunakan serta dilanjutkan verifikasi model dengan algoritma yang sudah dikembangkan.
 
 ### Implementasi Algoritma
@@ -178,13 +181,57 @@ Dilanjutkan proses verifikasi model melalui verifikasi algoritma. Diberikan bebe
 
 ![Verifikasi-Base.drawio.png](./Verifikasi-Base.drawio.png)
 
-Terdapat empat kasus uji untuk memverifikasi algoritma. Digunakan satu periode perencanaan dan satu moda transportasi dengan kapasitas 250 peti. Permintaan atau estimasi kebutuhan didefinisikan untuk satu jenis pecahan. Pada kasus pertama, titik pusat memiliki stok dan tidak ada titik yang membutuhkan uang. Solusi optimal adalah tidak ada pengantaran sama sekali dan terdapat inventori yang berpindah pada titik pusat seperti pada `Gambar xx - a`. Pada kasus kedua, titik pusat memiliki stok sebesar seribu (1.000) peti dan setiap titik lain membutuhkan tepat 250 peti. Solusi optimal adalah titik pusat melakukan pengiriman sebesar 250 peti ke semua titik seperti pada `Gambar xx - b`. Pada kasus ketiga, titik pusat yang membutuhkan seribu (1.000) peti dan setiap titik memiliki persediaan sebesar 250 peti. Solusi optimal adalah konsolidasi sehingga semua titik mengirimkan persediaan masing-masing ke pusat seperti pada `Gambar xx - c`. Terakhir, didemonstrasikan bahwa ketika terdapat titik yang lebih dekat (murah) untuk memenuhi kebutuhan sebuah titik, solusi optimal adalah melakukan pengiriman dari titik terdekat yang dapat melayani seperti pada `Gambar xx - c`.
+Terdapat empat kasus uji untuk memverifikasi algoritma. Digunakan satu periode perencanaan dan satu moda transportasi dengan kapasitas 250 peti. Permintaan atau estimasi kebutuhan didefinisikan untuk satu jenis pecahan. Pada kasus pertama, titik pusat memiliki stok dan tidak ada titik yang membutuhkan uang. Solusi optimal adalah tidak ada pengantaran sama sekali dan terdapat inventori yang berpindah pada titik pusat seperti pada `Gambar xx - a`. Pada kasus kedua, titik pusat memiliki stok sebesar seribu (1.000) peti dan setiap titik lain membutuhkan tepat 250 peti. Solusi optimal adalah titik pusat melakukan pengiriman sebesar 250 peti ke semua titik seperti pada `Gambar xx - b`. Pada kasus ketiga, titik pusat yang membutuhkan seribu (1.000) peti dan setiap titik memiliki persediaan sebesar 250 peti. Solusi optimal adalah konsolidasi sehingga semua titik mengirimkan persediaan masing-masing ke pusat seperti pada `Gambar xx - c`. Terakhir, didemonstrasikan bahwa ketika terdapat titik yang lebih dekat (murah) untuk memenuhi kebutuhan sebuah titik, solusi optimal adalah melakukan pengiriman dari titik terdekat yang dapat melayani seperti pada `Gambar xx - c`. Melalui verifikasi sederhana ini, ditunjukkan bahwa model dan algoritma berperilaku sesuai rancangan konseptualnya.
 
 ## Pengujian, Analisis, dan Perbaikan Model
 
-### Kerangka Pengujian
-desain simulasi
-kalibrasi parameter MIPGap (sajiin tabel gap vs waktu_solve)
+Pada bagian ini dilakukan pengujian pada model dan algoritma yang sudah dikembangkan untuk memecahkan permasalahan operasionalisasi distribusi. Akan disajikan desain simulasi yang menjadi instrumen utama proses pengujian dan analisis. Kemudian diuraikan seluruh analisis sebelum ditutup dengan implikasi manajerial dari model dan algoritma yang sudah dikembangkan.
+
+### Desain Simulasi
+
+Dimodelkan sebuah simulasi mengikuti komponen dan organisasi simulasi _event_ diskret [@kelton2015] dengan sedikit penyesuaian. Dalam simulasi ini, secara kontinu DPU menggunakan sistem perencanaan yang sudah dikembangkan: mengimplementasikan pengiriman uang rupiah sesuai rencana yang dibuat, memperbarui tingkat persediaan setelah pengiriman dan pemenuhan kebutuhan uang rupiah sebuah periode, dan mengulang dari awal untuk periode yang baru. Komponen-komponen simulasi _event_ diskret, penjelasan singkat tiap komponennya, dan manifestasinya dalam operasionalisasi distribusi uang rupiah Bank Indonesia dituliskan dalam `Tabel xx`.
+
+_Entities_: DPU (pengambil keputusan sentral), Khazanah, Trayek, dan Masyarakat (representasi permintaan eksternal)
+
+_Attributes_: {
+    DPU -> {
+        estimasi kebutuhan uang, model perencanaan, _optimality gap_, panjang horizon perencanaan
+    },
+    Khazanah -> {
+       tingkat persediaan,
+       kapasitas,
+       lokasi,
+    },
+    Trayek -> {
+        asal,
+        tujuan,
+        moda
+    }
+    Masyarakat -> {
+        realisasi kebutuhan uang
+    }
+}
+
+_Queues_ : antrean pengiriman yang harus dilakukan oleh tiap khazanah menggunakan trayek tertentu
+
+_Accumulators_ : pengiriman tereksekusi sepanjang waktu, tingkat persediaan sepanjang waktu, pemenuhan kebutuhan uang sepanjang waktu
+
+_Events_ : 
+Plan: 
+DPU sebagai pengambil keputusan membuat susunan pengiriman paling optimal dengan menyelesaikan model perencanaan hingga _optimality gap_ yang ditetapkan menggunakan estimasi kebuthan uang untuk panjang horizon perencanaan serta atribut tiap-tiap khazanah dan trayek. Setelah itu, rencana optimal ditugaskan ke antrean pengiriman yang harus dilakukan tiap-tiap khazanah.
+
+Transport: 
+Untuk tiap khazanah, dihitung pengurangan dan penambahan stok yang terjadi dengan menjumlahkan uang tiap pecahan yang keluar dari sebuah khazanah dan masuk ke sebuah khazanah. Atribut tingkat persediaan tiap khazanah diperbarui, pengiriman tereksekusi dicatat.
+
+Fulfill: 
+Masyarakat merealisasi kebutuhan uang pada entitas khazanah dan khazanah memenuhi seturut dengan nilai atribut tingkat persediaan masing-masing serta kapasitas khazanah. Jika terdapat permintaan aliran keluar, namun stok tidak cukup, khazanah mengeluarkan sesuai jumlah yang dimiliki.
+
+_Simulaton Clock_: Jam simulasi bergerak maju satu langkah ketika siklus _Plan_, _Transport_, dan _Fulfill_ selesai dilakukan. Terminasi simulasi didasarkan pada masukan analis setelah berapa langkah simulasi berjalan.
+
+
+
+
+
 
 ### Validasi Model
 
@@ -192,11 +239,13 @@ kalibrasi parameter MIPGap (sajiin tabel gap vs waktu_solve)
 
 ### Analisis Struktur Jaringan
 
+trayek Bank Indonesia aktual (2019) dan trayek usulan. perbandingan biaya
+
 ### Analisis Horizon Perencanaan
 
 ### Analisis Akurasi Ramalan
 
-### Analisis Implikasi Manajerial
+### Implikasi Manajerial
 
 ## Pengumpulan Data
 
