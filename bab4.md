@@ -224,7 +224,7 @@ Transport:
 Untuk tiap khazanah, dihitung pengurangan dan penambahan stok yang terjadi dengan menjumlahkan uang tiap pecahan yang keluar dari sebuah khazanah dan masuk ke sebuah khazanah. Atribut tingkat persediaan tiap khazanah diperbarui, pengiriman tereksekusi dicatat.
 
 Fulfill: 
-Masyarakat merealisasi kebutuhan uang pada entitas khazanah dan khazanah memenuhi seturut dengan nilai atribut tingkat persediaan masing-masing serta kapasitas khazanah. Jika terdapat permintaan aliran keluar, namun stok tidak cukup, khazanah mengeluarkan sesuai jumlah yang dimiliki.
+Masyarakat merealisasi kebutuhan uang pada entitas khazanah dan khazanah memenuhi seturut dengan nilai atribut tingkat persediaan masing-masing serta kapasitas khazanah. Jika terdapat permintaan aliran keluar, namun stok tidak cukup, khazanah mengeluarkan sesuai jumlah yang dimiliki. Pemenuhan kebutuhan yang terjadi dicatat, atribut tingkat persediaan diperbarui dan dicatat.
 
 _Simulaton Clock_: Jam simulasi bergerak maju satu langkah ketika siklus _Plan_, _Transport_, dan _Fulfill_ selesai dilakukan. Terminasi simulasi didasarkan pada masukan analis setelah berapa langkah simulasi berjalan.
 
