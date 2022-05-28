@@ -232,9 +232,7 @@ _Simulation Clock_:
 - desc: Variabel yang menandakan pergerakan waktu di simulasi. Sebuah jam simulasi mempunyai _timing routine_ yang menghubungkan waktu dengan _event_ yang seharusnya terjadi.
 - manifest: Jam simulasi bergerak maju satu langkah ketika siklus _Plan_, _Transport_, dan _Fulfill_ selesai dilakukan. Terminasi simulasi didasarkan pada masukan analis setelah berapa langkah simulasi berjalan.
 
-Pada dasarnya, semua pengujian yang dilakukan pada penelitian ini merupakan pelaksanaan simulasi dengan berbagai konfigurasi pemunculan entitas DPU. Atribut-atribut entitas DPU sebagai _planner_ dimodifikasi secara sistematis dan dilihat efeknya terhadap beberapa ukuran performa masing-masing pengujian.
-
-Di semua pengujian, digunakan modifikasi model standar yang sudah didefinisikan pada bagian 4.x.x di atas. Untuk mengakomodasi kemungkinan tidak cukupnya tingkat persediaan untuk pemenuhan kebutuhan, pembatas pemenuhan kebutuhan yang bersifat memaksa dengan tanda sama dengan (=) diubah menjadi sebuah _soft constraint_ sehingga permintaan masyarakat dapat tidak dipenuhi sepenuhnya, namun tetap diminimasi kegagalannya. Persamaan `xx` ditransformasikan menjadi sebuah komponen baru dalam fungsi objektif, yaitu selisih aliran masuk dan keluar yang disanggupi sebuah khazanah dengan permintaan eksternal saat itu, dikuadratkan. Model penalisasi aliran permintaan didefinisikan oleh gabungan persamaan `xx` dengan persamaan `xx` - `xx`. #define-soft-holdover 
+Satu hal penting untuk dicatat adalah bahwa di semua pengujian, digunakan modifikasi model standar yang sudah didefinisikan pada bagian 4.x.x di atas. Untuk mengakomodasi kemungkinan tidak cukupnya tingkat persediaan untuk pemenuhan kebutuhan, pembatas pemenuhan kebutuhan yang bersifat memaksa dengan tanda sama dengan (=) diubah menjadi sebuah _soft constraint_ sehingga permintaan masyarakat dapat tidak dipenuhi sepenuhnya, namun tetap diminimasi kegagalannya. Persamaan `xx` ditransformasikan menjadi sebuah komponen baru dalam fungsi objektif, yaitu selisih aliran masuk dan keluar yang disanggupi sebuah khazanah dengan permintaan eksternal saat itu, dikuadratkan. Model penalisasi aliran permintaan didefinisikan oleh gabungan persamaan `xx` dengan persamaan `xx` - `xx`. #define-soft-holdover 
 
 
 $$
@@ -242,7 +240,7 @@ $$
 $$
 
 
-
+Pada dasarnya, semua pengujian yang dilakukan pada penelitian ini merupakan pelaksanaan simulasi dengan berbagai konfigurasi pemunculan entitas DPU. Atribut-atribut entitas DPU sebagai _planner_ dimodifikasi secara sistematis dan dilihat efeknya terhadap beberapa ukuran performa terpilih di masing-masing pengujian.
 
 ### Validasi Model
 
