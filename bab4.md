@@ -109,7 +109,6 @@ $$
 $$
 
 
-
 $$
 \begin{array}{rrcll}
 \text{s.t.} & \displaystyle \sum_{a \in \text{IN}(n)} x_{a}^{p} - \sum_{a \in \text{OUT}(n)} x_{a}^{p} & = & d_{n}^{p} 
