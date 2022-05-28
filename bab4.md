@@ -105,7 +105,7 @@ Dalam permasalahan ini terdapat tiga variabel, yaitu $x_{a}^{p}$ yang menandakan
 
 
 $$
-\text{min. } \displaystyle \text{obj}(\textbf{x},\textbf{y}) = \sum_{a \in A} \bigg[ var_{a} \cdot \sum_{p \in P} x_{a}^{p} + fix_a \cdot dist_a \cdot y_{a} \bigg]
+\text{min } \displaystyle \text{obj}(\textbf{x},\textbf{y}) = \sum_{a \in A} \bigg[ var_{a} \cdot \sum_{p \in P} x_{a}^{p} + fix_a \cdot dist_a \cdot y_{a} \bigg]
 $$
 
 
@@ -232,11 +232,11 @@ _Simulation Clock_:
 - desc: Variabel yang menandakan pergerakan waktu di simulasi. Sebuah jam simulasi mempunyai _timing routine_ yang menghubungkan waktu dengan _event_ yang seharusnya terjadi.
 - manifest: Jam simulasi bergerak maju satu langkah ketika siklus _Plan_, _Transport_, dan _Fulfill_ selesai dilakukan. Terminasi simulasi didasarkan pada masukan analis setelah berapa langkah simulasi berjalan.
 
-Satu hal penting untuk dicatat adalah bahwa di semua pengujian, digunakan modifikasi model standar yang sudah didefinisikan pada bagian 4.x.x di atas. Untuk mengakomodasi kemungkinan tidak cukupnya tingkat persediaan untuk pemenuhan kebutuhan, pembatas pemenuhan kebutuhan yang bersifat memaksa dengan tanda sama dengan (=) diubah menjadi sebuah _soft constraint_ sehingga permintaan masyarakat dapat tidak dipenuhi sepenuhnya, namun tetap diminimasi kegagalannya. Persamaan `xx` ditransformasikan menjadi sebuah komponen baru dalam fungsi objektif, yaitu selisih aliran masuk dan keluar yang disanggupi sebuah khazanah dengan permintaan eksternal saat itu, dikuadratkan. Model penalisasi aliran permintaan didefinisikan oleh gabungan persamaan `xx` dengan persamaan `xx` - `xx`. #define-soft-holdover 
+Satu hal penting untuk dicatat adalah bahwa di semua pengujian, digunakan modifikasi model standar yang sudah didefinisikan pada bagian 4.x.x di atas. Untuk mengakomodasi kemungkinan tidak cukupnya tingkat persediaan untuk pemenuhan kebutuhan, pembatas pemenuhan kebutuhan yang bersifat memaksa dengan tanda sama dengan (=) diubah menjadi sebuah _soft constraint_ sehingga permintaan masyarakat dapat tidak dipenuhi sepenuhnya, namun tetap diminimasi kegagalannya. Persamaan `xx` ditransformasikan menjadi sebuah komponen baru dalam fungsi objektif, yaitu selisih aliran masuk dan keluar yang disanggupi sebuah khazanah dengan permintaan eksternal saat itu, dikuadratkan. Model penalisasi aliran permintaan didefinisikan oleh gabungan persamaan `xx` dengan persamaan `xx` - `xx`. #define-soft-const
 
 
 $$
-\text{min. } \displaystyle \text{obj}(\textbf{x},\textbf{y}) = \sum_{a \in A} \bigg[ var_{a} \cdot \sum_{p \in P} x_{a}^{p} + fix_a \cdot dist_a \cdot y_{a} \bigg] + \sum_{n \in N_{plan}, p \in P} \bigg[ \sum_{a \in \text{IN}(n)} x_{a}^{p} - \sum_{a \in \text{OUT}(n)} x_{a}^{p} - d_{n}^{p} \bigg] ^ 2
+\text{min } \displaystyle \text{soft}(\textbf{x},\textbf{y}) = \text{obj}(\textbf{x},\textbf{y}) + \sum_{n \in N_{plan}, p \in P} \bigg[ \sum_{a \in \text{IN}(n)} x_{a}^{p} - \sum_{a \in \text{OUT}(n)} x_{a}^{p} - d_{n}^{p} \bigg] ^ 2
 $$
 
 
@@ -244,7 +244,31 @@ Pada dasarnya, semua pengujian yang dilakukan pada penelitian ini merupakan pela
 
 ### Validasi Model
 
+Performa operasionalisasi distribusi yang sudah dikembangkan dibandingkan dengan performa operasionalisasi distribusi saat ini.
 
+#### Ukuran Performa
+Perbandingan dilakukan terhadap jumlah pengiriman pada tahun 2019 dengan data yang didapat dari Laporan Kerja Syalala yang berkorespondensi dengan jumlah trayek yang digunakan dalam pengiriman tereksekusi -- terlepas dari jumlah kontainer dan muatan.
+
+#### Konfigurasi
+Simulasi dilakukan dengan menggunakan:
+1. Struktur jaringan yang merupakan kumpulan trayek aktual distribusi uang rupiah Bank Indonesia serta 
+2. Model perencanaan yang mengizinkan _capacity overload_ di tiap khazanah untuk mencerminkan kondisi Bank Indonesia saat ini. Digunakan variabel surplus untuk mengindikasikan utilisasi kapasitas berlebih, pembatas `4.x` didefinisikan untuk busur transportasi, dan pembatas kapasitas yang disisipkan surplus dipenalisasi bersamaan dengan variabel surplus itu sendiri. Model ini terdiri dari persamaan xx, persamaan yy, persamaan zz, dan persamaan aa-bb
+
+$$
+\text{min } \displaystyle \text{over}(\textbf{x},\textbf{y},\textbf{surp}) = \text{soft}(\textbf{x},\textbf{y}) + \sum_{a \in A_{inv}} \bigg[ \bigg( \sum_{p \in P} x_{a}^{p} - surp_a - Q_{a} \cdot y_{a} \bigg) ^ 2 + (surp_a) ^ 2 \bigg]
+$$
+
+$$
+\sum_{p \in P}x_{a}^{p} \leq Q_a \cdot y_a \forall a \in A_{trans}
+$$
+$$
+surp_{a} \geq 0 \forall a \in A_{inv}
+$$
+
+
+3. Estimasi kebutuhan uang tahun 2019
+4. Realisasi kebutuhan uang yang sama dengan ramalan
+5. Beberapa horizon perencanaan $H$ yang mempertimbangkan 1 periode ke depan sampai mempertimbangkan 12 periode ke depan
 
 
 ### Analisis Sensitivitas
