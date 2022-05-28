@@ -191,47 +191,58 @@ Pada bagian ini dilakukan pengujian pada model dan algoritma yang sudah dikemban
 
 Dimodelkan sebuah simulasi mengikuti komponen dan organisasi simulasi _event_ diskret [@kelton2015] dengan sedikit penyesuaian. Dalam simulasi ini, secara kontinu DPU menggunakan sistem perencanaan yang sudah dikembangkan: mengimplementasikan pengiriman uang rupiah sesuai rencana yang dibuat, memperbarui tingkat persediaan setelah pengiriman dan pemenuhan kebutuhan uang rupiah sebuah periode, dan mengulang dari awal untuk periode yang baru. Komponen-komponen simulasi _event_ diskret, penjelasan singkat tiap komponennya, dan manifestasinya dalam operasionalisasi distribusi uang rupiah Bank Indonesia dituliskan dalam `Tabel xx`.
 
-_Entities_: DPU (pengambil keputusan sentral), Khazanah, Trayek, dan Masyarakat (representasi permintaan eksternal)
+_Entities_: 
+- desc: Entitas adalah hal-hal dalam simulasi yang mengada, mengalami perubahan, dipengaruhi dan memengaruhi entitas lain, serta mengubah sistem itu sendiri.
+- manifest:
+    - DPU (pengambil keputusan sentral), 
+    - Khazanah, 
+    - Masyarakat (representasi permintaan eksternal)
 
-_Attributes_: {
-    DPU -> {
-        estimasi kebutuhan uang, model perencanaan, _optimality gap_, panjang horizon perencanaan
-    },
-    Khazanah -> {
-       tingkat persediaan,
-       kapasitas,
-       lokasi,
-    },
-    Trayek -> {
-        asal,
-        tujuan,
-        moda
-    }
-    Masyarakat -> {
-        realisasi kebutuhan uang
-    }
-}
+_Attributes_: 
+- desc: karakteristik umum tiap-tiap entitas yang nilainya terikat pada entitas spesifik. Beberapa objek dari entitas yang sama dapat memiliki nilai atribut yang berbeda.
+- manifest
+    - DPU (_planner_):
+        - estimasi kebutuhan uang, 
+        - model perencanaan, 
+        - _optimality gap_, 
+        - panjang horizon perencanaan
+        - trayek pengiriman untuk perencanaan
+    - Khazanah:
+        - tingkat persediaan, 
+        - kapasitas, 
+        - lokasi
+    - Masyarakat:
+        - realisasi kebutuhan uang
 
-_Queues_ : antrean pengiriman yang harus dilakukan oleh tiap khazanah menggunakan trayek tertentu
-
-_Accumulators_ : pengiriman tereksekusi sepanjang waktu, tingkat persediaan sepanjang waktu, pemenuhan kebutuhan uang sepanjang waktu
+_Accumulators_ : 
+- desc: Hal-hal yang dicatat oleh simulasi selama berprogres.
+- manifest: 
+    - Pengiriman tereksekusi sepanjang waktu, 
+    - Tingkat persediaan sepanjang waktu, 
+    - Pemenuhan kebutuhan uang sepanjang waktu
 
 _Events_ : 
-Plan: 
-DPU sebagai pengambil keputusan membuat susunan pengiriman paling optimal dengan menyelesaikan model perencanaan hingga _optimality gap_ yang ditetapkan menggunakan estimasi kebuthan uang untuk panjang horizon perencanaan serta atribut tiap-tiap khazanah dan trayek. Setelah itu, rencana optimal ditugaskan ke antrean pengiriman yang harus dilakukan tiap-tiap khazanah.
+- desc: sesuatu yang terjadi pada entitas tiap pergerakan waktu yang dapat mengubah atribut, variabel, atau akumulator sistem.
+- manifest: secara umum, tiap periode waktu entitas DPU muncul, menghasilkan rencana, dan memengaruhi atribut tingkat persediaan khazanah, dan entitas hilang. Dengan keluarnya entitas DPU, entitas masyarakat muncul dan memengaruhi tingkat persediaan khazanah.
+    - Plan: DPU sebagai pengambil keputusan membuat susunan pengiriman paling optimal dengan menyelesaikan model perencanaan hingga _optimality gap_ yang ditetapkan menggunakan trayek pengirimna tersedia, estimasi kebuthan uang untuk panjang horizon perencanaan, serta atribut tiap-tiap khazanah. Setelah itu, rencana optimal ditugaskan ke tiap-tiap khazanah. 
+    - Transport: Pengiriman yang ditugaskan DPU dieksekusi oleh tiap khazanah. Untuk tiap khazanah, dihitung pengurangan dan penambahan stok yang terjadi dengan menjumlahkan uang tiap pecahan yang keluar dari sebuah khazanah dan masuk ke sebuah khazanah menurut pengiriman yang dilakukan. Atribut tingkat persediaan tiap khazanah diperbarui, pengiriman tereksekusi dicatat.
+    - Fulfill: Masyarakat merealisasikan kebutuhan uang pada entitas khazanah dan khazanah memenuhi seturut dengan nilai atribut tingkat persediaan masing-masing serta kapasitas khazanah. Jika terdapat permintaan aliran keluar, namun stok tidak cukup, khazanah mengeluarkan sesuai jumlah yang dimiliki. Keputusan ketika ada aliran masuk dibahas di bagian-bagian berikutnya. Pemenuhan kebutuhan yang terjadi dicatat, atribut tingkat persediaan diperbarui dan dicatat.
 
-Transport: 
-Untuk tiap khazanah, dihitung pengurangan dan penambahan stok yang terjadi dengan menjumlahkan uang tiap pecahan yang keluar dari sebuah khazanah dan masuk ke sebuah khazanah. Atribut tingkat persediaan tiap khazanah diperbarui, pengiriman tereksekusi dicatat.
+_Simulaton Clock_: 
+- desc: Variabel yang menandakan pergerakan waktu di simulasi. Sebuah jam simulasi mempunyai _timing routine_ yang menghubungkan waktu dengan _event_ yang seharusnya terjadi.
+- manifest: Jam simulasi bergerak maju satu langkah ketika siklus _Plan_, _Transport_, dan _Fulfill_ selesai dilakukan. Terminasi simulasi didasarkan pada masukan analis setelah berapa langkah simulasi berjalan.
 
-Fulfill: 
-Masyarakat merealisasi kebutuhan uang pada entitas khazanah dan khazanah memenuhi seturut dengan nilai atribut tingkat persediaan masing-masing serta kapasitas khazanah. Jika terdapat permintaan aliran keluar, namun stok tidak cukup, khazanah mengeluarkan sesuai jumlah yang dimiliki. Pemenuhan kebutuhan yang terjadi dicatat, atribut tingkat persediaan diperbarui dan dicatat.
+Pada dasarnya, semua pengujian yang dilakukan pada penelitian ini merupakan pelaksanaan simulasi dengan berbagai konfigurasi pemunculan entitas DPU. Atribut-atribut entitas DPU sebagai _planner_ dimodifikasi secara sistematis dan dilihat efeknya terhadap beberapa ukuran performa masing-masing pengujian.
 
-_Simulaton Clock_: Jam simulasi bergerak maju satu langkah ketika siklus _Plan_, _Transport_, dan _Fulfill_ selesai dilakukan. Terminasi simulasi didasarkan pada masukan analis setelah berapa langkah simulasi berjalan.
-
-
+Pada semua pengujian, digunakan modifikasi model standar pada bagian 4.x.x di atas. Untuk mengakomodasi kemungkinan tidak cukupnya tingkat persediaan untuk pemenuhan kebutuhan, pembatas pemenuhan kebutuhan yang bersifat memaksa dengan tanda sama dengan (=) diubah menjadi sebuah _soft constraint_ sehingga permintaan masyarakat dapat tidak dipenuhi sepenuhnya, namun tetap diminimasi kegagalannya. Persamaan `xx` ditransformasikan menjadi sebuah komponen baru dalam fungsi objektif, yaitu selisih aliran masuk dan keluar yang disanggupi sebuah khazanah dengan permintaan eksternal saat itu, dikuadratkan. Fungsi objektif penalisasi aliran permintaan didefinisikan sebagai berikut: 
 
 
+$$
+\text{min. } \displaystyle \text{obj}(\textbf{x},\textbf{y}) = \sum_{a \in A} \bigg[ var_{a} \cdot \sum_{p \in P} x_{a}^{p} + fix_a \cdot dist_a \cdot y_{a} \bigg] + \sum_{n \in N_{plan}, p \in P} \bigg[ \sum_{a \in \text{IN}(n)} x_{a}^{p} - \sum_{a \in \text{OUT}(n)} x_{a}^{p} - d_{n}^{p} \bigg] ^ 2
+$$
 
+
+Persamaan syalala
 
 ### Validasi Model
 
