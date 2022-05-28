@@ -240,9 +240,12 @@ $$
 $$
 
 
-Pada dasarnya, semua pengujian yang dilakukan pada penelitian ini merupakan pelaksanaan simulasi dengan berbagai konfigurasi pemunculan entitas DPU. Atribut-atribut entitas DPU sebagai _planner_ dimodifikasi secara sistematis dan dilihat efeknya terhadap beberapa ukuran performa terpilih di masing-masing pengujian.
+Pada dasarnya, semua pengujian yang dilakukan pada penelitian ini merupakan pelaksanaan simulasi dengan berbagai konfigurasi pemunculan entitas DPU dan pemunculan entitas Masyarakat. Atribut-atribut entitas DPU sebagai _planner_ serta Masyarakat sebagai sumber ketidakpastian dimodifikasi secara sistematis dan dilihat efeknya terhadap beberapa ukuran performa terpilih di masing-masing pengujian.
 
 ### Validasi Model
+
+
+
 
 ### Analisis Sensitivitas
 
