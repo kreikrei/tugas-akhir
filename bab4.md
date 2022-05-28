@@ -274,6 +274,9 @@ $$
 5. Parameter _optimality gap_ sebesar 0.2
 6. Beberapa horizon perencanaan $H$ yang mempertimbangkan 1 periode ke depan sampai mempertimbangkan 10 periode ke depan
 
+#### Hasil
+
+asdf
 
 ### Analisis Sensitivitas
 
@@ -300,13 +303,22 @@ Terdapat 16 simulasi yang merupakan hasil penyimpangan biaya Rp1.000 dan -Rp1.00
 5. Parameter _optimality gap_ sebesar 0.2
 6. Beberapa horizon perencanaan $H$ yang mempertimbangkan 1 periode ke depan sampai mempertimbangkan 3 periode ke depan
 
+
+#### Hasil
+
+asdf
+
 ### Analisis Struktur Jaringan
 
-trayek Bank Indonesia aktual (2019) dan trayek usulan. perbandingan biaya
+Analisis struktur jaringan membandingkan dua kumpulan trayek, yaitu trayek aktual distribusi uang rupiah Bank Indonesia dengan trayek usulan yang terdiri dari seluruh trayek yang dapat digunakan oleh Bank Indonesia.
 
 ### Analisis Horizon Perencanaan
 
+Analisis horizon perencanaan menguji bagaimana perilaku model berubah seiring bertambah panjangnya horizon perencanaan.
+
 ### Analisis Akurasi Ramalan
+
+
 
 ### Implikasi Manajerial
 
