@@ -71,6 +71,6 @@ Setelah diimplementasi, algoritma diverifikasi hasilnya. Verifikasi dilakukan de
 
 Solusi dari permasalahan operasionalisasi distribusi ini merupakan bagian dari sebuah rangkaian aktivitas yang lebih besar seperti yang diimplikasikan pada [[bab 1]] (1.2) dalam Gambar xx. Karena komponennya yang banyak dan saling memengaruhi secara nonlinear serta keberadaan ketidakpastian dalam sistem, metode terbaik untuk menguji performa model yang sudah dikembangkan adalah simulasi [@kelton2015] pg. 5. Melalui metode ini, dapat dilakukan eksperimen terhadap input sistem dan parameter model perencanaan. Pada tahap ini dilakukan validasi terhadap model di mana diperiksa kedekatan model dengan sistem nyata. Beberapa penyesuaian terhadap model nantinya akan perlu dilakukan untuk menyelesaikan keseluruhan pengujian dan analisis. Terakhir, pada tahap ini ditelusuri implikasi manajerial penggunaan model di dalam sistem logistik Bank Indonesia sebagai primer implementasi keputusan. Struktur tahap ini beserta hasil dan pembahasannya dijabarkan pada [[bab 4]] (4.4).
 
-### Pengumpulan Data
+### Pengolahan Data
 
-Pengumpulan data dan pengolahan -- data merupakan sebuah komponen dalam pendekatan penelitian operasional yang sifatnya paralel dengan seluruh tahap. Setiap tahapan bisa jadi membutuhkan data yang berbeda dan proses pengolahan yang berbeda. Seluruh kegiatan pengumpulan data akan dirangkum pada [[bab 4]] (4.6).
+Pengumpulan data dan pengolahan data merupakan sebuah komponen krusial dalam pendekatan penelitian operasional yang sifatnya paralel dengan seluruh tahap. Setiap tahapan bisa jadi membutuhkan data yang berbeda dan proses pengolahan yang berbeda. Demi kejelasan penulisan, seluruh kegiatan pengumpulan data akan dirangkum pada [[bab 4]] (4.6).
