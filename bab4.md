@@ -91,13 +91,13 @@ Dengan _influence diagram_, hasil ekstraksi pemahaman masalah yang dilakukan pen
 Ditemukan bahwa permasalahan yang diselesaikan menyerupai _fixed-charge minimum cost multicommodity network flow problem_. Permasalahan ini berurusan dengan mengalirkan lebih dari satu komoditas dari sumber-sumbernya ke tujuan-tujuannya melewati busur-busur yang tidak hanya mengenakan biaya untuk jumlah muatan yang lewat, tetapi pada penggunaan tiap-tiap busur juga. Permasalahan ini termasuk permasalahan jaringan yang bersifat kombinatorial dan diskret.
 
 ### Penyusunan Model
-Graf terarah jaringan dasar $D = (V,E)$ terdiri dari kumpulan khazanah $V$ dihubungkan oleh kumpulan trayek $E = \{(s,t,m) : (s,t) \in V^2, m \in M\}$ di mana $M$ adalah kumpulan moda yang tersedia bagi DPU. Tiap moda memiliki parameter biaya tetap $fix_m$, biaya variabel $var_m$, dan kapasitas kontainer moda $Q_m$ masing-masing. Untuk tiap khazanah $i \in V$, diketahui besar kapasitas penyimpanan $CAP_i$ serta lokasi masing-masing khazanah sehingga dapat dikalkulasi jarak antarkhazanah $dist(s,t)$ sebuah trayek $e \in E$. Permasalahan ini didefinisikan di atas sebuah multigraf terarah $G(T) = (N,A)$ yang merupakan hasil ekspansi jaringan dasar $D$ sepanjang $T$ periode perencanaan. #base-graph-digraph
+Graf terarah jaringan dasar $D = (V,E)$ terdiri dari kumpulan khazanah $V$ dihubungkan oleh kumpulan trayek $E = \{(i,j,m) : (i,j) \in V^2, m \in M\}$ di mana $M$ adalah kumpulan moda yang tersedia bagi DPU. Tiap moda memiliki parameter biaya tetap $fix_m$, biaya variabel $var_m$, dan kapasitas kontainer moda $Q_m$ masing-masing. Untuk tiap khazanah $i \in V$, diketahui besar kapasitas penyimpanan $CAP_i$ serta lokasi masing-masing khazanah sehingga dapat dikalkulasi jarak antarkhazanah $dist(i,j)$ sebuah trayek $e \in E$. Permasalahan ini didefinisikan di atas sebuah multigraf terarah $G(H) = (N,A)$ yang merupakan hasil ekspansi jaringan dasar $D$ sepanjang $H$ periode perencanaan yang biasa disebut horizon perencanaan. #base-graph-digraph
 
-Dalam multigraf ini, $N$ merepresentasikan seluruh khazanah di tiap periode perencanaan yang terbagi menjadi tiga kelompok $N = N_{init} \cup N_{plan} \cup N_{sink}$ di mana $N_{init} = \{(i,0):i\in V\}$ merepresentasikan khazanah di saat ini atau saat perencanaan sedang dilakukan, $N_{plan} = \{(i,t) : i \in V, t\in [1, \dots ,T]\}$ merepresentasikan khazanah di sepanjang periode perencanaan, dan $N_{sink} = \{(i,T+1): i \in V\}$ untuk merepresentasikan simpul _dummy_ tempat aliran komoditas berakhir. #node-def
+Dalam multigraf ini, $N$ merepresentasikan seluruh khazanah di tiap periode perencanaan yang terbagi menjadi tiga kelompok $N = N_{init} \cup N_{plan} \cup N_{sink}$ di mana $N_{init} = \{(i,0):i\in V\}$ merepresentasikan khazanah di saat ini atau saat perencanaan sedang dilakukan, $N_{plan} = \{(i,t) : i \in V, t\in [1, \dots ,H]\}$ merepresentasikan khazanah di sepanjang periode perencanaan, dan $N_{sink} = \{(i,H+1): i \in V\}$ untuk merepresentasikan simpul _dummy_ tempat aliran komoditas berakhir. #node-def
 
-Busur-busur yang menghubungkan elemen-elemen dalam $N$ direpresentasikan oleh $A = A_{inv} \cup A_{trans}$ yang terdiri dari busur inventori $A_{inv}$ dan busur transportasi $A_{trans}$. Busur-busur inventori menghubungkan seluruh khazanah di setiap periode dari awal periode hingga periode _dummy_ $A_{inv} = \{((i,t),(i,t+1)) : i \in V, \, t \in [0, \dots, T]\}$ dan busur-busur transportasi menghubungkan khazanah berdasarkan trayek jaringan dasar $E$ dengan waktu transit sebesar satu (1) unit periode $A_{trans} = \{((i,t),(j,t+1)) : i,j \in E, \, t \in [0,\dots,T-1] \}$. Tiap-tiap busur (_arc_) $a \in A$ baik inventori atau transportasi memiliki sebuah nilai kapasitas $Q_a$, komponen biaya tetap $fix_a$, komponen biaya variabel $var_a$, serta jarak lintasan trayek $dist_a$. Selain itu, terdapat fungsi $\text{IN}(n)$ dan $\text{OUT}(n)$ untuk menentukan busur mana saja yang masuk dan keluar tiap khazanah tiap periode $n \in N$. #arc-def
+Busur-busur yang menghubungkan elemen-elemen dalam $N$ direpresentasikan oleh $A = A_{inv} \cup A_{trans}$ yang terdiri dari busur inventori $A_{inv}$ dan busur transportasi $A_{trans}$. Busur-busur inventori menghubungkan seluruh khazanah di setiap periode dari awal periode hingga periode _dummy_ $A_{inv} = \{((i,t),(i,t+1)) : i \in V, \, t \in [0, \dots, H]\}$ dan busur-busur transportasi menghubungkan khazanah berdasarkan trayek jaringan dasar $E$ dengan waktu transit sebesar satu (1) unit periode $A_{trans} = \{((i,t),(j,t+1)) : i,j \in E, \, t \in [0,\dots,H-1] \}$. Tiap-tiap busur (_arc_) $a \in A$ baik inventori atau transportasi memiliki sebuah nilai kapasitas $Q_a$, komponen biaya tetap $fix_a$, komponen biaya variabel $var_a$, serta jarak lintasan trayek $dist_a$. Selain itu, terdapat fungsi $\text{IN}(n)$ dan $\text{OUT}(n)$ untuk menentukan busur mana saja yang masuk dan keluar tiap khazanah tiap periode $n \in N$. #arc-def
 
-Untuk busur transportasi $a \in A_{trans}$, nilai kapasitas, komponen biaya, serta jarak didapatkan dengan mengambil bagian dari busur yang merupakan trayek dasar $e(a) = (s,t,m)$ dan dapat digunakan untuk menentukan kapasitas dan biaya dari moda terkait serta menentukan jarak dari khazanah terkait. Untuk busur inventori $a \in A_{inv}$, nilai kapasitas didapat dari nilai kapasitas khazanah busur terkait, komponen biaya tetap dan biaya variabel dapat ditentukan untuk tiap khazanah, tapi pada permasalahan kali ini ditetapkan sebesar nol baik tetap, maupun variabel, terakhir jarak lintasan trayek bernilai nol karena trayek hanya berpindah periode waktu dan bukan lokasi. #arc-params
+Untuk busur transportasi $a \in A_{trans}$, nilai kapasitas, komponen biaya, serta jarak didapatkan dengan mengambil bagian dari busur yang merupakan trayek dasar $e(a) = (i,j,m)$ dan dapat digunakan untuk menentukan kapasitas dan biaya dari moda terkait serta menentukan jarak dari khazanah terkait. Untuk busur inventori $a \in A_{inv}$, nilai kapasitas didapat dari nilai kapasitas khazanah busur terkait, komponen biaya tetap dan biaya variabel dapat ditentukan untuk tiap khazanah, tapi pada permasalahan kali ini ditetapkan sebesar nol baik tetap, maupun variabel, terakhir jarak lintasan trayek bernilai nol karena trayek hanya berpindah periode waktu dan bukan lokasi. #arc-params
 
 Jaringan ini akan memenuhi kebutuhan pecahan uang rupiah $P$ di mana untuk kasus ini $|P| = 12$. Kebutuhan ini terdefinisi di setiap simpul perencanaan $n \in N_{plan}$ untuk setiap pecahan $p \in P$ dan direpresentasikan oleh $d_{n}^{p}$. Nilai estimasi kebutuhan uang tiap khazanah tiap periode tiap pecahan $d_{n}^{p}$ bernilai positif melambangkan _outflow_ yang harus dipenuhi khazanah bersangkutan kepada masyarakat, sedangkan nilai $d_{n}^{p}$ negatif menyatakan _inflow_ di mana terjadi pengembalian uang ke khazanah bersangkutan. Pada tiap khazanah di periode saat ini, terdapat stok persediaan uang rupiah untuk tiap pecahan $stok_{n}^{p}$ yang selalu bernilai nonnegatif. #demand-stock-def
 
@@ -344,7 +344,23 @@ Biaya total layanan jaringan usulan yang mempertimbangkan lebih banyak trayek ti
 
 ### Analisis Horizon Perencanaan
 
+Hipotesis awal pengujian ini adalah memperpanjang horizon perencanaan dapat menurunkan total biaya layanan operasionalisasi distribusi. Untuk menguji hal ini, dibandingkan beberapa simulasi dengan:
 
+1. Menggunakan tiga (3) nilai _optimality gap_ yang berbeda, yaitu 8%, 20%, dan 59%. Tidak digunakan nilai 0% karena waktu komputasi yang dibutuhkan dengan perangkat komputasi peneliti tidak fisibel.
+2. Struktur jaringan komplet mempertimbangkan semua trayek yang dapat digunakan
+3. Estimasi kebutuhan uang tahun 2019
+4. Realisasi kebutuhan uang yang sama dengan ramalan
+5. Panjang horizon perencanaan $H = 1$ hingga $H=6$
+
+Dari tiap simulasi, disimpan nilai biaya total layanan serta _lost sales_ tiap simulasi dan disajikan pada `Gambar xx`. Dari plot yang dibuat, dapat dilihat bahwa penurunan total biaya yang didapat dari memperpanjang horizon perencanaan bersifat: tidak monoton dan semakin kecil efeknya. Tidak monoton berarti ada beberapa horizon perencanaan yang malah meningkatkan biaya total layanan dari penggunaan horizon perencanaan sebelumnya. Semakin kecil efeknya dilihat dari persen pengurangan biaya tiap _optimality gap_ – ditemukan bahwa:
+
+- Dari $H=1$ hingga $H=6$ pada $GAP = 59\%$ terjadi penurunan biaya total layanan sebesar 16%
+- Dari $H=1$ hingga $H=6$ pada $GAP = 20\%$ terjadi penurunan biaya total layanan sebesar 28.2%
+- Dari $H=1$ hingga $H=6$ pada $GAP = 8\%$ terjadi penurunan biaya total layanan sebesar 39.2%
+
+![horizonGAPtotalcost+lost_sales.svg](../../.julia/dev/DispatchOps/out/horizonGAPtotalcost+lost_sales.svg)
+
+Pada nilai _optimality gap_ $GAP = 8\%$, memperpanjang horizon perencanaan dengan jelas memberikan penghematan biaya, namun hinga periode perencanaan $H = 3$ _lost sales_ meningkat. Informasi terkait _lost sales_ penting untuk menentukan apakah penurunan biaya total ini terjadi dari pengabaian pemenuhan kebutuhan uang masyarakat. Dari informasi ini pula dapat ditentukan panjang horizon perencanaan minimal dari sistem – yang didapat dengan mencari pada horizon perencanaan berapa gradien biaya total terhadap _lost sales_ berubah tanda melewati nol pertama kali – dan didapatkan horizon perencanaan minimal adalah pada $H = 4$.   
 
 ### Analisis Akurasi Ramalan
 
@@ -352,7 +368,7 @@ Biaya total layanan jaringan usulan yang mempertimbangkan lebih banyak trayek ti
 
 ### Implikasi Manajerial
 
-## Pengumpulan Data
+## Pengolahan Data
 
 Pada bagian ini, disajikan sumber data yang dapat diakses peneliti, kebutuhan data untuk model, dan proses transformasi dari sumber-sumber yang ada.
 Sumber Data:
