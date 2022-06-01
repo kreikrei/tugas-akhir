@@ -155,7 +155,7 @@ Dari penjelasan-penjelasan sebelumnya, diketahui bahwa permasalahan yang dihadap
 
 ![jump-logo.svg](./jump-logo.svg "jump-logo.svg")
 
-Algoritma diimplementasikan dalam bahasa pemrograman Julia dengan menggunakan paket JuMP (Julia Mathematical Programming) untuk abstraksi sintaks serta dengan menggunakan Gurobi sebagai _solver_. Proses pencarian solusi dilakukan di perangkat komputer dengan prosesor Intel dengan 8 inti serta RAM sebesar 16GB. Di dalam sebuah _optimizer_ Gurobi, terdapat beberapa komponen [@gurobi2021] :
+Algoritma diimplementasikan dalam bahasa pemrograman Julia dengan menggunakan paket JuMP (Julia Mathematical Programming) untuk abstraksi sintaks [@dunning2017] serta dengan menggunakan Gurobi sebagai _solver_. Proses pencarian solusi dilakukan di perangkat komputer dengan prosesor Intel dengan 8 inti serta RAM sebesar 16GB. Di dalam sebuah _optimizer_ Gurobi, terdapat beberapa komponen [@gurobi2021] :
 
 - _Presolve_ yang merapatkan formulasi dan mengurangi ukuran permasalahan dengan berbagai teknik.
 - _Continuous Relaxation Solve_ yang menyelesaikan subproblem-subproblem relaksasi yang dihasilkan sepanjang proses optimasi. Digunakan dua teknik, yaitu _simplex_ dan _barrier_.
@@ -171,6 +171,9 @@ Untuk dapat menjadi algoritma yang berfungsi, diperlukan struktur data yang efis
 ![StrukturData.drawio.png](./StrukturData.drawio.png)
 
 
+<!-- entitas permintaan dijadiin estimasi kebutuhan kali ya -->
+<!-- terus pastiin kontinuitas dari struktur data yg ini, atribut di desain simulasi, sama klasifikasi kebutuhan data di pengolahan data -->
+
 Terdapat enam entitas data, yaitu khazanah, trayek, stok, permintaan, periode, dan moda. Khazanah merepresentasikan seluruh khzanah yang beroperasi dan menjadi bagian dalam perencanaan. Tiap entitas khazanah memiliki beberapa entitas permintaan – yang tiap entitasnya dimiliki sebuah periode. Tiap entitas khazanah memiliki sebuah stok yang merepresentasikan tingkat persediaan aktual. Tiap khazanah dapat menjadi asal dari beberapa trayek dan dapa menjadi tujuan beberapa trayek di mana tiap trayek dapat menggunakan sebuah moda.
 
 Data ini nantinya dikonversi menjadi multigraf jaringan terekspansi. Pada tiap simpul (_node_) terdapat atribut terkait lokasi untuk menghitung jarak trayek. Tiap busur (_arc_) memiliki atribut biaya dan kapasitas sesuai dengan jenis busur masing-masing. Multigraf ini digunakan untuk mengembangkan model pemrograman integer campuran yang kemudian dimasukkan ke dalam _solver_ Gurobi untuk dicari solusi optimalnya.
@@ -183,9 +186,9 @@ Dilanjutkan proses verifikasi model melalui verifikasi algoritma. Diberikan bebe
 
 Terdapat empat kasus uji untuk memverifikasi algoritma. Digunakan satu periode perencanaan dan satu moda transportasi dengan kapasitas 250 peti. Permintaan atau estimasi kebutuhan didefinisikan untuk satu jenis pecahan. Pada kasus pertama, titik pusat memiliki stok dan tidak ada titik yang membutuhkan uang. Solusi optimal adalah tidak ada pengantaran sama sekali dan terdapat inventori yang berpindah pada titik pusat seperti pada `Gambar xx - a`. Pada kasus kedua, titik pusat memiliki stok sebesar seribu (1.000) peti dan setiap titik lain membutuhkan tepat 250 peti. Solusi optimal adalah titik pusat melakukan pengiriman sebesar 250 peti ke semua titik seperti pada `Gambar xx - b`. Pada kasus ketiga, titik pusat yang membutuhkan seribu (1.000) peti dan setiap titik memiliki persediaan sebesar 250 peti. Solusi optimal adalah konsolidasi sehingga semua titik mengirimkan persediaan masing-masing ke pusat seperti pada `Gambar xx - c`. Terakhir, didemonstrasikan bahwa ketika terdapat titik yang lebih dekat (murah) untuk memenuhi kebutuhan sebuah titik, solusi optimal adalah melakukan pengiriman dari titik terdekat yang dapat melayani seperti pada `Gambar xx - c`. Melalui verifikasi sederhana ini, ditunjukkan bahwa model dan algoritma berperilaku sesuai rancangan konseptualnya.
 
-## Pengujian, Analisis, dan Perbaikan Model
+## Pengujian dan Analisis
 
-Pada bagian ini dilakukan pengujian pada model dan algoritma yang sudah dikembangkan untuk memecahkan permasalahan operasionalisasi distribusi. Akan disajikan desain simulasi yang menjadi instrumen utama proses pengujian dan analisis. Kemudian diuraikan seluruh analisis sebelum ditutup dengan implikasi manajerial dari model dan algoritma yang sudah dikembangkan.
+Pada bagian ini dilakukan pengujian pada model dan algoritma yang sudah dikembangkan untuk memecahkan permasalahan operasionalisasi distribusi. Akan disajikan kerangka pengujian serta desain simulasi yang menjadi instrumen utama proses pengujian dan analisis. Kemudian, diuraikan seluruh analisis sebelum ditutup dengan implikasi manajerial dari model dan algoritma yang sudah dikembangkan.
 
 ### Desain Simulasi
 
@@ -240,22 +243,30 @@ $$
 $$
 
 
-Pada dasarnya, semua pengujian yang dilakukan pada penelitian ini merupakan pelaksanaan simulasi dengan berbagai konfigurasi pemunculan entitas DPU dan pemunculan entitas Masyarakat. Atribut-atribut entitas DPU sebagai _planner_ serta Masyarakat sebagai sumber ketidakpastian dimodifikasi secara sistematis dan dilihat efeknya terhadap beberapa ukuran performa terpilih di masing-masing pengujian.
+### Kerangka Pengujian
+
+Pada dasarnya, semua pengujian yang dilakukan pada penelitian ini merupakan pelaksanaan simulasi dengan berbagai konfigurasi pemunculan entitas DPU dan pemunculan entitas Masyarakat. Atribut-atribut entitas DPU sebagai _planner_ serta Masyarakat sebagai sumber ketidakpastian dimodifikasi secara sistematis dan dilihat efeknya terhadap beberapa ukuran performa terpilih di masing-masing pengujian. Terdapat beberapa pertanyaan yang tiap poinnya dijawab dalam setiap pengujian, yaitu:
+
+1. Apakah model dapat mengemulasi perilaku sistem aktual hingga tingkat tertentu?
+2. Apakah perubahan parameter biaya memengaruhi karakteristik solusi yang dihasilkan?
+3. Bagaimana pengaruh struktur jaringan terhadap solusi rencana distribusi?
+4. Bagaimana pengaruh panjang horizon perencanaan terhadap solusi rencana distribusi?
+5. Bagaimana pengaruh akurasi estimasi kebutuhan uang terhadap solusi rencana distribusi?
 
 ### Validasi Model
 
-Performa operasionalisasi distribusi yang sudah dikembangkan dibandingkan dengan performa operasionalisasi distribusi uang rupiah Bank Indonesia saat ini.
+Model dan algoritma yang dikembangkan dieksplorasi ruang parameternya dan ditemukan dapat mengemulasikan perilaku sistem aktual dalam taraf jumlah pengiriman dan rupiah terdistribusi. Digunakan jumlah pengiriman dan rupiah terdistribusi tahun 2019 yang didapat dari Laporan Pelaksanaan Tugas dan Wewenang Bank Indonesia tiap triwulan di tahun 2019. Perbandingan dilakukan dalam skala magnitudo solusi atau nilai pangkat sepuluh (10) dari angka yang diteliti. Nilai magnitudo dari sebuah angka $N$ adalah pembulatan ke bilangan bulat terdekat dari logaritma basis sepuluh (10) bilangan tersebut (Persamaan `xx`).
 
-#### Ukuran Performa
 
-Perbandingan dilakukan terhadap jumlah pengiriman pada tahun 2019 yang didapat dari Laporan Kerja Syalala di mana angka berkorespondensi dengan jumlah trayek yang digunakan dalam pengiriman tereksekusi -- terlepas dari jumlah kontainer dan muatan.
+$$
+OM(N) = \text{NearestInteger}(\log N)
+$$
 
-#### Konfigurasi
 
-Validasi dilakukan dengan menggunakan:
-
-1. Struktur jaringan yang merupakan kumpulan trayek aktual distribusi uang rupiah Bank Indonesia
+Pada pengujian ini, digunakan:
+1. Struktur jaringan yang merupakan kumpulan trayek aktual distribusi uang rupiah Bank Indonesia tahun 2019
 2. Model perencanaan yang mengizinkan _capacity overload_ di tiap khazanah untuk mencerminkan kondisi Bank Indonesia saat ini. Digunakan variabel surplus untuk mengindikasikan utilisasi kapasitas berlebih, pembatas `4.x` didefinisikan untuk busur transportasi, dan pembatas kapasitas yang disisipkan surplus dipenalisasi bersamaan dengan variabel surplus itu sendiri. Model ini terdiri dari persamaan xx, persamaan yy, persamaan zz, dan persamaan aa-bb
+
 
 $$
 \text{min } \displaystyle \text{over}(\textbf{x},\textbf{y},\textbf{surp}) = \text{soft}(\textbf{x},\textbf{y}) + \sum_{a \in A_{inv}} \bigg[ \bigg( \sum_{p \in P} x_{a}^{p} - surp_a - Q_{a} \cdot y_{a} \bigg) ^ 2 + (surp_a) ^ 2 \bigg]
@@ -269,20 +280,20 @@ surp_{a} \geq 0 \forall a \in A_{inv}
 $$
 
 
-3. Estimasi kebutuhan uang tahun 2019
-4. Realisasi kebutuhan uang yang sama dengan ramalan
-5. Parameter _optimality gap_ sebesar 0.2
-6. Beberapa horizon perencanaan $H$ yang mempertimbangkan 1 periode ke depan sampai mempertimbangkan 10 periode ke depan
+3. Estimasi Kebutuhan Uang (EKU) tahun 2019
+4. Realisasi kebutuhan uang yang diasumsikan sama dengan estimasi kebutuhan
 
-#### Hasil
+Parameter yang dieksplorasi adalah parameter _optimality gap_ serta panjang horizon perencanaan dari _planner_ operasionalisasi distribusi. Ditemukan pasangan parameter _optimality gap_ sebesar 0.6 dan horizon perencanaan sebesar satu (1) atau dua (2) menghasilkan jumlah pengiriman yang sangat dekat dengan aslinya dengan nilai 200 serta 143 di mana pengiriman tahun 2019 berjumlah 192 pengiriman. Meskipun hasil kedua memiliki selisih yang besar secara agregat, hasil ini terpilih karena memiliki selisih per triwulan terkecil di antara hasil lainnya. Persebaran jumlah pengiriman dan rupiah terdistribusi disajikan pada `Gambar xx`.
 
-asdf
+![jumlah_pengiriman.svg](../../.julia/dev/DispatchOps/out/jumlah_pengiriman.svg)
+
+![jumlah_rupiah_terdistribusi.svg](../../.julia/dev/DispatchOps/out/jumlah_rupiah_terdistribusi.svg)
+
+Beberapa perbedaan signifikan secara lebih granular terlihat pada triwulan pertama dan triwulan kedua di mana hasil model menunjukkan jumlah pengiriman dan rupiah terdistribusi yang secara signifikan lebih tinggi dari pengiriman aktual triwulan pertama dan sebaliknya pada triwulan kedua. Secara agregat, terkait rupiah terdistribusi, terdapat selisih sebesar 38.5 triliun rupiah pada pasangan _optimality gap_ $GAP = 0.6$ dan horizon perencanaan $H = 1$ 56.8 triliun rupiah pada pasangan _optimality gap_ $GAP = 0.6$ dan horizon perencanaan $H = 2$. Selisih ini diduga datang dari ketidaktepatan asumsi realisasi kebutuhan uang di mana diduga bahwa realisasi kebutuhan uang pada tahun 2019 lebih besar dari estimasinya sehingga meningkatkan nilai rupiah yang harus didistribusikan.
 
 ### Analisis Sensitivitas
 
-Analisis sensitivitas memeriksa kestabilan solusi yang dihasilkan model terhadap perubahan. Pada bagian ini, diperiksa senstivitas model terhadap perubahan parameter biaya tetap dan biaya variabel model. Dibuat beberapa simulasi $S = \{S_{1}, S_{2}, \dots, S_{n}\}$ dari _baseline_ $S_{0}$ di mana di setiap simulasi diberikan variansi terhadap parameter biaya tetap dan parameter biaya variabel setiap moda transportasi. Analisis sensitivitas dilakukan untuk beberapa horizon perencanaan $H$.
-
-#### Ukuran Performa
+Analisis sensitivitas memeriksa kestabilan solusi yang dihasilkan model terhadap perubahan. Pada bagian ini, diperiksa senstivitas model terhadap perubahan parameter biaya tetap dan biaya variabel model. Dibuat beberapa simulasi $S = \{S_{1}, S_{2}, \dots, S_{n}\}$ dari _baseline_ $S_{0}$ di mana di setiap simulasi diberikan variansi terhadap parameter biaya tetap dan parameter biaya variabel setiap moda transportasi. Analisis sensitivitas dilakukan untuk beberapa horizon perencanaan $H = \{1,2,3\}$.
 
 Setiap simulasi yang diberikan variansi dalam $S$ akan diperhitungkan kesamaan struktur solusinya dengan _baseline_ $S_{0}$. Struktur solusi di sini diartikan sebagai penggunaan busur transportasi tertentu pada waktu tertentu sehingga struktur solusi yang sama berarti dua simulasi menghasilkan penggunaan trayek yang sama pada waktu yang sama. Ukuran kesamaan yang digunakan adalah ukuran kesamaan Jaccard yang bersifat metrik dan memiliki rentang nilai dari nol (0) sampai satu (1). Untuk pengiriman tereksekusi dua simulasi $Executed(S_{1})$ dan $Executed(S_{2})$ nilai kesamaan Jaccard menghitung seberapa banyak potongan trayek dibanding gabungan keduanya dan didefinisikan sebagai berikut:
 
@@ -292,9 +303,9 @@ Jaccard(S_{1}, S_{2}) = \frac{Executed(S_{1}) \cap Executed(S_{2})}{Executed(S_{
 $$
 
 
-#### Konfigurasi
+Dalam implementasinya terdapat dua tingkat resolusi skala Jaccard. Pada tingkat pertama, dibandingkan tiap pasangan khazanah asal-tujuan, moda transportasi, serta waktu pengiriman sehingga trayek yang sama bila digunakan pada waktu yang berbeda dianggap mengubah solusi. Ukuran ini pada penyajian dinamakan _Fine Jaccard Similarity_. Tingkat resolusi kedua hanya mempertimbangkan pasangan khazanah asal-tujuan dan moda transportasi yang digunakan sehingga perbedaan waktu tidak dianggap mengubah solusi. Ukuran ini dinamakan _Mild Jaccard Similarity_.
 
-Terdapat 16 simulasi yang merupakan hasil penyimpangan biaya Rp1.000 dan -Rp1.000 untuk parameter biaya tetap empat (4) moda transportasi serta parameter biaya variabel empat (4) moda transportasi. Di setiap simulasi, digunakan:
+Dalam setiap simulasi di pengujian ini, digunakan:
 
 1. Struktur jaringan usulan yang mempertimbangkan semua trayek yang terdapat dalam kontrak-kontrak kerja Bank Indonesia
 2. Model perencanaan dengan penalisasi pemenuhan permintaan uang rupiah tanpa _capacity overload_
@@ -303,10 +314,13 @@ Terdapat 16 simulasi yang merupakan hasil penyimpangan biaya Rp1.000 dan -Rp1.00
 5. Parameter _optimality gap_ sebesar 0.2
 6. Beberapa horizon perencanaan $H$ yang mempertimbangkan 1 periode ke depan sampai mempertimbangkan 3 periode ke depan
 
+Terdapat 16 simulasi dalam $S$ yang merupakan hasil penyimpangan biaya -Rp2.000 hingga Rp2.000 untuk parameter biaya tetap empat (4) moda transportasi serta parameter biaya variabel empat (4) moda transportasi. Hasil dari pengujian disajikan pada plot di `Gambar xx` dan `Gambar xx`
 
-#### Hasil
+![MildJaccard.svg](../../.julia/dev/DispatchOps/out/MildJaccard.svg "MildJaccard.svg")
+![FineJaccard.svg](../../.julia/dev/DispatchOps/out/FineJaccard.svg)
 
-asdf
+Dari hasil ini ditemukan bahwa sensitivitas model memiliki beberapa faset. Hal pertama yang terlihat langsung adalah _range_ yang sempit (-Rp2.000 s.d. Rp2.000) dari variansi yang mempertahankan kesamaan 100% – hal ini disebabkan oleh karena parameter biaya moda transportasi merupakan parameter global yang digunakan di setiap trayek sehingga perubahan yang kecil akan menyebabkan perubahan yang masif. Kemudian, penggunaan horizon perencanaan yang lebih panjang membuat model lebih sensitif terhadap parameter biaya. Selain itu, definisi kesamaan itu sendiri merupakan hal penting, pada _Mild Jaccard Similarity_ yang lebih umum, tidak ada variansi, dalam _range_ pengujian, yang menyebabkan perubahan nilai kesamaan lebih rendah dari 70% terlebih pada $H=1$ tidak ada solusi yang nilai kesamaannya lebih rendah dari 80%. Satu pola menarik dapat dilihat pada moda transportasi kereta api di mana penurunan yang terjadi di tiap jenis skala tidak sesignifikan moda lainnya – diduga hal ini disebabkan oleh penggunaan kereta api yang tidak masif – karena bersaing dengan moda angkutan darat truk – sehingga perubahan biayanya tidak menyebabkan banyak perubahan.
+
 
 ### Analisis Struktur Jaringan
 
