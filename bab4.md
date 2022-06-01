@@ -308,27 +308,43 @@ Dalam implementasinya terdapat dua tingkat resolusi skala Jaccard. Pada tingkat 
 Dalam setiap simulasi di pengujian ini, digunakan:
 
 1. Struktur jaringan usulan yang mempertimbangkan semua trayek yang terdapat dalam kontrak-kontrak kerja Bank Indonesia
-2. Model perencanaan dengan penalisasi pemenuhan permintaan uang rupiah tanpa _capacity overload_
+2. Model perencanaan dengan penalisasi pemenuhan permintaan uang rupiah
 3. Estimasi kebutuhan uang tahun 2019
 4. Realisasi kebutuhan uang yang sama dengan ramalan
 5. Parameter _optimality gap_ sebesar 0.2
-6. Beberapa horizon perencanaan $H$ yang mempertimbangkan 1 periode ke depan sampai mempertimbangkan 3 periode ke depan
+6. Beberapa horizon perencanaan $H$ yang mempertimbangkan satu (1) periode ke depan sampai mempertimbangkan tiga (3) periode ke depan
 
-Terdapat 16 simulasi dalam $S$ yang merupakan hasil penyimpangan biaya -Rp2.000 hingga Rp2.000 untuk parameter biaya tetap empat (4) moda transportasi serta parameter biaya variabel empat (4) moda transportasi. Hasil dari pengujian disajikan pada plot di `Gambar xx` dan `Gambar xx`
+Terdapat 16 simulasi dalam $S$ yang merupakan hasil penyimpangan biaya -Rp2.000 hingga Rp2.000 untuk parameter biaya tetap empat (4) moda transportasi serta parameter biaya variabel empat (4) moda transportasi. Hasil dari pengujian disajikan pada plot di `Gambar xx` dan `Gambar xx`.
 
 ![MildJaccard.svg](../../.julia/dev/DispatchOps/out/MildJaccard.svg "MildJaccard.svg")
-![FineJaccard.svg](../../.julia/dev/DispatchOps/out/FineJaccard.svg)
+![FineJaccard.svg](../../.julia/dev/DispatchOps/out/FineJaccard.svg "FineJaccard.svg")
 
 Dari hasil ini ditemukan bahwa sensitivitas model memiliki beberapa faset. Hal pertama yang terlihat langsung adalah _range_ yang sempit (-Rp2.000 s.d. Rp2.000) dari variansi yang mempertahankan kesamaan 100% – hal ini disebabkan oleh karena parameter biaya moda transportasi merupakan parameter global yang digunakan di setiap trayek sehingga perubahan yang kecil akan menyebabkan perubahan yang masif. Kemudian, penggunaan horizon perencanaan yang lebih panjang membuat model lebih sensitif terhadap parameter biaya. Selain itu, definisi kesamaan itu sendiri merupakan hal penting, pada _Mild Jaccard Similarity_ yang lebih umum, tidak ada variansi, dalam _range_ pengujian, yang menyebabkan perubahan nilai kesamaan lebih rendah dari 70% terlebih pada $H=1$ tidak ada solusi yang nilai kesamaannya lebih rendah dari 80%. Satu pola menarik dapat dilihat pada moda transportasi kereta api di mana penurunan yang terjadi di tiap jenis skala tidak sesignifikan moda lainnya – diduga hal ini disebabkan oleh penggunaan kereta api yang tidak masif – karena bersaing dengan moda angkutan darat truk – sehingga perubahan biayanya tidak menyebabkan banyak perubahan.
 
 
 ### Analisis Struktur Jaringan
 
-Analisis struktur jaringan membandingkan dua kumpulan trayek, yaitu trayek aktual distribusi uang rupiah Bank Indonesia dengan trayek usulan yang terdiri dari seluruh trayek yang dapat digunakan oleh Bank Indonesia.
+Dibandingkan penggunaan struktur jaringan aktual Bank Indonesia dengan struktur jaringan komplet yang mempertimbangkan seluruh trayek yang terdapat dalam kontrak kerja Bank Indonesia untuk melihat bagaimana pengaruh penambahan trayek terhadap performa model dengan hipotesis awal dengan mempertimbangkan lebih banyak alternatif, dapat dihasilkan solusi yang lebih baik. Pengujian dilakukan dengan menggunakan:
+
+1. Model perencanaan dengan penalisasi pemenuhan permintaan uang rupiah
+2. Estimasi kebutuhan uang tahun 2019
+3. Realisasi kebutuhan uang yang sama dengan ramalan
+4. Parameter _optimality gap_ sebesar 0.2
+5. Beberapa horizon perencanaan $H$ yang mempertimbangkan satu (1) periode ke depan sampai mempertimbangkan enam (6) periode ke depan
+
+Ditemukan bahwa dengan konfigurasi yang digunakan, ada beberapa horizon perencanaan di mana total biaya layanan jaringan usulan lebih besar dari total biaya layanan jaringan aktual. Pada panjang horizon perencanaan $H=1$ sampai $H=3$ total biaya layanan jaringan aktual lebih kecil dari usulan seperti pada `Gambar xx`. Dalam gambar ini pula disajikan perbandingan aktivitas pengiriman agregat tiap-tiap periode dalam simulasi masing-masing pada titik pertama biaya total layanan jaringan usulan menjadi lebih kecil dari jaringan aktual.
+
+![network_comparison.svg](../../.julia/dev/DispatchOps/out/network_comparison.svg)
+
+Biaya total layanan jaringan usulan yang mempertimbangkan lebih banyak trayek tidak lebih kecil dari jaringan aktual pada $H=1$ sampai $H=3$ diduga disebabkan ukuran permasalahan yang bertambah besar karena penambahan trayek ditambah dengan penggunaan aproksimasi dengan _optimality gap_ menyebabkan hasil suboptimal pencarian solusi dengan jaringan usulan lebih buruk dibanding hasil suboptimal jaringan usulan. Pertambahan trayek berarti ruang solusi yang harus diteliti menjadi lebih besar pendekatan aproksimasi menjadi lebih lemah dibanding pada saat ruang solusi lebih kecil. Sebagai referensi, disajikan penggunaan trayek jaringan usulan pada `Gambar xxa` dan penggunaan trayek jaringan aktual pada `Gambar xxb`.
+
+![usulan_df.svg](../../.julia/dev/DispatchOps/out/usulan_df.svg)
+
+![aktual_df.svg](../../.julia/dev/DispatchOps/out/aktual_df.svg)
 
 ### Analisis Horizon Perencanaan
 
-Analisis horizon perencanaan menguji bagaimana perilaku model berubah seiring bertambah panjangnya horizon perencanaan.
+
 
 ### Analisis Akurasi Ramalan
 
