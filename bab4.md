@@ -382,7 +382,20 @@ Secara umum, dapat ditarik kesimpulan bahwa akurasi ramalan atau jarak antara es
 
 ### Implikasi Manajerial
 
+Dari analisis yang sudah dilakukan serta kerangka kerja yang akan diimplementasi, ditemukan bahwa:
 
+- Pengembangan Estimasi Kebutuhan Uang (EKU) sebagai _forecast_ yang memandu proses operasionalisasi distribusi merupakan proses krusial yang harus disetujui bersama antara DPU dan khazanah-khazanah yang dilayani karena akurasi ramalan merupakan parameter model yang sensitif dan memengaruhi biaya total layanan serta pemenuhan kebutuhan yang merupakan objektif kedua belah pihak
+- Fleksibilitas pemilihan trayek untuk pengantaran merupakan potensi optimasi yang besar. Dalam hal ini, perlu distrukturkan ulang bagaimana kontrak kerja Bank Indonesia dengan penyedia moda transportasi untuk mencapai fleksibilitas penggunaan selagi mempertahankan struktur biaya rendah investasi awal.
+- Selain ketersediaan trayek, bagaimana Bank Indonesia memodelkan biaya menjadi biaya tetap dan variabel merupakan proses yang penting di mana dibutuhkan kolaborasi yang ketat antara DPU dengan penyedia moda transportasi. Komponen biaya variabel dan tetap di model ini pada implementasinya terbagi lagi menjadi biaya-biaya untuk sumber daya manusia yang menjaga pengantaran serta penggunaan moda itu sendiri.
+- Penggunaan horizon perencanaan minimal empat (4) unit periode dalam pola permintaan yang harus dipenuhi Bank Indonesia memberikan potensi penghematan yang besar. Namun, penggunaan horizon perencanaan yang lebih besar akan membutuhkan kekuatan komputasi yang lebih besar pula sehingga diperlukan perangkat komputasi yang mumpuni untuk mengembangkan rencana distribusi yang optimal atau mendekati optimal dan melakukan analisis yang mendalam terhadap rencana yang dibuat.
+
+Penerapan _vendor-managed inventory_ yang menekankan integrasi _inventory_ dan _routing_ memerlukan kolaborasi yang ketat antara pihak pemasok yang dalam kasus ini adalah DPU dengan pihak pelanggan yang dalam kasus ini adalah khazanah-khazanah Bank Indonesia. Dengan kerangka ini, bukan berarti khazanah hanya menunggu pengiriman yang dijadwalkan oleh DPU karena khazanah memiliki pengamatan lapangan yang lebih baik dari DPU untuk menentukan kebutuhan uang. Secara generik, terdapat tiga protokol yang menentukan bagaimana operasionalisasi distribusi dalam kerangka _vendor-managed inventory_ berjalan [@marques2010] dan harus dilakukan oleh DPU dan khazanah-khazanah yang dilayani, yaitu:
+
+1. _Partnering Agreement_ membahas secara umum bagaimana kolaborasi dilakukan. Pada proses ini, ditentukan periodisitas _logistical agreement_, bagaimana _shared forecast_ dibentuk, bagaimana tingkat inventori pelanggan ditetapkan, dan bagaimana pemasok akan memenuhi tingkat inventori tersebut.
+2. _Logistical Agreement_ adalah tempat di mana model yang dikembangkan bekerja. Tahap ini dilakukan secara periodik dan mengutilisasi _shared forecast_ yang dikembangkan dalam proses perencanaan kolaboratif untuk menghasilkan rencana distribusi yang berupa jadwal pengiriman serta muatan yang disediakan.
+3. _Production & Dispatch_ merupakan proses eksekusi di mana pemasok mengeksekusi rencana kerja yang sudah dibuat dalam proses sebelumnya dan mengoordinasikan stok dengan pihak produksi. Selain itu, terjadi penyesuaian-penyesuaian sekiranya terjadi kekurangan persediaan serta di sini pelanggan memperbarui tingkat persediaan dan perkiraan kebutuhan periode-periode berikutnya.
+
+Selain hal-hal yang disebutkan perlu dikembangkan sistem informasi yang dapat memperbarui tingkat persediaan tiap-tiap khazanah yang dilayani DPU secara konsisten, kontinu, dan akurat di mana hal ini menjadi asumsi mendasar untuk pengambilan keputusan dalam konteks model ini.
 
 ## Pengolahan Data
 
