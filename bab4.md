@@ -75,7 +75,7 @@ Untuk menggambarkan hubungan antarelemen permasalahan yang diselesaikan di setia
 
 
 | Kelompok               | Anggota                                                                                                                                                                                                                                                                                                                                             |
-|------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Masukan Terkontrol     | Pasangan khazanah asal-tujuan, moda transportasi yang digunakan, besar muatan uang yang dikirimkan, serta kontainer – atau satuan pengepakan lain – yang dibutuhkan untuk mengenkapsulasi uang yang dikirimkan                                                                                                                                      |
 | Masukan Tak Terkontrol | Kapasitas kontainer moda pengiriman, lokasi khazanah, kapasitas khazanah penyimpanan, komponen biaya tetap dan komponen biaya variabel moda transportasi, estimasi kebutuhan uang rupiah, persediaan di khazanah (dari periode sebelumnya)                                                                                                          |
 | Keluaran               | Biaya total layanan, pemenuhan kebutuhan uang rupiah, utilisasi kontainer moda transportasi, utilisasi penyimpanan khazanah                                                                                                                                                                                                                         |
@@ -136,7 +136,7 @@ Selain kesesuaian dengan struktur permasalahan yang didefinisikan, model juga me
 
 
 | Persamaan       | Sisi Kiri          | Sisi Kanan                                                         |
-|-----------------|--------------------|--------------------------------------------------------------------|
+| --------------- | ------------------ | ------------------------------------------------------------------ |
 | Persamaan `4.1` | Rupiah             | Rupiah/peti * peti + Rupiah/kontainer/km * km * kontainer = Rupiah |
 | Persamaan `4.2` | peti - peti = peti | Peti                                                               |
 | Persamaan `4.3` | peti               | Peti                                                               |
@@ -364,9 +364,25 @@ Pada nilai _optimality gap_ $GAP = 8\%$, memperpanjang horizon perencanaan denga
 
 ### Analisis Akurasi Ramalan
 
+Model yang dikembangkan merupakan model deterministik, sedangkan realita kebutuhan uang rupiah bersifat probabilistik. Untuk mengakomodasi ketidakpastian ini, perlu diperiksa bagaimana model operasionalisasi distribusi dengan inventori dan transportasi terintegrasi berperilaku. Model dieksplorasi dengan menggunakan dua jenis fungsi generator realisasi kebutuhan uang berparameter tunggal, yaitu:
 
+1. Fungsi Statis : $static(forecast, n)$ mengambil estimasi kebutuhan uang $forecast$ tiap khazanah tiap periode dan menambah atau mengurangi nilai peti estimasi tersebut sebesar $n$.
+2. Fungsi Dinamis : $dynamic(forecast,p)$ mengambil estimasi kebutuhan uang $forecast$ tiap khazanah tiap periode dan menambah atau mengurangi nilai peti estimasi tersebut proporsional dengan nilai estimasi kebutuhan di khazanah pada periode tersebut $(p \cdot forecast)$
+
+Pengujian dilakukan dengan membandingkan perubahan biaya total layanan serta _lost sales_ di horizon perencanaan $H=1$ sampai $H=6$ untuk tiap generator realisasi kebutuhan. Hasil dari setiap fungsi dan tiap ukuran disajikan dalam `Gambar xx` , `Gambar xx`, `Gambar xx`, dan `Gambar xx`.
+
+![forecast_lost_sales_dynamic.svg](../../.julia/dev/DispatchOps/out/forecast_lost_sales_dynamic.svg "forecast_lost_sales_dynamic.svg")
+
+![forecast_lost_sales_static.svg](../../.julia/dev/DispatchOps/out/forecast_lost_sales_static.svg "forecast_lost_sales_static.svg")
+
+![forecast_total_cost_dynamic.svg](../../.julia/dev/DispatchOps/out/forecast_total_cost_dynamic.svg "forecast_total_cost_dynamic.svg")
+
+![forecast_total_cost_static.svg](../../.julia/dev/DispatchOps/out/forecast_total_cost_static.svg "forecast_total_cost_static.svg")
+Secara umum, dapat ditarik kesimpulan bahwa akurasi ramalan atau jarak antara estimasi kebutuhan dan realisasi memiliki pengaruh yang berbeda tergantung bagaimana simpangan realisasi terdistribusi. Dalam pengujian ini, realisasi dengan fungsi generator statis menunjukkan kenaikan biaya total layanan serta penurunan _lost sales_ seiring dengan kenaikan simpangan, sedangkan fungsi generator dinamis menunjukkan biaya yang konstan dengan _lost sales_ yang meningkat.
 
 ### Implikasi Manajerial
+
+
 
 ## Pengolahan Data
 
@@ -376,7 +392,7 @@ Sumber Data:
 - Rekapitulasi OIP EKU (2019)
 - Rekapitulasi Biaya Remise KDK (2017)
 - Rekapitulasi Biaya Remise DPU (2017)
-- Rute Kapal Barang Sesuai Kontrak (2015)
+- Rute Kapal Barang Sesuai Kontrak (2015)**
 - Rute Kapal Penumpang Sesuai Kontrak (2015)
 - Rute Kereta Api Sesuai Kontrak (2015)
 - Kapasitas Khazanah Terpasang (2016)
