@@ -498,12 +498,15 @@ Dalam dokumen Rekapitulasi OIP EKU (2019) terdapat tingkat persediaan tiap khaza
 
 ### Realisasi Kebutuhan Uang
 
-demand realization (dalam peti): merupakan dokumen turunan dari demand forecast untuk kebutuhan simulasi
-- struktur data final sama dengan demand forecast: i- t - value
-- dokumen input: demand forecast
-- proses transformasi: dibuat dua jenis fungsi transformasi yang menggunakan parameter tunggal. Fungsi-fungsi dibuat sedemikian rupa sehingga akan menghasilkan jarak Norma L1 atau Norma Manhattan yang sama untuk nilai parameter tunggal yang sama. Hal ini dilakukan untuk memudahkan pengelompokan realisasi permintaan peti uang dalam pengujian-pengujian yang dilakukan.
-- noisify_fixed: penggunaan simpangan yg bersifat konstan pada tiap entri estimasi permintaan. (eksposisi fungsinya)
-- noisify_varied: penggunaan simpangan yang bersifat proporsional terhadap tiap entri estimasi permintaan. (eksposisi fungsinya)
+Tidak terdapat data primer untuk realisasi kebutuhan uang sehingga data disintesis dengan memberikan keacakan terhadap estimasi kebutuhan uang yang sudah didapat. Tiap baris estimasi kebutuhan uang memiliki nilainya masing-masing dan dikembangkan dua fungsi parameter tunggal untuk menghasilkan realisasi kebutuhan yang terkontrol, yaitu fungsi statis (Persamaan `xx`) dan fungsi dinamis (Persamaan `xx`).
+
+$$
+static(d,p) = d + p * random([-1,1])
+$$
+$$
+dinamis(d,p) = d * (1 + p * random([-1,1])
+$$
+Pada fungsi statis parameter dapat berupa nilai integer mana pun di mana nilai estimasi kebutuhan uang ditambah dan dikurangi secara acak berdasarkan nilai parameter pilihan. Pada fungsi dinamis, digunakan parameter yang nilainya antara nol (0) sampai satu (1) di mana parameter ini menjadi pengali dari nilai estimasi kebutuhan dan hasil kali tersebut ditambahkan atau dikurangi secara acak terhadap estimasi kebutuhan.
 
 ### Performa Aktual
 
