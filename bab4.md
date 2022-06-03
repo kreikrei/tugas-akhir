@@ -1,3 +1,8 @@
+---
+keywords:
+  - pengiriman
+---
+
 # HASIL DAN PEMBAHASAN
 
 ID:20220317161039
@@ -177,6 +182,8 @@ Untuk dapat menjadi algoritma yang berfungsi, diperlukan struktur data yang efis
 Terdapat enam entitas data, yaitu khazanah, trayek, stok, permintaan, periode, dan moda. Khazanah merepresentasikan seluruh khzanah yang beroperasi dan menjadi bagian dalam perencanaan. Tiap entitas khazanah memiliki beberapa entitas permintaan – yang tiap entitasnya dimiliki sebuah periode. Tiap entitas khazanah memiliki sebuah stok yang merepresentasikan tingkat persediaan aktual. Tiap khazanah dapat menjadi asal dari beberapa trayek dan dapa menjadi tujuan beberapa trayek di mana tiap trayek dapat menggunakan sebuah moda.
 
 Data ini nantinya dikonversi menjadi multigraf jaringan terekspansi. Pada tiap simpul (_node_) terdapat atribut terkait lokasi untuk menghitung jarak trayek. Tiap busur (_arc_) memiliki atribut biaya dan kapasitas sesuai dengan jenis busur masing-masing. Multigraf ini digunakan untuk mengembangkan model pemrograman integer campuran yang kemudian dimasukkan ke dalam _solver_ Gurobi untuk dicari solusi optimalnya.
+
+Seluruh kode sumber dapat diakses dalam [repositori berikut](https://github.com/kreikrei/DispatchOps.jl).
 
 ### Verifikasi Algortima
 
@@ -399,60 +406,51 @@ Selain hal-hal yang disebutkan perlu dikembangkan sistem informasi yang dapat me
 
 ## Pengolahan Data
 
-Pada bagian ini, disajikan sumber data yang dapat diakses peneliti, kebutuhan data untuk model, dan proses transformasi dari sumber-sumber yang ada.
-Sumber Data:
+Dari proses pemahaman masalah hingga tahap pengujian dan analisis terdapat data-data yang menjadi kebutuhan dan perlu proses pengolahan tersendiri. Pada `Tabel xx` disajikan sumber-sumber data yang tersedia bagi peneliti serta kebutuhan data yang harus dibuat. Pada bagian-bagian berikutnya akan disajikan bagaimana sumber-sumber data tersebut ditransformasi untuk digunakan.
 
-- Rekapitulasi OIP EKU (2019)
-- Rekapitulasi Biaya Remise KDK (2017)
-- Rekapitulasi Biaya Remise DPU (2017)
-- Rute Kapal Barang Sesuai Kontrak (2015)**
-- Rute Kapal Penumpang Sesuai Kontrak (2015)
-- Rute Kereta Api Sesuai Kontrak (2015)
-- Kapasitas Khazanah Terpasang (2016)
-- Lokasi Tiap Khazanah
-- Laporan Pelaksanaan Tugas dan Wewenang Bank Indonesia (2019)
 
-Kebutuhan Data:
+| Sumber Data                                                  | Khazanah                   | Trayek                                                | Estimasi Kebutuhan                          | Persediaan                                                    | Moda                                                  | Realisasi Kebutuhan                                                         | Performa Aktual |
+|--------------------------------------------------------------|----------------------------|-------------------------------------------------------|---------------------------------------------|---------------------------------------------------------------|-------------------------------------------------------|-----------------------------------------------------------------------------|-----------------|
+| Rekapitulasi OIP EKU (2019)                                  | x                          | x                                                     | Sumber tunggal data estimasi kebutuhan uang | Dalam dokumen, terdapat tingkat persediaan awal tiap khazanah | x                                                     | Referensi utama untuk sintesis data realisasi kebutuhan                     | x               |
+| Rekapitulasi Remise KDK (2017)                               | x                          | Digunakan untuk menghasilkan trayek aktual dan usulan | x                                           | x                                                             | Sumber parameter biaya moda serta kapasitas kontainer | x                                                                           | x               |
+| Rekaitulasi Remise DPU (2017)                                | x                          | Digunakan untuk menghasilkan trayek aktual dan usulan | x                                           | x                                                             | Sumber parameter biaya moda serta kapasitas kontainer | x                                                                           | x               |
+| Rute Kapal Barang Sesuai Kontrak (2015)                      | x                          | Digunakan unutk menghasilkan trayek usulan            | x                                           | x                                                             | x                                                     | x                                                                           | x               |
+| Rute Kapal Penumpang Sesuai Kontrak (2015)                   | x                          | Digunakan untuk menghasilkan trayek usulan            | x                                           | x                                                             | x                                                     | x                                                                           | x               |
+| Rute Kereta Api Sesuai Kontrak (2015)                        | x                          | Digunakan untuk menghasilkan trayek usulan            | x                                           | x                                                             | x                                                     | x                                                                           | x               |
+| Kapasitas Khazanah Terpasang (2016)                          | Atribut kapasitas khazanah | x                                                     | x                                           | x                                                             | x                                                     | x                                                                           | x               |
+| Lokasi Tiap Khazanah                                         | Atribut lokasi khazanah    | x                                                     | x                                           | x                                                             | x                                                     | x                                                                           | x               |
+| Laporan Pelaksanaan Tugas dan Wewenang Bank Indonesia (2019) | x                          | x                                                     | x                                           | x                                                             | x                                                     | x                                                                           | v               |
+| Sintesis Data Manual                                         | x                          | x                                                     | x                                           | x                                                             | x                                                     | Dengan referensi estimasi kebutuhan uang, dikembangkan fungsi sintesis data | x               |
 
-- demand forecast (dalam peti)
-  - struktur data final (kolom yang diminta/refer ke eksposisi struktur data): i - t - value
-  - dokumen input: Rekapitulasi OIP EKU (2019)
-  - proses transformasi: konversi rupiah ke lembar tiap pecahan, konversi unit pecahan (lembar/keping) ke peti
-- demand realization (dalam peti): merupakan dokumen turunan dari demand forecast untuk kebutuhan simulasi
-  - struktur data final sama dengan demand forecast: i- t - value
-  - dokumen input: demand forecast
-  - proses transformasi: dibuat dua jenis fungsi transformasi yang menggunakan parameter tunggal. Fungsi-fungsi dibuat sedemikian rupa sehingga akan menghasilkan jarak Norma L1 atau Norma Manhattan yang sama untuk nilai parameter tunggal yang sama. Hal ini dilakukan untuk memudahkan pengelompokan realisasi permintaan peti uang dalam pengujian-pengujian yang dilakukan.
-    - noisify_fixed: penggunaan simpangan yg bersifat konstan pada tiap entri estimasi permintaan. (eksposisi fungsinya)
-    - noisify_varied: penggunaan simpangan yang bersifat proporsional terhadap tiap entri estimasi permintaan. (eksposisi fungsinya)
-- stok awal (dalam peti):
-  - struktur data final (kolom yang diminta/refer ke eksposisi struktur data)
-  - dokumen input: sama dengan demand forecast
-  - proses transformasi: sama dengan demand forecast
-- trayek aktual:
-  - struktur data final: u - v - moda
-  - dokumen input:
-    - Rekapitulasi Biaya Remise KDK (2017)
-    - Rekapitulasi Biaya Remise DPU (2017)
-  - proses transformasi: filter unique
-- trayek usulan
-  - struktur data final: u - v - moda
-  - dokumen input: sama dengan trayek aktual dengan tambahan
-    - sama dengan trayek aktual
-    - Rute Kapal Barang Sesuai Kontrak (2015)
-    - Rute Kapal Penumpang Sesuai Kontrak (2015)
-    - Rute Kereta Api Sesuai Kontrak (2015)
-  - proses transformasi: agregasi semua data
-- parameter biaya moda transportasi:
-  - struktur data final: nama - kapasitas - biaya variabel (/peti) - biaya tetap (/kontainer * km)
-  - dokumen input:
-    - Rekapitulasi Biaya Remise KDK (2017)
-    - Rekapitulasi Biaya Remise DPU (2017)
-  - proses transformasi: regresi linear dari data pengiriman tiap moda, didapatkan hasil sebagai berikut: _penyajian hasil_
+### Khazanah
 
-Regresi dilakukan dengan melakukan minimasi terhadap kuadrat selisih tiap observasi pengiriman dengan prediktor biaya – yang merupakan hasil kali biaya variabel tiap moda dengan peti yang diangkut dijumlahkan dengan biaya tetap dikalikan jarak serta jumlah kontainer yang digunakan – sebagai berikut:
+Data khazanah dibentuk dari dua dokumen, yaitu dokumen Kapasitas Khazanah Terpasang (2016) serta dokumen Lokasi Tiap Khazanah. Dokumen Kapasitas Khazanah Terpasang (2016) didapat dari Bank Indonesia dan merupakan tabel sederhana yang menyatakan berapa peti uang yang dapat ditampung oleh tiap khazanah. Dokumen Lokasi Tiap Khazanah merupakan dokumen yang disusun sendiri oleh peneliti dengan mengumpulkan koordinat bujur dan lintang Kantor Perwakilan Bank Indonesia dan peta tersebut dapat diakses pada [tautan berikut](https://www.google.com/maps/d/u/0/edit?mid=19gDu1C3t98hlglJcXSScALCi47FjCZ3Z&usp=sharing).
+
+### Trayek
+
+Sepanjang pengujian dan analisis terdapat dua jenis data trayek, yaitu data trayek aktual dan data trayek usulan. Data trayek aktual diproses dari dokumen Rekapitulasi Biaya Remise KDK (2017) dan Rekapitulasi Biaya Remise DPU (2017) di mana terdapat pasangan asal, tujuan, serta moda yang digunakan sepanjang tahun 2017 seperti `Tabel xx`. Dibuat tabel yang merangkum triplet unik dari hasil rekap tersebut sebagai trayek aktual yang digunakan untuk pengujian dan analisis.
+
+| Asal    | Tujuan | Jenis           |
+|---------|--------|-----------------|
+| Jakarta | Medan  | Kapal Penumpang |
+| Jakarta | Medan  | Kapal Penumpang |
+| Riau    | Padang | Truk            |
+Trayek usulan dibuat oleh peneliti menggunakan dokumen Rute Kapal Barang Sesuai Kontrak (2015), Rute Kapal Penumpang Sesuai Kontrak (2015), dan Rute Kereta Api Sesuai Kontrak (2015) dan digabungkan dengan trayek aktual agar terjamin trayek aktual terkandung dalam trayek usulan. Beberapa rute truk ditambahkan menurut penilaian peneliti.
+
+### Moda
+
+Dengan menggunakan dokumen yang sama seperti trayek, dihasilkan data terkait karakteristik tiap moda, yang terdiri dari kapasitas kontainer tiap moda, serta penyederhanaan komponen biaya menjadi biaya tetap dan biaya variabel. Kapasitas tiap moda disajikan pada `Tabel xx` dan untuk komponen biaya dilakukan regresi.
+
+| Moda            | Kapasitas Kontainer |
+|-----------------|---------------------|
+| Truk            | 250 peti            |
+| Kapal Barang    | 8250 peti           |
+| Kapal Penumpang | 8250 peti           |
+| Kereta Api      |                     |
+Untuk regresi dibentuk data observasi rekap remise $Rekap$ sebagai objek regresi. Tiap observasi memiliki atribut asal, tujuan, muatan, kontainer, serta biaya total dari pengiriman tersebut yang dijumlahkan dari komponen-komponen biaya pada dokumen Rekapitulasi Biaya Remise KDK (2017) dan Rekapitulasi Biaya Remise DPU (2017). Regresi dilakukan dengan melakukan minimasi terhadap kuadrat selisih tiap observasi rekap pengiriman $Rekap$ dengan prediktor biaya – yang merupakan hasil kali biaya variabel tiap moda dengan peti yang diangkut dijumlahkan dengan biaya tetap dikalikan jarak serta jumlah kontainer yang digunakan – sebagai berikut:
 
 $$
-\text{min } \sum_{r \in rekap} \bigg[ cost_r - \sum_{m \in moda} moda_{rm} \big( var_m \cdot peti_r + fix_m \cdot distance_r \cdot container_r \big) \bigg] ^2
+\text{min } \sum_{r \in Rekap} \bigg[ cost_r - \sum_{m \in moda} moda_{rm} \big( var_m \cdot peti_r + fix_m \cdot distance_r \cdot container_r \big) \bigg] ^2
 $$
 
 Di sini $moda_{rm}$ merupakan variabel penanda apakah baris $r$ dari hasil rekap pengedaran menggunakan moda $m$. Selain itu, dipastikan nilai biaya variabel serta biaya tetap selalu merupakan bilangan non-negatif:
@@ -475,5 +473,38 @@ Didapatkan nilai $R^2$ sebesar 96.48% dengan hasil regresi untuk tiap moda sebag
 
 Satuan biaya variabel berlaku untuk tiap peti dan biaya tetap berlaku untuk tiap kilometer tiap kontainer.
 
-- khazanah -> agregasi set data: menggabungkan data terkait tiap khazanah, yaitu: lokasi berupa koordinat lintang bujur dan kapasitas penyimpanan.
-- tingkat aktivitas distribusi uang tahun 2019: dari laporan ini hanya dapat diekstrak realisasi agregat kebutuhan uang di Indonesia tiap pecahan, serta jumlah pengiriman tercatat serta jumlah uang yang terpindahkan.
+### Estimasi Kebutuhan Uang
+
+Data estimasi kebutuhan terdiri dari pasangan khazanah, periode, pecahan, dan jumlah permintaan seperti pada `Tabel xx`. Data ini diolah dari data Rekapitulasi OIP EKU (2019) yang sampelnya dapat dilihat pada `Tabel xx`.
+
+| Khazanah | Periode | Pecahan | Jumlah (peti) |
+|----------|---------|---------|---------------|
+| Riau     | 1       | 100k    | 504           |
+| Riau     | 1       | 50k     | 242           |
+| Ambon    | 2       | 20k     |               |
+![Screenshot from 2022-06-03 17-32-52.png](../../Pictures/Screenshots/Screenshot from 2022-06-03 17-32-52.png)
+
+<!--jangan lupa jadiin tabel-->
+
+Data EKU ini kemudian dikonversi dari satuan rupiah menjadi satuan peti dengan terlebih dahulu mengubah nilai rupiahnya menjadi lembar atau keping. Dalam satu peti uang dapat tersimpan 20.000 lembar uang kertas atau 5.000 keping uang logam.
+
+### Persediaan
+
+Dalam dokumen Rekapitulasi OIP EKU (2019) terdapat tingkat persediaan tiap khazanah di awal periode perencanaan seperti pada `Tabel xx`. Dari sini dilakukan proses konversi yang sama seperti di atas untuk mengubah nilai rupiah menjadi peti sehingga didapatkan nilai persediaan tiap pecahan mata uang di tiap khazanah pada periode awal perencanaan.
+
+
+![Screenshot from 2022-06-03 17-46-06.png](../../Pictures/Screenshots/Screenshot from 2022-06-03 17-46-06.png)
+
+
+### Realisasi Kebutuhan Uang
+
+demand realization (dalam peti): merupakan dokumen turunan dari demand forecast untuk kebutuhan simulasi
+- struktur data final sama dengan demand forecast: i- t - value
+- dokumen input: demand forecast
+- proses transformasi: dibuat dua jenis fungsi transformasi yang menggunakan parameter tunggal. Fungsi-fungsi dibuat sedemikian rupa sehingga akan menghasilkan jarak Norma L1 atau Norma Manhattan yang sama untuk nilai parameter tunggal yang sama. Hal ini dilakukan untuk memudahkan pengelompokan realisasi permintaan peti uang dalam pengujian-pengujian yang dilakukan.
+- noisify_fixed: penggunaan simpangan yg bersifat konstan pada tiap entri estimasi permintaan. (eksposisi fungsinya)
+- noisify_varied: penggunaan simpangan yang bersifat proporsional terhadap tiap entri estimasi permintaan. (eksposisi fungsinya)
+
+### Performa Aktual
+
+Untuk tiap triwulan, terdapat Laporan Pelaksanaan Tugas dan Wewenang Bank Indonesia yang semenjak tahun 2019 dapat diakses secara publik. Dari laporan-laporan ini, peneliti dapat mengekstrak jumlah pengiriman serta jumlah rupiah terdistribusi tiap triwulan yang disajikan pada subsubbab kebijakan pengelolaan rupiah.
