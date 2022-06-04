@@ -96,7 +96,7 @@ Dengan _influence diagram_, hasil ekstraksi pemahaman masalah yang dilakukan pen
 Ditemukan bahwa permasalahan yang diselesaikan menyerupai _fixed-charge minimum cost multicommodity network flow problem_. Permasalahan ini berurusan dengan mengalirkan lebih dari satu komoditas dari sumber-sumbernya ke tujuan-tujuannya melewati busur-busur yang tidak hanya mengenakan biaya untuk jumlah muatan yang lewat, tetapi pada penggunaan tiap-tiap busur juga. Permasalahan ini termasuk permasalahan jaringan yang bersifat kombinatorial dan diskret.
 
 ### Penyusunan Model
-Graf terarah jaringan dasar $D = (V,E)$ terdiri dari kumpulan khazanah $V$ dihubungkan oleh kumpulan trayek $E = \{(i,j,m) : (i,j) \in V^2, m \in M\}$ di mana $M$ adalah kumpulan moda yang tersedia bagi DPU. Tiap moda memiliki parameter biaya tetap $fix_m$, biaya variabel $var_m$, dan kapasitas kontainer moda $Q_m$ masing-masing. Untuk tiap khazanah $i \in V$, diketahui besar kapasitas penyimpanan $CAP_i$ serta lokasi masing-masing khazanah sehingga dapat dikalkulasi jarak antarkhazanah $dist(i,j)$ sebuah trayek $e \in E$. Permasalahan ini didefinisikan di atas sebuah multigraf terarah $G(H) = (N,A)$ yang merupakan hasil ekspansi jaringan dasar $D$ sepanjang $H$ periode perencanaan yang biasa disebut horizon perencanaan. #base-graph-digraph
+Multigraf terarah jaringan dasar $D = (V,E)$ terdiri dari kumpulan khazanah $V$ dihubungkan oleh kumpulan trayek $E = \{(i,j,m) : (i,j) \in V^2, m \in M\}$ di mana $M$ adalah kumpulan moda yang tersedia bagi DPU. Tiap moda memiliki parameter biaya tetap $fix_m$, biaya variabel $var_m$, dan kapasitas kontainer moda $Q_m$ masing-masing. Untuk tiap khazanah $i \in V$, diketahui besar kapasitas penyimpanan $CAP_i$ serta lokasi masing-masing khazanah sehingga dapat dikalkulasi jarak antarkhazanah $dist(i,j)$ sebuah trayek $e \in E$. Permasalahan ini didefinisikan di atas sebuah multigraf terarah $G(H) = (N,A)$ yang merupakan hasil ekspansi jaringan dasar $D$ sepanjang $H$ periode perencanaan yang biasa disebut horizon perencanaan. #base-graph-digraph
 
 Dalam multigraf ini, $N$ merepresentasikan seluruh khazanah di tiap periode perencanaan yang terbagi menjadi tiga kelompok $N = N_{init} \cup N_{plan} \cup N_{sink}$ di mana $N_{init} = \{(i,0):i\in V\}$ merepresentasikan khazanah di saat ini atau saat perencanaan sedang dilakukan, $N_{plan} = \{(i,t) : i \in V, t\in [1, \dots ,H]\}$ merepresentasikan khazanah di sepanjang periode perencanaan, dan $N_{sink} = \{(i,H+1): i \in V\}$ untuk merepresentasikan simpul _dummy_ tempat aliran komoditas berakhir. #node-def
 
@@ -404,23 +404,23 @@ Penerapan _vendor-managed inventory_ yang menekankan integrasi _inventory_ dan _
 
 Selain hal-hal yang disebutkan perlu dikembangkan sistem informasi yang dapat memperbarui tingkat persediaan tiap-tiap khazanah yang dilayani DPU secara konsisten, kontinu, dan akurat di mana hal ini menjadi asumsi mendasar untuk pengambilan keputusan dalam konteks model ini.
 
-## Pengolahan Data
+## Pengolahan Dataa
 
 Dari proses pemahaman masalah hingga tahap pengujian dan analisis terdapat data-data yang menjadi kebutuhan dan perlu proses pengolahan tersendiri. Pada `Tabel xx` disajikan sumber-sumber data yang tersedia bagi peneliti serta kebutuhan data yang harus dibuat. Pada bagian-bagian berikutnya akan disajikan bagaimana sumber-sumber data tersebut ditransformasi untuk digunakan.
 
 
-| Sumber Data                                                  | Khazanah                   | Trayek                                                | Estimasi Kebutuhan                          | Persediaan                                                    | Moda                                                  | Realisasi Kebutuhan                                                         | Performa Aktual |
-|--------------------------------------------------------------|----------------------------|-------------------------------------------------------|---------------------------------------------|---------------------------------------------------------------|-------------------------------------------------------|-----------------------------------------------------------------------------|-----------------|
-| Rekapitulasi OIP EKU (2019)                                  | x                          | x                                                     | Sumber tunggal data estimasi kebutuhan uang | Dalam dokumen, terdapat tingkat persediaan awal tiap khazanah | x                                                     | Referensi utama untuk sintesis data realisasi kebutuhan                     | x               |
-| Rekapitulasi Remise KDK (2017)                               | x                          | Digunakan untuk menghasilkan trayek aktual dan usulan | x                                           | x                                                             | Sumber parameter biaya moda serta kapasitas kontainer | x                                                                           | x               |
-| Rekaitulasi Remise DPU (2017)                                | x                          | Digunakan untuk menghasilkan trayek aktual dan usulan | x                                           | x                                                             | Sumber parameter biaya moda serta kapasitas kontainer | x                                                                           | x               |
-| Rute Kapal Barang Sesuai Kontrak (2015)                      | x                          | Digunakan unutk menghasilkan trayek usulan            | x                                           | x                                                             | x                                                     | x                                                                           | x               |
-| Rute Kapal Penumpang Sesuai Kontrak (2015)                   | x                          | Digunakan untuk menghasilkan trayek usulan            | x                                           | x                                                             | x                                                     | x                                                                           | x               |
-| Rute Kereta Api Sesuai Kontrak (2015)                        | x                          | Digunakan untuk menghasilkan trayek usulan            | x                                           | x                                                             | x                                                     | x                                                                           | x               |
-| Kapasitas Khazanah Terpasang (2016)                          | Atribut kapasitas khazanah | x                                                     | x                                           | x                                                             | x                                                     | x                                                                           | x               |
-| Lokasi Tiap Khazanah                                         | Atribut lokasi khazanah    | x                                                     | x                                           | x                                                             | x                                                     | x                                                                           | x               |
-| Laporan Pelaksanaan Tugas dan Wewenang Bank Indonesia (2019) | x                          | x                                                     | x                                           | x                                                             | x                                                     | x                                                                           | v               |
-| Sintesis Data Manual                                         | x                          | x                                                     | x                                           | x                                                             | x                                                     | Dengan referensi estimasi kebutuhan uang, dikembangkan fungsi sintesis data | x               |
+| Sumber Data                                                  | Khazanah                   | Trayek                                                | Estimasi Kebutuhan                                                                                    | Persediaan                                                    | Moda                                                  | Performa Aktual |
+|--------------------------------------------------------------|----------------------------|-------------------------------------------------------|-------------------------------------------------------------------------------------------------------|---------------------------------------------------------------|-------------------------------------------------------|-----------------|
+| Rekapitulasi OIP EKU (2019)                                  | x                          | x                                                     | Sumber tunggal data estimasi kebutuhan uang + Referensi utama untuk sintesis data realisasi kebutuhan | Dalam dokumen, terdapat tingkat persediaan awal tiap khazanah | x                                                     | x               |
+| Rekapitulasi Remise KDK (2017)                               | x                          | Digunakan untuk menghasilkan trayek aktual dan usulan | x                                                                                                     | x                                                             | Sumber parameter biaya moda serta kapasitas kontainer | x               |
+| Rekaitulasi Remise DPU (2017)                                | x                          | Digunakan untuk menghasilkan trayek aktual dan usulan | x                                                                                                     | x                                                             | Sumber parameter biaya moda serta kapasitas kontainer | x               |
+| Rute Kapal Barang Sesuai Kontrak (2015)                      | x                          | Digunakan unutk menghasilkan trayek usulan            | x                                                                                                     | x                                                             | x                                                     | x               |
+| Rute Kapal Penumpang Sesuai Kontrak (2015)                   | x                          | Digunakan untuk menghasilkan trayek usulan            | x                                                                                                     | x                                                             | x                                                     | x               |
+| Rute Kereta Api Sesuai Kontrak (2015)                        | x                          | Digunakan untuk menghasilkan trayek usulan            | x                                                                                                     | x                                                             | x                                                     | x               |
+| Kapasitas Khazanah Terpasang (2016)                          | Atribut kapasitas khazanah | x                                                     | x                                                                                                     | x                                                             | x                                                     | x               |
+| Lokasi Tiap Khazanah                                         | Atribut lokasi khazanah    | x                                                     | x                                                                                                     | x                                                             | x                                                     | x               |
+| Laporan Pelaksanaan Tugas dan Wewenang Bank Indonesia (2019) | x                          | x                                                     | x                                                                                                     | x                                                             | x                                                     | v               |
+| Sintesis Data Manual                                         | x                          | x                                                     | Dengan referensi estimasi kebutuhan uang, dikembangkan fungsi sintesis data                           | x                                                             | x                                                     | x               |
 
 ### Khazanah
 
@@ -435,6 +435,7 @@ Sepanjang pengujian dan analisis terdapat dua jenis data trayek, yaitu data tray
 | Jakarta | Medan  | Kapal Penumpang |
 | Jakarta | Medan  | Kapal Penumpang |
 | Riau    | Padang | Truk            |
+
 Trayek usulan dibuat oleh peneliti menggunakan dokumen Rute Kapal Barang Sesuai Kontrak (2015), Rute Kapal Penumpang Sesuai Kontrak (2015), dan Rute Kereta Api Sesuai Kontrak (2015) dan digabungkan dengan trayek aktual agar terjamin trayek aktual terkandung dalam trayek usulan. Beberapa rute truk ditambahkan menurut penilaian peneliti.
 
 ### Moda
@@ -447,6 +448,7 @@ Dengan menggunakan dokumen yang sama seperti trayek, dihasilkan data terkait kar
 | Kapal Barang    | 8250 peti           |
 | Kapal Penumpang | 8250 peti           |
 | Kereta Api      |                     |
+
 Untuk regresi dibentuk data observasi rekap remise $Rekap$ sebagai objek regresi. Tiap observasi memiliki atribut asal, tujuan, muatan, kontainer, serta biaya total dari pengiriman tersebut yang dijumlahkan dari komponen-komponen biaya pada dokumen Rekapitulasi Biaya Remise KDK (2017) dan Rekapitulasi Biaya Remise DPU (2017). Regresi dilakukan dengan melakukan minimasi terhadap kuadrat selisih tiap observasi rekap pengiriman $Rekap$ dengan prediktor biaya – yang merupakan hasil kali biaya variabel tiap moda dengan peti yang diangkut dijumlahkan dengan biaya tetap dikalikan jarak serta jumlah kontainer yang digunakan – sebagai berikut:
 
 $$
@@ -465,7 +467,7 @@ $$
 Didapatkan nilai $R^2$ sebesar 96.48% dengan hasil regresi untuk tiap moda sebagai berikut:
 
 | Moda / _m_      | Biaya Variabel / _var_ | Biaya Tetap / _fix_ |
-| --------------- | ---------------------- | ------------------- |
+|-----------------|------------------------|---------------------|
 | Truk            | Rp2.100                | Rp33.254            |
 | Kapal Penumpang | Rp81.914               | Rp32.781            |
 | Kapal Barang    | Rp48.272               | Rp43.293            |
@@ -482,6 +484,7 @@ Data estimasi kebutuhan terdiri dari pasangan khazanah, periode, pecahan, dan ju
 | Riau     | 1       | 100k    | 504           |
 | Riau     | 1       | 50k     | 242           |
 | Ambon    | 2       | 20k     |               |
+
 ![Screenshot from 2022-06-03 17-32-52.png](../../Pictures/Screenshots/Screenshot from 2022-06-03 17-32-52.png)
 
 <!--jangan lupa jadiin tabel-->
