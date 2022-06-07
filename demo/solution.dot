@@ -1,0 +1,8 @@
+digraph solution {
+    "(8,1)" [shape=circle] [fontname="Helvetica"] [pos="8,1!"];
+    "(4,0)" [shape=circle] [fontname="Helvetica"] [pos="4,0!"];
+    "(3,0)" [shape=circle] [fontname="Helvetica"] [pos="3,0!"];
+    "(6,1)" [shape=circle] [fontname="Helvetica"] [pos="6,1!"];
+    "(4,0)" -> "(8,1)" [fontname="Helvetica"];
+    "(3,0)" -> "(6,1)" [fontname="Helvetica"];
+}
