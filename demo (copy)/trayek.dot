@@ -1,0 +1,30 @@
+graph trayek {
+    3 [shape=circle] [fontname="Helvetica"] [pos="3.05288989573668,-1.542514049151894!"];
+    4 [shape=circle] [fontname="Helvetica"] [pos="-1.13802281633946,-0.1632407774761082!"];
+    1 [shape=circle] [fontname="Helvetica"] [pos="-2.47870474767556,-2.01043047068206!"];
+    5 [shape=circle] [fontname="Helvetica"] [pos="-0.934044261461934,3.53234334550758!"];
+    2 [shape=circle] [fontname="Helvetica"] [pos="0.780845832108984,0.29906374896564!"];
+    6 [shape=circle] [fontname="Helvetica"] [pos="0.577434424038166,-2.3064507673801!"];
+    7 [shape=circle] [fontname="Helvetica"] [pos="-2.0768047070857,-4.2623468541036!"];
+    8 [shape=circle] [fontname="Helvetica"] [pos="1.333920401597782,2.16152418298814!"];
+    3 -- 4 [label=TRUK] [color=blue] [fontcolor=blue] [fontname="Helvetica"];
+    3 -- 6 [label=KRTA] [color=red] [fontcolor=red] [fontname="Helvetica"];
+    3 -- 6 [label=TRUK] [color=blue] [fontcolor=blue] [fontname="Helvetica"];
+    4 -- 5 [label=TRUK] [color=blue] [fontcolor=blue] [fontname="Helvetica"];
+    4 -- 7 [label=KRTA] [color=red] [fontcolor=red] [fontname="Helvetica"];
+    4 -- 8 [label=KRTA] [color=red] [fontcolor=red] [fontname="Helvetica"];
+    1 -- 4 [label=TRUK] [color=blue] [fontcolor=blue] [fontname="Helvetica"];
+    1 -- 2 [label=TRUK] [color=blue] [fontcolor=blue] [fontname="Helvetica"];
+    1 -- 6 [label=TRUK] [color=blue] [fontcolor=blue] [fontname="Helvetica"];
+    1 -- 8 [label=TRUK] [color=blue] [fontcolor=blue] [fontname="Helvetica"];
+    5 -- 7 [label=TRUK] [color=blue] [fontcolor=blue] [fontname="Helvetica"];
+    5 -- 7 [label=KRTA] [color=red] [fontcolor=red] [fontname="Helvetica"];
+    2 -- 5 [label=TRUK] [color=blue] [fontcolor=blue] [fontname="Helvetica"];
+    2 -- 6 [label=TRUK] [color=blue] [fontcolor=blue] [fontname="Helvetica"];
+    2 -- 7 [label=TRUK] [color=blue] [fontcolor=blue] [fontname="Helvetica"];
+    2 -- 7 [label=KRTA] [color=red] [fontcolor=red] [fontname="Helvetica"];
+    2 -- 3 [label=TRUK] [color=blue] [fontcolor=blue] [fontname="Helvetica"];
+    6 -- 7 [label=TRUK] [color=blue] [fontcolor=blue] [fontname="Helvetica"];
+    6 -- 8 [label=TRUK] [color=blue] [fontcolor=blue] [fontname="Helvetica"];
+    6 -- 8 [label=KRTA] [color=red] [fontcolor=red] [fontname="Helvetica"];
+}

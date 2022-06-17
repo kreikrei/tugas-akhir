@@ -57,7 +57,7 @@ Secara teknis program ini mengambil data _khazanah_, _trayek_, _moda_, _(estimas
 """
 
 # ╔═╡ 49e01c60-01cc-4a4c-8279-1da1ad481c0e
-@bind data_path Select(["/home/kreiton/Documents/tugas akhir/demo/", "/home/kreiton/.julia/dev/DispatchOps/data/origin/", "/home/kreiton/.julia/dev/DispatchOps/data/laptri/"], default = "/home/kreiton/Documents/tugas akhir/demo/")
+@bind data_path Select(["/home/kreiton/Documents/tugas akhir/demo/", "/home/kreiton/.julia/dev/DispatchOps/data/origin/", "/home/kreiton/.julia/dev/DispatchOps/data/laptri/", "/home/kreiton/Documents/tugas akhir/demo (copy)/"], default = "/home/kreiton/Documents/tugas akhir/demo/")
 
 # ╔═╡ 90d3dde2-eac6-4593-b23f-e782d71a45f7
 md"""### Khazanah
@@ -103,15 +103,15 @@ begin
 	for r in eachrow(khazanah)
 		set_prop!(D, r.id, :pos, (x=r.x,y=r.y))
 	end
-	color = Dict(["TRUK"=>"blue", "KRTA"=>"red", "KBRG" => "purple", "KPNG" => "orange"])
+	color = Dict(["inv"=>"purple","truk"=>"blue", "krta"=>"red", "KBRG" => "purple", "KPNG" => "orange"])
 	open("trayek.dot", "w") do file
-		write(file, "graph trayek {\n")
+		write(file, "digraph trayek {\n")
 		for n in nodes(D)
-			write(file, "    $(n) [shape=circle] \
+			write(file, "    $(n) \
 			[fontname=\"Helvetica\"] [pos=\"$(2*D[n][:pos].x),$(2*D[n][:pos].y)!\"];\n")
 		end
 		for a in arcs(D)
-			write(file, "    $(src(a)) -- $(tgt(a)) [label=$(D[a][:moda])] \
+			write(file, "    $(src(a)) -> $(tgt(a)) [label=$(D[a][:moda])] \
 			[color=$(color[D[a][:moda]])] \
 			[fontcolor=$(color[D[a][:moda]])] \
 			[fontname=\"Helvetica\"];\n")
@@ -207,12 +207,17 @@ begin
 	open("expanded.dot", "w") do file
 		write(file, "digraph expanded {\n")
 		for n in nodes(EG)
-			write(file, "    \"($(n.loc),$(n.per))\" [shape=circle] \
+			write(file, "    \"($(n.loc),t=$(n.per))\" \
 			[fontname=\"Helvetica\"] [pos=\"$(n.loc),$(n.per)!\"];\n")
 		end
 		for a in arcs(EG)
-			write(file, "    \"($(src(a).loc),$(src(a).per))\" -> \"($(tgt(a).loc),$(tgt(a).per))\" \
-			[fontname=\"Helvetica\"];\n")
+			if EG[a][:moda] != "GDNG"
+				arc_moda = EG[a][:moda]
+			else
+				arc_moda = "inv"
+			end
+			write(file, "    \"($(src(a).loc),t=$(src(a).per))\" -> \"($(tgt(a).loc),t=$(tgt(a).per))\" \
+			[fontname=\"Helvetica\"] [label=$arc_moda] [fontcolor=$(color[arc_moda])] [color=$(color[arc_moda])];\n")
 		end
 		write(file, "}")
 	end
@@ -276,7 +281,7 @@ begin
 	) |> collect
 	dispatch_recommendation = MetaDigraph{DispatchOps.Sim.locper}()
 	for a in to_append
-		v = value.(model[:flow][a, :])
+		v = round.(value.(model[:flow][a, :]),digits=2)
 		if !iszero(v)
             add_arc!(dispatch_recommendation, a)
             set_props!(dispatch_recommendation, a, EG[a])
@@ -336,6 +341,15 @@ end
 # ╔═╡ 7c3333a5-9711-451d-9d06-d0bb6725c63b
 md"""Berikut adalah solusi akhir dari transport beserta inventori selama $H unit periode perencanaan"""
 
+# ╔═╡ 2333ee01-0d79-4a95-a788-c8c996f7b6f9
+persediaan_dict = Dict(zip(persediaan.id,persediaan.pecahan) .=> persediaan.value)
+
+# ╔═╡ 86d4820f-e45f-4ebb-a0aa-aabb0542aadd
+permintaan_dict = Dict(zip(permintaan.id, permintaan.periode, permintaan.pecahan) .=> permintaan.value)
+
+# ╔═╡ 9a1f6651-6539-4eba-8e32-ef06d5f7a3f2
+pecahan = unique(persediaan.pecahan)
+
 # ╔═╡ 14ce3d52-2e3a-4f76-9837-662ed32c0f0b
 begin
 	layout_com_selector = @bind layout_complete Select(["dot","neato"], default="dot")
@@ -347,6 +361,7 @@ end
 # ╔═╡ f7533e96-b535-4f32-a26a-f4d7a65dee43
 begin
 	complete_solution = MetaDigraph{DispatchOps.Sim.locper}()
+	
 	for a in arcs(EG)
 		v = value.(model[:flow][a, :])
 		if !iszero(v)
@@ -354,7 +369,7 @@ begin
 			set_props!(complete_solution, a, EG[a])
 			set_props!(complete_solution, a,
 				Dict(
-					:total_flow =>  sum(v[p] for p in v.axes[1]),
+					:flow =>  Dict([p => round(v[p],digits=2) for p in v.axes[1]]),
 					:trip => value(model[:trip][a]) |> round
 				)
 			)
@@ -362,14 +377,26 @@ begin
 	end
 	open("complete.dot", "w") do file
 		write(file, "digraph complete {\n")
+		write(file, "    node [shape=record];")
 		for n in nodes(complete_solution)
-			write(file, "    \"($(n.loc),$(n.per))\" [shape=circle] \
+			if n.per == 0
+				node_label = "\"($(n.loc),$(n.per))\n| {$(pecahan[1])|$(pecahan[2])} |{{$(round(persediaan_dict[(n.loc,pecahan[1])],digits=2))} | {$(round(persediaan_dict[(n.loc,pecahan[2])],digits=2))}}\""
+			else
+				node_label = "\"($(n.loc),$(n.per))\n | {$(pecahan[1])|$(pecahan[2])} |{{$(round(permintaan_dict[(n.loc,n.per,pecahan[1])],digits=2))} | {$(round(permintaan_dict[(n.loc,n.per,pecahan[2])],digits=2))}}\""
+			end
+			write(file, "    \"($(n.loc),$(n.per))\" [label=$(node_label)] \
 			[fontname=\"Helvetica\"] [pos=\"$(n.loc),$(n.per)!\"];\n")
 		end
 		for a in arcs(complete_solution)
-			write(file, "    \"($(src(a).loc),$(src(a).per))\" -> \"($(tgt(a).loc),$(tgt(a).per))\" \
-			[label=$(round(complete_solution[a][:total_flow],digits=2))] \
-			[fontname=\"Helvetica\"];\n")
+			if complete_solution[a][:type] == "holdover"
+				write(file, "    \"($(src(a).loc),$(src(a).per))\" -> \"($(tgt(a).loc),$(tgt(a).per))\" \
+				[label=\"$(pecahan[1]):$(complete_solution[a][:flow][pecahan[1]])\n $(pecahan[2]):$(complete_solution[a][:flow][pecahan[2]])\n kont=$(complete_solution[a][:trip])\"] [fontcolor=purple] [color=purple] \
+				[fontname=\"Helvetica\"] [nojust=true];\n")
+			else
+				write(file, "    \"($(src(a).loc),$(src(a).per))\" -> \"($(tgt(a).loc),$(tgt(a).per))\" \
+				[label=\"$(pecahan[1]):$(complete_solution[a][:flow][pecahan[1]])\n $(pecahan[2]):$(complete_solution[a][:flow][pecahan[2]])\n kont=$(complete_solution[a][:trip])\n moda=$(complete_solution[a][:moda])\"] [fontcolor=green] [color=green] \
+				[fontname=\"Helvetica\"] [nojust=true];\n")
+			end
 		end
 		write(file, "}")
 	end
@@ -1853,15 +1880,15 @@ version = "3.5.0+0"
 
 # ╔═╡ Cell order:
 # ╟─6f167e2c-5180-4627-be99-24d10a35f2e1
-# ╟─5f33e710-e564-4f92-b3b1-be5ad2c9249a
-# ╟─49e01c60-01cc-4a4c-8279-1da1ad481c0e
+# ╠═5f33e710-e564-4f92-b3b1-be5ad2c9249a
+# ╠═49e01c60-01cc-4a4c-8279-1da1ad481c0e
 # ╟─90d3dde2-eac6-4593-b23f-e782d71a45f7
 # ╟─79e0abf4-947c-4978-bb3b-49c92bfce654
 # ╟─708f4773-dde1-44a6-95a5-5f4282319369
 # ╟─d47f8a1d-8861-4c91-b493-3792ab11f83d
-# ╟─6589fb88-cfcb-4a63-9913-580f834ee84e
+# ╠═6589fb88-cfcb-4a63-9913-580f834ee84e
 # ╟─0286656d-74e5-44f3-9953-41128f93ee0e
-# ╟─ce52a785-dbaf-45ee-83a5-fc44ff39baf5
+# ╠═ce52a785-dbaf-45ee-83a5-fc44ff39baf5
 # ╟─1aaaa2c2-e2f3-43fc-bde2-c3753532b90a
 # ╟─e7224d65-782f-4b36-bd75-5006efd1a59b
 # ╟─497e4ba6-5a0f-4ba6-959d-29ecd939b6f5
@@ -1871,9 +1898,9 @@ version = "3.5.0+0"
 # ╟─5c8ba642-a523-4457-85ae-b2c5329b1be4
 # ╟─7d2067e7-e401-436b-ba92-1e50154156e0
 # ╟─45a2d898-019e-4a01-8c4c-2b36cf98fa6a
-# ╟─814ec8ae-a267-4394-9dc2-31ea54398017
+# ╠═814ec8ae-a267-4394-9dc2-31ea54398017
 # ╟─90fa1d06-db1b-412b-a842-d0d19d6a5db3
-# ╟─78b2df6c-3631-45a6-82e8-a2388b25009a
+# ╠═78b2df6c-3631-45a6-82e8-a2388b25009a
 # ╟─31bb4a05-eea5-442e-8af3-ff557251eca3
 # ╟─ac6a2276-e2e5-418d-b6ee-ac92b43f0b6f
 # ╟─ca0fa97e-d4b5-4cc0-b213-7cfb81424489
@@ -1886,22 +1913,25 @@ version = "3.5.0+0"
 # ╟─d527a4a9-b8b5-4035-b451-c55b0eda859a
 # ╠═c1fa7ece-4f98-44a8-a5ec-c34a4d70caf2
 # ╟─9da11240-a142-4206-ba1a-4918c5bbc714
-# ╟─e96f9575-8900-44b6-a38d-5dd24afcd33d
+# ╠═e96f9575-8900-44b6-a38d-5dd24afcd33d
 # ╟─5ea94326-b257-40a1-abc4-81f245c2cc7c
-# ╟─0edb022b-fac3-4e88-b728-5cc6deaf4fa0
+# ╠═0edb022b-fac3-4e88-b728-5cc6deaf4fa0
 # ╟─e81d34fa-04b4-4f90-bff3-34734ccc562f
 # ╟─599d6572-53cd-498b-b40f-8201b67495fe
 # ╟─7c3333a5-9711-451d-9d06-d0bb6725c63b
+# ╠═2333ee01-0d79-4a95-a788-c8c996f7b6f9
+# ╠═86d4820f-e45f-4ebb-a0aa-aabb0542aadd
+# ╠═9a1f6651-6539-4eba-8e32-ef06d5f7a3f2
 # ╟─14ce3d52-2e3a-4f76-9837-662ed32c0f0b
-# ╟─f7533e96-b535-4f32-a26a-f4d7a65dee43
+# ╠═f7533e96-b535-4f32-a26a-f4d7a65dee43
 # ╟─49e92f5f-8e47-467e-907c-600c8cd790b2
-# ╟─38a50100-15fd-44e1-b559-679b7beffa54
-# ╟─d43b5daf-0da0-47f8-a72e-fa81def09f84
-# ╟─00f4172c-c5fe-45d2-a5a2-87f85db134d3
-# ╟─6e3e9b86-e576-11ec-07d0-e59fc71f55fc
-# ╟─8d8fdac8-1b65-4267-8b43-afe6c6c00685
-# ╟─32db76b0-cbf3-42bf-bdb7-b918a07b2af0
-# ╟─f96a35c3-6db8-4fa8-a308-49f88f9e764c
-# ╟─ac406c3f-46e2-4143-8f36-d463595346a5
+# ╠═38a50100-15fd-44e1-b559-679b7beffa54
+# ╠═d43b5daf-0da0-47f8-a72e-fa81def09f84
+# ╠═00f4172c-c5fe-45d2-a5a2-87f85db134d3
+# ╠═6e3e9b86-e576-11ec-07d0-e59fc71f55fc
+# ╠═8d8fdac8-1b65-4267-8b43-afe6c6c00685
+# ╠═32db76b0-cbf3-42bf-bdb7-b918a07b2af0
+# ╠═f96a35c3-6db8-4fa8-a308-49f88f9e764c
+# ╠═ac406c3f-46e2-4143-8f36-d463595346a5
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002

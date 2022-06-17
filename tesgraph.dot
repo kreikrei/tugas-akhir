@@ -1,0 +1,13 @@
+digraph base {
+	jkt [fontname="Helvetica"]
+	yyk [fontname="Helvetica"]
+	cbn [fontname="Helvetica"]
+	bdg [fontname="Helvetica"]
+	sby [fontname="Helvetica"]
+	jkt -> yyk [label=truk] [fontname="Helvetica"] [color=blue] [fontcolor=blue]
+	jkt -> yyk [label=krta] [fontname="Helvetica"] [color=red] [fontcolor=red]
+	jkt -> cbn [label=truk] [fontname="Helvetica"] [color=blue] [fontcolor=blue]
+	cbn -> jkt [label=truk] [fontname="Helvetica"] [color=blue] [fontcolor=blue]
+	bdg -> sby [label=krta] [fontname="Helvetica"] [color=red] [fontcolor=red]
+	bdg -> cbn [label=truk] [fontname="Helvetica"] [color=blue] [fontcolor=blue]
+}
