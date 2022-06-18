@@ -5,13 +5,13 @@ math: katex
 
 # <!-- fit --> Operasionalisasi Distribusi <br> Uang Rupiah Bank Indonesia
 
-## Kreiton Sitorus
+## Kreiton Sitorus (13416006)
 
 ---
 
 <!-- footer: 'Operasionalisasi Distribusi Uang Rupiah Bank Indonesia' -->
 
-# <!-- fit --> Intro
+# <!-- fit --> Pendahuluan
 
 ---
 
@@ -26,7 +26,7 @@ Pada dasarnya, pengelolaan uang rupiah adalah sebuah rantai suplai. Terdapat ena
 
 ---
 
-## Pengedaran uang rupiah oleh DPU
+## Pengedaran uang rupiah oleh _Command Center_ DPU
 
 Departemen Pengedaran Uang (DPU) bertanggung jawab untuk mendistribusikan uang rupiah yang diproduksi oleh PERURI. Tugas DPU adalah:
 
@@ -39,6 +39,14 @@ Departemen Pengedaran Uang (DPU) bertanggung jawab untuk mendistribusikan uang r
 ---
 
 ![bg 60%](./Presentasi-PengedaranUang.drawio.png)
+
+---
+
+| Asal      | Tujuan   | Moda   | Muatan                                                          | Kontainer |
+| --------- | -------- | ------ | --------------------------------------------------------------- | --------- |
+| Jakarta   | Medan    | Kapal  | Rp50k : 1000 peti  <br> Rp20k : 2000 peti <br> Rp10k : 500 peti | 1         |
+| Samarinda | Palu     | Truk   | Rp50k : 200 peti <br> Rp20k : 50 peti <br> Rp10k : 0 peti       | 1         |
+| Jakarta   | Surabaya | Kereta | Rp50k : 2000 peti <br> Rp20k : 1000 peti <br> Rp10k : 1000 peti | 2         |
 
 ---
 
@@ -58,14 +66,15 @@ Pendekatan ini mendikotomikan **manajemen inventori** dengan **manajemen transpo
 
 ---
 
-## Integrasi Inventori dan Transportasi
-- Konsep _vendor-managed inventory_ di mana pengisian ulang inventori di sejumlah lokasi dikendalikan oleh pengambil keputusan pusat – sebuah vendor. 
-- Contohnya beragam, _e-commerce solutions_ memiliki subsistem ini di mana pelanggan-pelanggan menyerahkan pemenuhan inventori pada _fulfillment services_ pihak ketiga
+![bg 95%](./Presentasi-Breakdown.drawio.png)
 
 ---
 
-## Integrasi Inventori dan Transportasi
-Penerapan seperti ini memungkinkan **optimasi total** sistem distribusi, namun seiring bertambahnya ukuran jaringan, dibutuhkan **kemampuan komputasi untuk optimasi rencana distribusi** periodik lewat utilisasi informasi tingkat persediaan, kapasitas penyimpanan, estimasi permintaan, armada tersedia
+## _Vendor-managed Inventory_
+- _Vendor-managed inventory_ adalah sebuah konsep di mana pengisian ulang inventori di sejumlah lokasi dikendalikan oleh pengambil keputusan pusat – sebuah vendor.
+- Salah satu permasalahan inti dari konsep ini adalah _inventory routing problem_ yang didefinisikan sebagai:
+
+> Distribusi berulang komoditas (pengiriman dengan jumlah tertentu) dari fasilitas penyedia ke fasilitas penerima melalui armada yang ada untuk memastikan ketersediaan komoditas dengan biaya minimal sepanjang periode perencanaan yang ditetapkan (Campbell et al., 1998).
 
 ---
 
