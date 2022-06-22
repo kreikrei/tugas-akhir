@@ -9,13 +9,13 @@ math: katex
 
 ---
 
-<!-- footer: 'Operasionalisasi Distribusi Uang Rupiah Bank Indonesia' -->
+<!-- footer: 'Perencanaan Distribusi Uang Rupiah Bank Indonesia' -->
 
 # <!-- fit --> Pendahuluan
 
 ---
 
-## Pengelolaan uang rupiah sebagai rantai suplai
+## Pengelolaan Uang Rupiah Sebagai Rantai Suplai
 Pada dasarnya, pengelolaan uang rupiah adalah sebuah rantai suplai. Terdapat enam (6) aktivitas:
   - Perencanaan
   - Pencetakan
@@ -26,11 +26,11 @@ Pada dasarnya, pengelolaan uang rupiah adalah sebuah rantai suplai. Terdapat ena
 
 ---
 
-## Pengedaran uang rupiah oleh _Command Center_ DPU
+## Pengedaran uang rupiah oleh Departemen Pengelolaan Uang
 
-Departemen Pengedaran Uang (DPU) bertanggung jawab untuk mendistribusikan uang rupiah yang diproduksi oleh PERURI. Tugas DPU adalah:
+_Command Center_ Departemen Pengelolaan Uang (DPU) bertanggung jawab untuk mendistribusikan uang rupiah yang diproduksi oleh PERURI. Tugas badan tersebut adalah:
 
-> Memastikan persediaan uang rupiah tiap khazanah cukup untuk memenuhi kebutuhan uang rupiah masyarakat di wilayah operasional.
+> Memastikan persediaan uang rupiah tiap khazanah (gudang penyimpanan) cukup untuk memenuhi kebutuhan uang rupiah masyarakat di wilayah operasional.
 
 ---
 
@@ -41,6 +41,8 @@ Departemen Pengedaran Uang (DPU) bertanggung jawab untuk mendistribusikan uang r
 ![bg 60%](./Presentasi-PengedaranUang.drawio.png)
 
 ---
+
+## Sampel Rencana Distribusi Uang
 
 | Asal      | Tujuan   | Moda   | Muatan                                                          | Kontainer |
 | --------- | -------- | ------ | --------------------------------------------------------------- | --------- |
@@ -58,7 +60,7 @@ Perencanaan distribusi Bank Indonesia masih banyak menyerupai pengendalian inven
 
 ## Pengendalian Inventori Konvensional
 
-Pendekatan ini mendikotomikan **manajemen inventori** dengan **manajemen transportasi** – dua komponen krusial dalam manajemen logistik dan menghambat optimasi sistem (Kleywegt, 2002)
+Perencanaan macam ini dapat dengan mudah mendorong **utilisasi kapasitas yang tidak efisien**, **rendahnya ketersediaan produk**, dan **tingkat persediaan berlebih** (Småros et al., 2003).
 
 ---
 
@@ -89,7 +91,11 @@ Dikembangkan sebuah skema yang mengutilisasi data-data jaringan untuk **mencari 
 
 ## Metodologi
 
-Dikembangkan jaringan terekspansi waktu sebagai representasi permasalahan. Kemudian, representasi tersebut diformulasikan sebagai pemrograman integer campuran yang diselesaikan dengan aproksimasi _optimality gap_. Penggunaan model dan algoritma dalam kerangka _rolling horizon_ diujikan dalam sebuah studi simulasi.
+Dikembangkan **jaringan terekspansi waktu** sebagai representasi permasalahan. Kemudian, representasi tersebut diformulasikan sebagai **pemrograman integer campuran** yang diselesaikan dengan aproksimasi _optimality gap_. Penggunaan model dan algoritma dalam kerangka _rolling horizon_ diujikan dalam sebuah **studi simulasi**.
+
+---
+
+# <!--fit--> Pengembangan
 
 ---
 
@@ -143,7 +149,7 @@ Permasalahan didefinisikan di atas jaringan yang terdiri dari kumpulan khazanah,
 
 ### Tingkat Persediaan
 
-| Khazanah | Pecahan | Persediaan (peti) | Nilai Ekuivalen (Rp( |
+| Khazanah | Pecahan | Persediaan (peti) | Nilai Ekuivalen (Rp) |
 | -------- | ------- | ----------------- | -------------------- |
 | Jakarta  | Rp50k   | 378,79            | 378 miliar           |
 | Bandung  | Rp20k   | 394,07            | 157,6 miliar         |
@@ -173,3 +179,37 @@ Permasalahan didefinisikan di atas jaringan yang terdiri dari kumpulan khazanah,
 
 ---
 
+![bg 70%](./Presentasi-ModelDef.drawio.png)
+
+---
+
+## Formulasi Model
+
+$$
+\text{min } \displaystyle \text{obj}(\textbf{x},\textbf{y}) = \sum_{a \in A} \bigg[ var_{a} \cdot \sum_{p \in P} x_{a}^{p} + fix_a \cdot dist_a \cdot y_{a} \bigg]
+$$
+
+
+$$
+\begin{array}{rrcll}
+\text{s.t.} & \displaystyle \sum_{a \in \text{IN}(n)} x_{a}^{p} - \sum_{a \in \text{OUT}(n)} x_{a}^{p} & = & d_{n}^{p} 
+                                                                       & \forall n \in N_{plan}, p \in P \\
+     & \displaystyle \sum_{a \in \text{OUT}(n)} x_{a}^{p} & = & stock_{n}^{p} 
+                                                                       & \forall n \in N_{init}, p \in P \\
+     & \displaystyle \sum_{a \in \text{IN}(n)} x_{a}^{p} & = & sink_{n}^{p} 
+                                                                       & \forall n \in N_{sink}, p \in P \\
+     & \displaystyle \sum_{p \in P}x_{a}^{p} & \leq & Q_a \cdot y_a    & \forall a \in A
+     
+\end{array}
+$$
+
+---
+
+$$
+\begin{array}{**rrcll**}
+& \displaystyle sink_{n}^{p} & \in & \mathbb{R}_{\geq0} & \forall n \in N_{sink}, p \in P\\
+     & \displaystyle x_{a}^{p} & \in & \mathbb{R}_{\geq0}                  & \forall a \in A, p \in P \\
+     & \displaystyle y_{a} & \in & \big[ 0,1 \big]                & \forall a \in A_{inv} \\
+     & \displaystyle y_{a} & \in & \mathbb{N}_0                        & \forall a \in A_{trans}
+\end{array}
+$$

@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.19.8
+# v0.19.9
 
 #> [frontmatter]
 #> title = "DispatchOps.jl"
@@ -404,6 +404,37 @@ begin
 		write(io, read(`$(layout_complete) -Tsvg complete.dot`,String))
 	end
 	LocalResource("complete.svg")
+end
+
+# ╔═╡ fa419807-407c-4378-aa61-763dda8b8d98
+begin
+	open("complete_with_demand.dot", "w") do file
+		write(file, "digraph expanded {\n")
+		write(file, "    node [shape=record];")
+		for n in nodes(complete_solution)
+			if n.per == 0
+				node_label = "\"($(n.loc),$(n.per))\n| {$(pecahan[1])|$(pecahan[2])} |{{$(round(persediaan_dict[(n.loc,pecahan[1])],digits=2))} | {$(round(persediaan_dict[(n.loc,pecahan[2])],digits=2))}}\""
+			else
+				node_label = "\"($(n.loc),$(n.per))\n | {$(pecahan[1])|$(pecahan[2])} |{{$(round(permintaan_dict[(n.loc,n.per,pecahan[1])],digits=2))} | {$(round(permintaan_dict[(n.loc,n.per,pecahan[2])],digits=2))}}\""
+			end
+			write(file, "    \"($(n.loc),t=$(n.per))\" [label=$(node_label)] \
+			[fontname=\"Helvetica\"] [pos=\"$(n.loc),$(n.per)!\"];\n")
+		end
+		for a in arcs(EG)
+			if EG[a][:moda] != "GDNG"
+				arc_moda = EG[a][:moda]
+			else
+				arc_moda = "inv"
+			end
+			write(file, "    \"($(src(a).loc),t=$(src(a).per))\" -> \"($(tgt(a).loc),t=$(tgt(a).per))\" \
+			[fontname=\"Helvetica\"] [label=$arc_moda] [fontcolor=$(color[arc_moda])] [color=$(color[arc_moda])];\n")
+		end
+		write(file, "}")
+	end
+	open("complete_with_demand.svg", "w") do io
+		write(io, read(`$(layout_expanded) -Tsvg complete_with_demand.dot`,String))
+	end
+	LocalResource("complete_with_demand.svg")
 end
 
 # ╔═╡ 49e92f5f-8e47-467e-907c-600c8cd790b2
@@ -1904,7 +1935,8 @@ version = "3.5.0+0"
 # ╟─31bb4a05-eea5-442e-8af3-ff557251eca3
 # ╟─ac6a2276-e2e5-418d-b6ee-ac92b43f0b6f
 # ╟─ca0fa97e-d4b5-4cc0-b213-7cfb81424489
-# ╟─5e578412-c09c-45e6-afea-79ba5f8b4921
+# ╠═5e578412-c09c-45e6-afea-79ba5f8b4921
+# ╠═fa419807-407c-4378-aa61-763dda8b8d98
 # ╟─31002eca-9db1-4114-9870-ac6952c73b0c
 # ╟─63200f38-da8c-4454-bd3b-df4d62758d42
 # ╠═b53ff671-3eb3-4a63-8959-be02381c5a55
@@ -1923,7 +1955,7 @@ version = "3.5.0+0"
 # ╠═86d4820f-e45f-4ebb-a0aa-aabb0542aadd
 # ╠═9a1f6651-6539-4eba-8e32-ef06d5f7a3f2
 # ╟─14ce3d52-2e3a-4f76-9837-662ed32c0f0b
-# ╠═f7533e96-b535-4f32-a26a-f4d7a65dee43
+# ╟─f7533e96-b535-4f32-a26a-f4d7a65dee43
 # ╟─49e92f5f-8e47-467e-907c-600c8cd790b2
 # ╠═38a50100-15fd-44e1-b559-679b7beffa54
 # ╠═d43b5daf-0da0-47f8-a72e-fa81def09f84

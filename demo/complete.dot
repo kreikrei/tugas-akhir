@@ -1,95 +1,106 @@
 digraph complete {
-    node [shape=record];    "(yyk,0)" [label="(yyk,0)
-| {50k|20k} |{{100.44} | {407.32}}"] [fontname="Helvetica"] [pos="yyk,0!"];
-    "(yyk,3)" [label="(yyk,3)
- | {50k|20k} |{{278.35} | {-146.91}}"] [fontname="Helvetica"] [pos="yyk,3!"];
-    "(cbn,2)" [label="(cbn,2)
- | {50k|20k} |{{126.22} | {322.59}}"] [fontname="Helvetica"] [pos="cbn,2!"];
-    "(cbn,1)" [label="(cbn,1)
- | {50k|20k} |{{-87.76} | {126.7}}"] [fontname="Helvetica"] [pos="cbn,1!"];
-    "(jkt,3)" [label="(jkt,3)
- | {50k|20k} |{{-104.49} | {2.26}}"] [fontname="Helvetica"] [pos="jkt,3!"];
-    "(bdg,3)" [label="(bdg,3)
- | {50k|20k} |{{-86.0} | {28.33}}"] [fontname="Helvetica"] [pos="bdg,3!"];
-    "(cbn,3)" [label="(cbn,3)
- | {50k|20k} |{{-40.6} | {-257.57}}"] [fontname="Helvetica"] [pos="cbn,3!"];
-    "(cbn,0)" [label="(cbn,0)
-| {50k|20k} |{{7155.87} | {2553.36}}"] [fontname="Helvetica"] [pos="cbn,0!"];
-    "(sby,3)" [label="(sby,3)
- | {50k|20k} |{{142.54} | {-334.48}}"] [fontname="Helvetica"] [pos="sby,3!"];
-    "(sby,1)" [label="(sby,1)
- | {50k|20k} |{{-185.62} | {-62.17}}"] [fontname="Helvetica"] [pos="sby,1!"];
-    "(bdg,2)" [label="(bdg,2)
- | {50k|20k} |{{-125.69} | {-235.94}}"] [fontname="Helvetica"] [pos="bdg,2!"];
-    "(yyk,1)" [label="(yyk,1)
- | {50k|20k} |{{-83.86} | {30.27}}"] [fontname="Helvetica"] [pos="yyk,1!"];
-    "(jkt,1)" [label="(jkt,1)
- | {50k|20k} |{{37.74} | {387.75}}"] [fontname="Helvetica"] [pos="jkt,1!"];
-    "(jkt,0)" [label="(jkt,0)
-| {50k|20k} |{{378.79} | {1053.47}}"] [fontname="Helvetica"] [pos="jkt,0!"];
-    "(sby,2)" [label="(sby,2)
- | {50k|20k} |{{-201.78} | {-153.51}}"] [fontname="Helvetica"] [pos="sby,2!"];
-    "(yyk,2)" [label="(yyk,2)
- | {50k|20k} |{{16.67} | {193.3}}"] [fontname="Helvetica"] [pos="yyk,2!"];
-    "(bdg,0)" [label="(bdg,0)
-| {50k|20k} |{{38.96} | {394.07}}"] [fontname="Helvetica"] [pos="bdg,0!"];
-    "(jkt,2)" [label="(jkt,2)
- | {50k|20k} |{{-89.19} | {148.29}}"] [fontname="Helvetica"] [pos="jkt,2!"];
-    "(bdg,1)" [label="(bdg,1)
- | {50k|20k} |{{-60.7} | {-35.93}}"] [fontname="Helvetica"] [pos="bdg,1!"];
-    "(sby,0)" [label="(sby,0)
-| {50k|20k} |{{186.39} | {51.61}}"] [fontname="Helvetica"] [pos="sby,0!"];
-    "(yyk,0)" -> "(yyk,1)" [label="50k:100.44
- 20k:407.32
+    node [shape=record];    "(1,2)" [label="(1,2)
+ | {50k|20k} |{{-89.19} | {148.29}}"] [fontname="Helvetica"] [pos="1,2!"];
+    "(7,0)" [label="(7,0)
+| {50k|20k} |{{123.54} | {48.5}}"] [fontname="Helvetica"] [pos="7,0!"];
+    "(3,0)" [label="(3,0)
+| {50k|20k} |{{186.39} | {51.61}}"] [fontname="Helvetica"] [pos="3,0!"];
+    "(3,2)" [label="(3,2)
+ | {50k|20k} |{{-201.78} | {-153.51}}"] [fontname="Helvetica"] [pos="3,2!"];
+    "(7,1)" [label="(7,1)
+ | {50k|20k} |{{93.72} | {26.73}}"] [fontname="Helvetica"] [pos="7,1!"];
+    "(6,0)" [label="(6,0)
+| {50k|20k} |{{1642.66} | {169.72}}"] [fontname="Helvetica"] [pos="6,0!"];
+    "(1,0)" [label="(1,0)
+| {50k|20k} |{{378.79} | {1053.47}}"] [fontname="Helvetica"] [pos="1,0!"];
+    "(5,0)" [label="(5,0)
+| {50k|20k} |{{100.44} | {407.32}}"] [fontname="Helvetica"] [pos="5,0!"];
+    "(5,1)" [label="(5,1)
+ | {50k|20k} |{{-87.76} | {126.7}}"] [fontname="Helvetica"] [pos="5,1!"];
+    "(4,1)" [label="(4,1)
+ | {50k|20k} |{{-83.86} | {30.27}}"] [fontname="Helvetica"] [pos="4,1!"];
+    "(2,2)" [label="(2,2)
+ | {50k|20k} |{{-125.69} | {-235.94}}"] [fontname="Helvetica"] [pos="2,2!"];
+    "(3,1)" [label="(3,1)
+ | {50k|20k} |{{-185.62} | {-62.17}}"] [fontname="Helvetica"] [pos="3,1!"];
+    "(8,2)" [label="(8,2)
+ | {50k|20k} |{{-325.87} | {190.15}}"] [fontname="Helvetica"] [pos="8,2!"];
+    "(7,2)" [label="(7,2)
+ | {50k|20k} |{{-109.87} | {-52.19}}"] [fontname="Helvetica"] [pos="7,2!"];
+    "(8,0)" [label="(8,0)
+| {50k|20k} |{{105.95} | {338.91}}"] [fontname="Helvetica"] [pos="8,0!"];
+    "(4,0)" [label="(4,0)
+| {50k|20k} |{{7155.87} | {2553.36}}"] [fontname="Helvetica"] [pos="4,0!"];
+    "(6,2)" [label="(6,2)
+ | {50k|20k} |{{-43.87} | {23.14}}"] [fontname="Helvetica"] [pos="6,2!"];
+    "(6,1)" [label="(6,1)
+ | {50k|20k} |{{119.59} | {169.37}}"] [fontname="Helvetica"] [pos="6,1!"];
+    "(1,1)" [label="(1,1)
+ | {50k|20k} |{{37.74} | {387.75}}"] [fontname="Helvetica"] [pos="1,1!"];
+    "(4,2)" [label="(4,2)
+ | {50k|20k} |{{16.67} | {193.3}}"] [fontname="Helvetica"] [pos="4,2!"];
+    "(2,1)" [label="(2,1)
+ | {50k|20k} |{{-60.7} | {-35.93}}"] [fontname="Helvetica"] [pos="2,1!"];
+    "(5,2)" [label="(5,2)
+ | {50k|20k} |{{126.22} | {322.59}}"] [fontname="Helvetica"] [pos="5,2!"];
+    "(2,0)" [label="(2,0)
+| {50k|20k} |{{38.96} | {394.07}}"] [fontname="Helvetica"] [pos="2,0!"];
+    "(8,1)" [label="(8,1)
+ | {50k|20k} |{{108.67} | {-226.36}}"] [fontname="Helvetica"] [pos="8,1!"];
+    "(7,0)" -> "(7,1)" [label="50k:123.54
+ 20k:48.5
  kont=1.0"] [fontcolor=purple] [color=purple] [fontname="Helvetica"] [nojust=true];
-    "(cbn,2)" -> "(cbn,3)" [label="50k:0.0
- 20k:472.25
+    "(3,0)" -> "(6,1)" [label="50k:173.76
+ 20k:51.61
+ kont=1.0
+ moda=TRUK"] [fontcolor=green] [color=green] [fontname="Helvetica"] [nojust=true];
+    "(3,0)" -> "(3,1)" [label="50k:12.63
+ 20k:0.0
  kont=1.0"] [fontcolor=purple] [color=purple] [fontname="Helvetica"] [nojust=true];
-    "(cbn,1)" -> "(cbn,2)" [label="50k:126.22
- 20k:794.84
+    "(7,1)" -> "(7,2)" [label="50k:29.83
+ 20k:21.77
  kont=1.0"] [fontcolor=purple] [color=purple] [fontname="Helvetica"] [nojust=true];
-    "(cbn,0)" -> "(jkt,1)" [label="50k:7117.41
- 20k:1631.82
- kont=18.0
- moda=truk"] [fontcolor=green] [color=green] [fontname="Helvetica"] [nojust=true];
-    "(cbn,0)" -> "(cbn,1)" [label="50k:38.46
- 20k:921.54
+    "(6,0)" -> "(6,1)" [label="50k:1642.66
+ 20k:169.72
  kont=1.0"] [fontcolor=purple] [color=purple] [fontname="Helvetica"] [nojust=true];
-    "(sby,1)" -> "(sby,2)" [label="50k:372.01
- 20k:113.78
- kont=1.0"] [fontcolor=purple] [color=purple] [fontname="Helvetica"] [nojust=true];
-    "(bdg,2)" -> "(bdg,3)" [label="50k:225.35
- 20k:485.65
- kont=1.0"] [fontcolor=purple] [color=purple] [fontname="Helvetica"] [nojust=true];
-    "(yyk,1)" -> "(yyk,2)" [label="50k:184.3
- 20k:377.05
- kont=1.0"] [fontcolor=purple] [color=purple] [fontname="Helvetica"] [nojust=true];
-    "(jkt,1)" -> "(jkt,2)" [label="50k:7458.46
- 20k:2297.54
- kont=1.0"] [fontcolor=purple] [color=purple] [fontname="Helvetica"] [nojust=true];
-    "(jkt,0)" -> "(jkt,1)" [label="50k:378.79
+    "(1,0)" -> "(1,1)" [label="50k:378.79
  20k:1053.47
  kont=1.0"] [fontcolor=purple] [color=purple] [fontname="Helvetica"] [nojust=true];
-    "(sby,2)" -> "(sby,3)" [label="50k:573.79
- 20k:447.57
+    "(5,0)" -> "(5,1)" [label="50k:100.44
+ 20k:407.32
  kont=1.0"] [fontcolor=purple] [color=purple] [fontname="Helvetica"] [nojust=true];
-    "(yyk,2)" -> "(yyk,3)" [label="50k:167.63
- 20k:183.75
+    "(5,1)" -> "(5,2)" [label="50k:188.19
+ 20k:280.62
  kont=1.0"] [fontcolor=purple] [color=purple] [fontname="Helvetica"] [nojust=true];
-    "(bdg,0)" -> "(bdg,1)" [label="50k:38.96
+    "(4,1)" -> "(4,2)" [label="50k:7237.01
+ 20k:2523.09
+ kont=1.0"] [fontcolor=purple] [color=purple] [fontname="Helvetica"] [nojust=true];
+    "(3,1)" -> "(3,2)" [label="50k:198.25
+ 20k:62.17
+ kont=1.0"] [fontcolor=purple] [color=purple] [fontname="Helvetica"] [nojust=true];
+    "(8,0)" -> "(8,1)" [label="50k:105.95
+ 20k:338.91
+ kont=1.0"] [fontcolor=purple] [color=purple] [fontname="Helvetica"] [nojust=true];
+    "(4,0)" -> "(4,1)" [label="50k:7153.15
+ 20k:2553.36
+ kont=1.0"] [fontcolor=purple] [color=purple] [fontname="Helvetica"] [nojust=true];
+    "(4,0)" -> "(8,1)" [label="50k:2.72
+ 20k:0.0
+ kont=1.0
+ moda=KRTA"] [fontcolor=green] [color=green] [fontname="Helvetica"] [nojust=true];
+    "(6,1)" -> "(6,2)" [label="50k:1696.83
+ 20k:51.96
+ kont=1.0"] [fontcolor=purple] [color=purple] [fontname="Helvetica"] [nojust=true];
+    "(1,1)" -> "(1,2)" [label="50k:341.05
+ 20k:665.72
+ kont=1.0"] [fontcolor=purple] [color=purple] [fontname="Helvetica"] [nojust=true];
+    "(2,1)" -> "(2,2)" [label="50k:99.66
+ 20k:429.99
+ kont=1.0"] [fontcolor=purple] [color=purple] [fontname="Helvetica"] [nojust=true];
+    "(2,0)" -> "(2,1)" [label="50k:38.96
  20k:394.07
  kont=1.0"] [fontcolor=purple] [color=purple] [fontname="Helvetica"] [nojust=true];
-    "(jkt,2)" -> "(jkt,3)" [label="50k:7547.65
- 20k:2149.25
- kont=1.0"] [fontcolor=purple] [color=purple] [fontname="Helvetica"] [nojust=true];
-    "(bdg,1)" -> "(bdg,2)" [label="50k:99.66
- 20k:249.71
- kont=1.0"] [fontcolor=purple] [color=purple] [fontname="Helvetica"] [nojust=true];
-    "(bdg,1)" -> "(sby,2)" [label="50k:0.0
- 20k:180.28
- kont=1.0
- moda=krta"] [fontcolor=green] [color=green] [fontname="Helvetica"] [nojust=true];
-    "(sby,0)" -> "(sby,1)" [label="50k:186.39
- 20k:51.61
+    "(8,1)" -> "(8,2)" [label="50k:0.0
+ 20k:565.27
  kont=1.0"] [fontcolor=purple] [color=purple] [fontname="Helvetica"] [nojust=true];
 }

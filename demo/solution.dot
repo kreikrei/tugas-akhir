@@ -1,5 +1,1 @@
 digraph solution {
-    "(jkt,1)" [shape=circle] [fontname="Helvetica"] [pos="jkt,1!"];
-    "(cbn,0)" [shape=circle] [fontname="Helvetica"] [pos="cbn,0!"];
-    "(cbn,0)" -> "(jkt,1)" [fontname="Helvetica"];
-}
